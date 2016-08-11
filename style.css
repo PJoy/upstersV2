@@ -1,0 +1,194 @@
+/** MAIN COLORS
+green : 349f8b
+orange : e45021
+grey : e6e6e6
+**/
+
+#top-navbar > div,
+#call-action > div {
+    background: #e45021;
+}
+
+#presentation > div ,
+#categories > div ,
+#news > div ,
+#testimonials > div ,
+#footer > div {
+    background: #e6e6e6;
+}
+
+#listing-features > div  {
+    background: #349f8b;
+}
+
+/** GENERAL **/
+
+.title-section {
+    background-color: rgba(255,255,255,0.3);
+    padding: 50px 0;
+}
+
+.btn.orange-btn {
+    background-color: #e45021;
+    color: #e6e6e6;
+    border-radius: 0;
+}
+.btn.orange-btn-invert {
+    background-color: #e6e6e6;
+    color: #e45021;
+    border-radius: 0;
+}
+.btn.green-btn {
+    background-color: #349f8b;
+    color: #e6e6e6;
+    border-radius: 0;
+}
+.btn.green-btn-invert {
+    background-color: #e6e6e6;
+    color: #349f8b;
+    border-radius: 0;
+}
+
+
+/** TOP NAVBAR **/
+
+#top-navbar {
+    color: white;
+}
+
+#top-navbar div {
+    height: 50px;
+}
+
+#top-navbar div div div div i,
+#top-navbar div div div div p,
+#top-navbar #greet-tab p{
+    height: 50px;
+    line-height: 50px;
+    font-size: 20px;
+}
+
+#social-tab,
+#notif-tab {
+    border-right: solid 1px;
+}
+
+/** HEADER **/
+
+#header .navbar-nav {
+    overflow: hidden;
+    float: right;
+}
+
+#header .navbar img{
+    height: 100px;
+}
+
+#header .navbar ul {
+    margin-top: 35px;
+}
+
+#header .navbar ul li {
+    margin-right: 5px;
+    width: 140px;
+    overflow: hidden;
+    border-top: solid 5px #e45021;
+}
+
+#header .navbar ul li a {
+    color: black;
+}
+
+/** MAP **/
+
+#map > div{
+    height: 400px;
+    background: url("assets/dummy-map.png") no-repeat bottom center;
+    background-size: 130%;
+}
+
+#map #search-form {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+}
+
+#map #search-form > div {
+    background-color: rgba(52,159,139,0.5);
+    height: 70px;
+}
+
+#map #search-form input,
+#map #search-form button{
+    margin: 20px 0;
+}
+
+#map #search-form input{
+    height: 30px;
+}
+
+/** PRESENTATION **/
+
+#presentation i {
+    color: #349f8b;
+}
+
+#presentation h2 {
+    color: #e45021;
+    text-transform: uppercase;
+}
+
+#presentation h3 {
+    color: #e45021;
+    text-transform: uppercase;
+}
+
+#presentation .pres-item {
+    padding: 30px 0;
+}
+
+#presentation .pres-item h3 {
+    font-size: 20px;
+}
+
+#presentation .btn {
+    margin: 50px 0 100px;
+}
+
+/** MEDIAS **/
+
+#medias {
+    color: white;
+}
+
+#medias .text-container {
+    padding: 50px;
+}
+
+#medias #media-content {
+    background: url("assets/books.jpg") no-repeat bottom center;
+    background-size: 100%;
+    box-shadow: inset 0 0 0 1000px rgba(52,159,139,0.8);
+
+}
+
+#medias button {
+    margin: 50px 0;
+}
+
+/** NEWS **/
+
+#news button{
+    margin: 50px 0;
+}
+
+/** CALL ACTION **/
+
+#call-action button {
+    margin: 50px 0;
+}
+
+#call-action .text-container {
+    color: white;
+    padding: 50px;
+}
