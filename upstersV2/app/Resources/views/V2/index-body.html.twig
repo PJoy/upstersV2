@@ -1,34 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: pierreportejoie
- * Date: 11/08/16
- * Time: 15:44
- */
-
-?>
-<html lang="fr">
-<?php
-/**
- * HEAD
- */
-?>
-<head>
-    <title>Entreprenons ensemble | Upsters</title>
-    <meta name="description" content="Annuaire entrepreueurial, les réseau social des startups, entreprenons ensemble !">
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <script src="https://use.fontawesome.com/1a855ebc8f.js"></script>
-</head>
-
-<?php
-/**
- * BODY
- */
-?>
 <div class="container">
     <section id="top-navbar">
         <div class="col-md-12">
@@ -52,14 +21,14 @@
                         <i class="fa fa-bell"></i>
                     </div>
                     <div class="col-md-4 text-center">
-                        <?php echo '<p>(4)</p>' ?>
+                        <p>({{ user.messages }})</p>
                     </div>
                     <div class="col-md-4 text-center">
                         <i class="fa fa-angle-up"></i>
                     </div>
                 </div>
                 <div class="col-md-4 text-center" id="greet-tab">
-                    <?php echo '<p>Salut, <b>Julie</b></p>' ?>
+                    <p>Salut, <b>{{ user.name }}</b></p>
                 </div>
             </div>
         </div>
@@ -69,7 +38,7 @@
             <nav class="navbar">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="#"><img src="assets/logo.png">
+                        <a class="navbar-brand" href="#"><img src="{{ asset('images/logo.png') }}">
                         </a>
                     </div>
 
@@ -83,6 +52,7 @@
                             <li><a href="#">Forum</a></li>
                         </ul>
                     </div>
+                </div>
             </nav>
         </div>
     </section>
@@ -92,10 +62,10 @@
                 <div style="position: relative; left: -50%;">
                     <div class="col-md-1"></div>
                     <div class="col-md-3">
-                        <input type="text"placeholder="Nom - Mot-clé">
+                        <input type="text" placeholder="Nom - Mot-clé">
                     </div>
                     <div class="col-md-4">
-                        <input type="text"placeholder="Ville">
+                        <input type="text" placeholder="Ville">
                     </div>
                     <div class="col-md-3">
                         <button class="btn orange-btn">Chercher</button>
@@ -127,7 +97,7 @@
                 <p>Echangez entre entrepreneurs et profitez des réponses d'experts pour solutionner toutes vos questions !</p>
             </div>
             <div class="col-md-3 pres-item text-center">
-                <i class="fa fa-5x fa-User"></i>
+                <i class="fa fa-5x fa-users"></i>
                 <h3>Comparez-vous !</h3>
                 <p>Qui se cache derrière chaque projet ? <br>
                     Comparez votre personalité, le contexte dans lequel vous avez créé ou encore la vision de votre stratup !</p>
@@ -142,26 +112,42 @@
             <div class="col-md-12 title-section">
                 <h2>Extraits du listing</h2>
             </div>
-            <div class="col-md-4 text-center">
-                <div style="height: 150px"><p style="padding: 75px 0;">DUMMY CARD</p> </div>
-            </div>
-            <div class="col-md-4 text-center">
-                <div style="height: 150px"><p style="padding: 75px 0;">DUMMY CARD</p> </div>
-            </div>
-            <div class="col-md-4 text-center">
-                <div style="height: 150px"><p style="padding: 75px 0;">DUMMY CARD</p> </div>
-            </div>
+            {% for extract in listingExtracts %}
+                <div class="col-md-4 text-center service-card-large">
+                    <div class="col-md-12">
+                    <img src="{{ extract.photoUrl }}" alt="photo de {{ extract.name }}, catégorie : {{ extract.categoryName }}">
+                    <img src="{{ asset('images/icons/' ~ extract.category ~ '.png') }}" alt="logo de la catégorie {{ extract.categoryName }}">
+                    <h4>{{ extract.categoryName }}</h4>
+                    <h5>{{ extract.name }}</h5>
+                    <div class="card-pitch">
+                        <p>{{ extract.pitch }}</p>
+                    </div>
+                    <div class="card-recommendation">
+                        <p><i class="fa fa-thumbs-o-up"></i> <b>{{ extract.recom }}</b> recommandations</p>
+                    </div>
+                    <a href=""><div class="col-md-6 fake-btn fake-btn-grey">Voir la suite</div></a>
+                    <a href=""><div class="col-md-6 fake-btn fake-btn-orange">Recommander</div></a>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
     </section>
     <section id="categories">
         <div class="col-md-12">
             <div class="col-md-12 title-section">
-                <h2>Retrouvez des professionels qualifiés</h2>
+                <div class="col-md-12 title-section">
+                    <h2>Trouvez des professionels qualifiés</h2>
+                </div>
+                {% for category in categories %}
+                    <div class="col-md-6">
+                        <img src="{{ asset('images/icons/' ~ category.name ~ '.png') }}" alt="logo de la catégorie {{ category.displayName }}">
+                        <h4>{{ category.displayName }}</h4>
+                        <div class="category-pitch">
+                            <p>{{ category.pitch }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
-            <div style="height: 250px;" class="text-center">
-                <p style="padding-top: 100px">???</p>
-            </div>
-
         </div>
     </section>
     <section id="medias">
@@ -173,12 +159,8 @@
                         Ajoutez les médias qui vous trouvez intéressants.</big></p>
             </div>
             <div class="btn-container">
-                <div class="col-md-6">
-                    <button class="btn orange-btn-invert">Ajoutez un média</button>
-                </div>
-                <div class="col-md-6">
-                    <button class="btn orange-btn-invert">Consultez la médiathèque</button>
-                </div>
+                <a href=""><div class="col-md-6"><div class="col-md-12 fake-btn fake-btn-orange-inv">Ajouter un média</div></div></a>
+                <a href=""><div class="col-md-6"><div class="col-md-12 fake-btn fake-btn-orange-inv">Consulter la médiathèque</div></div></a>
             </div>
             <div class="layer">
             </div>
@@ -190,18 +172,28 @@
             <div class="col-md-12 title-section">
                 <h2>Les news du forum</h2>
             </div>
-            <div class="col-md-4 text-center">
-                <div style="height: 150px"><p style="padding: 75px 0;">DUMMY CARD</p> </div>
-            </div>
-            <div class="col-md-4 text-center">
-                <div style="height: 150px"><p style="padding: 75px 0;">DUMMY CARD</p> </div>
-            </div>
-            <div class="col-md-4 text-center">
-                <div style="height: 150px"><p style="padding: 75px 0;">DUMMY CARD</p> </div>
-            </div>
+
+            {% for post in forumPosts %}
+                <div class="col-md-4">
+                    <div class="col-md-12 news-card">
+                        <img src="{{ post.photoUrl }}" alt="avatar de {{ post.name }}">
+                        <p class="forum-date">{{ post.date }}</p>
+                        <h4>{{ post.title }}</h4>
+                        <div class="post-content">
+                            <p>{{ post.content }}</p><br>
+                        </div>
+                        <a href="#"><p>[lire la suite]</p></a>
+                        <p class="forum-published-by">Publié par <b>{{ post.name }}</b></p>
+                    </div>
+                </div>
+            {% endfor %}
 
             <div class="col-md-12 text-center" id="btn-cta-container">
-                <button class="btn orange-btn">Je m'inscris</button>
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <a href=""><div class="col-md-12 fake-btn fake-btn-orange">Aller sur le forum</div></a>
+                </div>
+                <div class="col-md-3"></div>
             </div>
 
         </div>
@@ -223,15 +215,16 @@
             <div class="col-md-12 title-section">
                 <h2>Ce qu'ils en disent</h2>
             </div>
-            <div class="col-md-12" style="height: 45px">
-                BLAH
-            </div>
-            <div class="col-md-12" style="height: 45px">
-                BLAH
-            </div>
-            <div class="col-md-12" style="height: 45px">
-                BLAH
-            </div>
+            {% for testimonial in testimonials %}
+                <div class="col-md-12 testimonial-container">
+                    <div class="col-md-2">
+                        <img src="{{ testimonial.photoUrl }}" alt="photo de {{ testimonial.name }}">
+                    </div>
+                    <div class="col-md-10">
+                        <p>{{ testimonial.content }}</p>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
     </section>
     <section id="footer">
@@ -241,23 +234,3 @@
         </div>
     </section>
 </div>
-<?php
-/**
- * SCRIPTS
- */
-?>
-<link href="style.css" rel="stylesheet">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-</html>
