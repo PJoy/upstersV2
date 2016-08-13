@@ -2,22 +2,41 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="be2ed198-0aaa-4364-8e7a-59901451e9f0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upstersV2/web/favicon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upstersV2/web/images/bigard.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upstersV2/web/images/books.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upstersV2/web/images/dummy-map.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upstersV2/web/images/icons/comptabilite.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upstersV2/web/images/icons/coworking.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upstersV2/web/images/logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upstersV2/app/Resources/views/V2/index-body.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upstersV2/app/Resources/views/V2/index.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upstersV2/src/AppBundle/Controller/MainController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upstersV2/web/css/style.css" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/upstersV2/web/favicon.ico" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upstersV2/web/images/icons/assurance.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upstersV2/web/images/icons/autres.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upstersV2/web/images/icons/banque.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upstersV2/web/images/icons/cci.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upstersV2/web/images/icons/communication.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upstersV2/web/images/icons/concours.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upstersV2/web/images/icons/conseil.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upstersV2/web/images/icons/crowdfounding.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upstersV2/web/images/icons/dev.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upstersV2/web/images/icons/finance.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upstersV2/web/images/icons/formation.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upstersV2/web/images/icons/graphisme.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upstersV2/web/images/icons/immobilier.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upstersV2/web/images/icons/imprimerie.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upstersV2/web/images/icons/incubateur.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upstersV2/web/images/icons/info.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upstersV2/web/images/icons/invest.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upstersV2/web/images/icons/juridique.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upstersV2/app/Resources/views/V2/media.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upstersV2/app/Resources/views/V2/profile.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upstersV2/app/Resources/views/V2/ressources.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upstersV2/app/Resources/views/V2/startups.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upstersV2/src/AppBundle/Controller/MediaController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upstersV2/src/AppBundle/Controller/ProfileController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upstersV2/src/AppBundle/Controller/RessourcesController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upstersV2/src/AppBundle/Controller/StartupsController.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/upstersV2/app/Resources/views/V2/index-body.html.twig" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/upstersV2/web/images/icons/comptabilite.png" afterPath="$PROJECT_DIR$/upstersV2/web/images/icons/comptabilite.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/upstersV2/web/images/icons/coworking.png" afterPath="$PROJECT_DIR$/upstersV2/web/images/icons/coworking.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/upstersV2/web/images/logo.png" afterPath="$PROJECT_DIR$/upstersV2/web/images/logo.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/upstersV2/app/Resources/views/V2/index.html.twig" afterPath="$PROJECT_DIR$/upstersV2/app/Resources/views/V2/index.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/upstersV2/app/Resources/views/base.html.twig" afterPath="$PROJECT_DIR$/upstersV2/app/Resources/views/base.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/upstersV2/src/AppBundle/Controller/MainController.php" afterPath="$PROJECT_DIR$/upstersV2/src/AppBundle/Controller/MainController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/upstersV2/web/css/style.css" afterPath="$PROJECT_DIR$/upstersV2/web/css/style.css" />
     </list>
     <ignored path="upstersV2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,8 +60,8 @@
       <file leaf-file-name="MainController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/upstersV2/src/AppBundle/Controller/MainController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="448">
-              <caret line="52" column="46" selection-start-line="52" selection-start-column="46" selection-end-line="52" selection-end-column="46" />
+            <state relative-caret-position="427">
+              <caret line="53" column="308" selection-start-line="53" selection-start-column="308" selection-end-line="53" selection-end-column="308" />
               <folding>
                 <element signature="e#6#95#0#PHP" expanded="true" />
                 <element signature="e#131#190#0#PHP" expanded="true" />
@@ -51,24 +70,101 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index-body.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/upstersV2/app/Resources/views/V2/index-body.html.twig">
+      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/upstersV2/app/Resources/views/base.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="448">
-              <caret line="218" column="59" selection-start-line="218" selection-start-column="59" selection-end-line="218" selection-end-column="59" />
+            <state relative-caret-position="340">
+              <caret line="32" column="67" selection-start-line="32" selection-start-column="67" selection-end-line="32" selection-end-column="67" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#section#2;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#div#0;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#1;n#div#0;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#3097#3102#0#HTML" expanded="true" />
+                <element signature="n#style#0;n#a#2;n#div#0;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/upstersV2/app/Resources/views/V2/index.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="25" selection-start-line="0" selection-start-column="22" selection-end-line="0" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/upstersV2/web/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="556">
-              <caret line="316" column="9" selection-start-line="316" selection-start-column="9" selection-end-line="316" selection-end-column="9" />
+            <state relative-caret-position="421">
+              <caret line="420" column="15" selection-start-line="420" selection-start-column="15" selection-end-line="420" selection-end-column="15" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="media.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/upstersV2/app/Resources/views/V2/media.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MediaController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/upstersV2/src/AppBundle/Controller/MediaController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="29" column="27" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProfileController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/upstersV2/src/AppBundle/Controller/ProfileController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="29" column="21" selection-start-line="29" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+              <folding>
+                <element signature="e#133#192#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RessourcesController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/upstersV2/src/AppBundle/Controller/RessourcesController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="29" column="27" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StartupsController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/upstersV2/src/AppBundle/Controller/StartupsController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="29" column="27" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="profile.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/upstersV2/app/Resources/views/V2/profile.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+              <folding>
+                <marker date="1471105044000" expanded="true" signature="82:447" ph="{% block body ...%}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -89,13 +185,24 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/upstersV2/src/AppBundle/Controller/UserController.php" />
-        <option value="$PROJECT_DIR$/upstersV2/app/Resources/views/base.html.twig" />
         <option value="$PROJECT_DIR$/upstersV2/app/Resources/views/V2/index-body.html.twig.html" />
-        <option value="$PROJECT_DIR$/upstersV2/app/Resources/views/V2/index.html.twig" />
         <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/upstersV2/src/AppBundle/Controller/MainController.php" />
+        <option value="$PROJECT_DIR$/upstersV2/src/AppBundle/Controller/ProfileControler.php" />
         <option value="$PROJECT_DIR$/upstersV2/app/Resources/views/V2/index-body.html.twig" />
+        <option value="$PROJECT_DIR$/upstersV2/src/AppBundle/Controller/ProfileController.php" />
+        <option value="$PROJECT_DIR$/upstersV2/src/AppBundle/Controller/ServicesController.php" />
+        <option value="$PROJECT_DIR$/upstersV2/app/Resources/views/V2/media.html.twig" />
+        <option value="$PROJECT_DIR$/upstersV2/app/Resources/views/V2/profile.html.twig" />
+        <option value="$PROJECT_DIR$/upstersV2/app/Resources/views/V2/services.html.twig" />
+        <option value="$PROJECT_DIR$/upstersV2/app/Resources/views/V2/startups.html.twig" />
+        <option value="$PROJECT_DIR$/upstersV2/app/Resources/views/V2/ressources.html.twig" />
+        <option value="$PROJECT_DIR$/upstersV2/src/AppBundle/Controller/MediaController.php" />
+        <option value="$PROJECT_DIR$/upstersV2/src/AppBundle/Controller/RessourcesController.php" />
+        <option value="$PROJECT_DIR$/upstersV2/src/AppBundle/Controller/StartupsController.php" />
+        <option value="$PROJECT_DIR$/upstersV2/src/AppBundle/Controller/MainController.php" />
         <option value="$PROJECT_DIR$/upstersV2/web/css/style.css" />
+        <option value="$PROJECT_DIR$/upstersV2/app/Resources/views/V2/index.html.twig" />
+        <option value="$PROJECT_DIR$/upstersV2/app/Resources/views/base.html.twig" />
       </list>
     </option>
   </component>
@@ -187,54 +294,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="upstersV2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="upstersV2" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="upstersV2" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="upstersV2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="upstersV2" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="upstersV2" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="icons" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -451,10 +510,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/upstersV2/app/Resources/views/V2" />
+      <recent name="$PROJECT_DIR$/upstersV2/src/AppBundle/Controller" />
       <recent name="$PROJECT_DIR$/upstersV2/web/images/icons" />
       <recent name="$PROJECT_DIR$/upstersV2/web/images" />
       <recent name="$PROJECT_DIR$/upstersV2/web" />
-      <recent name="$PROJECT_DIR$/upstersV2/web/css" />
     </key>
   </component>
   <component name="RunManager">
@@ -523,12 +583,12 @@
       <updated>1470992150067</updated>
       <workItem from="1470993811686" duration="424000" />
       <workItem from="1470994275116" duration="401000" />
-      <workItem from="1470994770447" duration="11039000" />
+      <workItem from="1470994770447" duration="20143000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11864000" />
+    <option name="totallyTimeSpent" value="20968000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -631,22 +691,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/upstersV2/app/config/routing.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/upstersV2/app/Resources/views/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="388">
@@ -679,18 +723,118 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/upstersV2/app/Resources/views/V2/index.html.twig">
+    <entry file="file://$PROJECT_DIR$/upstersV2/src/AppBundle/Controller/ProfileControler.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="39" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
+        <state relative-caret-position="90">
+          <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/upstersV2/app/config/routing.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/upstersV2/app/Resources/views/V2/profile-body.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/upstersV2/app/Resources/views/V2/index-body.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/upstersV2/app/Resources/views/V2/startups.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="59" selection-start-line="10" selection-start-column="59" selection-end-line="10" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/upstersV2/app/Resources/views/V2/ressources.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="61" selection-start-line="10" selection-start-column="61" selection-end-line="10" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/upstersV2/app/Resources/views/V2/profile.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+          <folding>
+            <marker date="1471105044000" expanded="true" signature="82:447" ph="{% block body ...%}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/upstersV2/src/AppBundle/Controller/ProfileController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="29" column="21" selection-start-line="29" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding>
+            <element signature="e#133#192#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/upstersV2/src/AppBundle/Controller/RessourcesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="29" column="27" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/upstersV2/src/AppBundle/Controller/StartupsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="29" column="27" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/upstersV2/src/AppBundle/Controller/MediaController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="29" column="27" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/upstersV2/app/Resources/views/V2/media.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/upstersV2/web/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="421">
+          <caret line="420" column="15" selection-start-line="420" selection-start-column="15" selection-end-line="420" selection-end-column="15" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/upstersV2/src/AppBundle/Controller/MainController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="52" column="46" selection-start-line="52" selection-start-column="46" selection-end-line="52" selection-end-column="46" />
+        <state relative-caret-position="427">
+          <caret line="53" column="308" selection-start-line="53" selection-start-column="308" selection-end-line="53" selection-end-column="308" />
           <folding>
             <element signature="e#6#95#0#PHP" expanded="true" />
             <element signature="e#131#190#0#PHP" expanded="true" />
@@ -698,21 +842,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/upstersV2/app/Resources/views/V2/index-body.html.twig">
+    <entry file="file://$PROJECT_DIR$/upstersV2/app/Resources/views/V2/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="218" column="59" selection-start-line="218" selection-start-column="59" selection-end-line="218" selection-end-column="59" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#section#2;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="25" selection-start-line="0" selection-start-column="22" selection-end-line="0" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/upstersV2/web/css/style.css">
+    <entry file="file://$PROJECT_DIR$/upstersV2/app/Resources/views/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="556">
-          <caret line="316" column="9" selection-start-line="316" selection-start-column="9" selection-end-line="316" selection-end-column="9" />
-          <folding />
+        <state relative-caret-position="340">
+          <caret line="32" column="67" selection-start-line="32" selection-start-column="67" selection-end-line="32" selection-end-column="67" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#div#0;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#1;n#div#0;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#3097#3102#0#HTML" expanded="true" />
+            <element signature="n#style#0;n#a#2;n#div#0;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

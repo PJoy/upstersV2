@@ -4,21 +4,206 @@
     {{ title }}
 {% endblock %}
 
-{% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
-{% endblock %}
-
 {% block body %}
-    {{ include('V2/index-body.html.twig') }}
-{% endblock %}
+    <div class="container" id="main-container">
+        <section id="header">
+            <div class="col-md-12">
+                <nav class="navbar">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="#"><img src="{{ asset('images/logo.png') }}">
+                            </a>
+                        </div>
 
-{% block javascripts %}
-    <script src="https://use.fontawesome.com/1a855ebc8f.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-{% endblock %}
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a class="fill" href="{{ path('home') }}">Accueil</a></li>
+                                <li><a class="fill" href="{{ path('user', {'name' : user.name}) }}">Mon profil</a></li>
+                                <li><a class="fill" href="{{ path('media') }}">Médiathèque</a></li>
+                                <li><a class="fill" href="{{ path('ressources') }}">Recommander un prestataire</a></li>
+                                <li><a class="fill" href="{{ path('startups') }}">Rechercher une startup</a></li>
+                                <li><a class="fill" href="{{ path('home') }}">Forum</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </section>
+        <section id="map">
+            <div class="col-md-12">
+                <div class="col-md-8" id="search-form">
+                    <div style="position: relative; left: -50%;">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-3">
+                            <input type="text" placeholder="Nom - Mot-clé">
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" placeholder="Ville">
+                        </div>
+                        <div class="col-md-3">
+                            <a href="{{ path('ressources') }}"><div class="col-md-12 fake-btn fake-btn-orange" id="search-btn">Rechercher</div></a>
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="presentation">
+            <div class="col-md-12">
+                <div class="col-md-12 title-section">
+                    <h2>Que trouve-t-on sur Upsters ?</h2>
+                </div>
+                <div class="col-md-3 pres-item text-center">
+                    <i class="fa fa-5x fa-book"></i>
+                    <h3>Des prestataires qualifiés de confiance</h3>
+                    <p>Trouvez dans l'annuaire tous les prestataires dont vous avez besoin, triés
+                        selon les recommandations des entrepreneurs !</p>
+                </div>
+                <div class="col-md-3 pres-item text-center">
+                    <i class="fa fa-5x fa-building"></i>
+                    <h3>Toutes les ressources entrepreneuriales nécessaires</h3>
+                    <p>Participez à la médiathèque collaboratiqve en y inscivant les indispensables de l'entrepreneuriat !</p>
+                </div>
+                <div class="col-md-3 pres-item text-center">
+                    <i class="fa fa-5x fa-comments"></i>
+                    <h3>Un forum dédié à l'entrepreneuriat</h3>
+                    <p>Echangez entre entrepreneurs et profitez des réponses d'experts pour solutionner toutes vos questions !</p>
+                </div>
+                <div class="col-md-3 pres-item text-center">
+                    <i class="fa fa-5x fa-users"></i>
+                    <h3>Comparez-vous !</h3>
+                    <p>Qui se cache derrière chaque projet ? <br>
+                        Comparez votre personalité, le contexte dans lequel vous avez créé ou encore la vision de votre stratup !</p>
+                </div>
+                <div class="col-md-12 text-center" id="pres-cta">
+                    <div class="col-md-3"></div>
+                    <a href="/"><div class="col-md-6 fake-btn fake-btn-orange">Je m'inscris</div></a>
+                    <div class="col-md-3"></div>
+                </div>
+            </div>
+        </section>
+        <section id="listing-features">
+            <div class="col-md-12">
+                <div class="col-md-12 title-section">
+                    <h2>Extraits du listing</h2>
+                </div>
+                {% for extract in listingExtracts %}
+                    <div class="col-md-4 text-center service-card-large">
+                        <div class="col-md-12">
+                            <img src="{{ extract.photoUrl }}" alt="photo de {{ extract.name }}, catégorie : {{ extract.categoryName }}">
+                            <img class="cat-img" src="{{ asset('images/icons/' ~ extract.category ~ '.png') }}" alt="logo de la catégorie {{ extract.categoryName }}">
+                            <h4>{{ extract.categoryName }}</h4>
+                            <h5>{{ extract.name }}</h5>
+                            <div class="card-pitch">
+                                <p>{{ extract.pitch }}</p>
+                            </div>
+                            <div class="card-recommendation">
+                                <p><i class="fa fa-thumbs-o-up"></i> <b>{{ extract.recom }}</b> recommandations</p>
+                            </div>
+                            <a href=""><div class="col-md-6 fake-btn fake-btn-grey">Voir la suite</div></a>
+                            <a href=""><div class="col-md-6 fake-btn fake-btn-orange">Recommander</div></a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+        <section id="categories">
+            <div class="col-md-12">
+                <div class="col-md-12 title-section">
+                    <div class="col-md-12 title-section">
+                        <h2>Trouvez des professionels qualifiés</h2>
+                    </div>
+                    {% for category in categories %}
+                        <div class="col-md-6">
+                            <img class="cat-img" src="{{ asset('images/icons/' ~ category.name ~ '.png') }}" alt="logo de la catégorie {{ category.displayName }}">
+                            <h4>{{ category.displayName }}</h4>
+                            <div class="category-pitch">
+                                <p>{{ category.pitch }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        <section id="medias">
+            <div class="col-md-12 text-center" id="media-content">
+                <div class="text-container">
+                    <i class="fa fa-5x fa-building"></i><br>
+                    <h2>Participez et profitez de la médiathèque</h2>
+                    <p><big>Trouvez une ressource utile pour vous : un article, un livre, un film...<br>
+                            Ajoutez les médias qui vous trouvez intéressants.</big></p>
+                </div>
+                <div class="btn-container">
+                    <a href="{{ path('media') }}"><div class="col-md-6"><div class="col-md-12 fake-btn fake-btn-orange-inv">Ajouter un média</div></div></a>
+                    <a href="{{ path('media') }}"><div class="col-md-6"><div class="col-md-12 fake-btn fake-btn-orange-inv">Consulter la médiathèque</div></div></a>
+                </div>
+                <div class="layer">
+                </div>
 
+            </div>
+        </section>
+        <section id="news">
+            <div class="col-md-12">
+                <div class="col-md-12 title-section">
+                    <h2>Les news du forum</h2>
+                </div>
+
+                {% for post in forumPosts %}
+                    <div class="col-md-4">
+                        <div class="col-md-12 news-card">
+                            <img src="{{ post.photoUrl }}" alt="avatar de {{ post.name }}">
+                            <p class="forum-date">{{ post.date }}</p>
+                            <h4>{{ post.title }}</h4>
+                            <div class="post-content">
+                                <p>{{ post.content }}</p><br>
+                            </div>
+                            <a href="#"><p>[lire la suite]</p></a>
+                            <p class="forum-published-by">Publié par <b>{{ post.name }}</b></p>
+                        </div>
+                    </div>
+                {% endfor %}
+
+                <div class="col-md-12 text-center" id="btn-cta-container">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <a href="/"><div class="col-md-12 fake-btn fake-btn-orange">Aller sur le forum</div></a>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+
+            </div>
+        </section>
+        <section id="call-action">
+            <div class="col-md-12 text-center">
+                <div class="text-container">
+
+                    <h2>Vous proposez des services aux entrepreneurs ?</h2>
+                    <p><big>Enregistrez votre activité dans l'annuaire Upsters et faites vous recommander par des entrepreneurs</big></p>
+                </div>
+                <div class="col-md-12 text-center" id="btn-cta-container">
+                    <div class="col-md-3"></div>
+                    <a href="{{ path('ressources') }}"><div class="col-md-6 fake-btn fake-btn-green-inv">Enregistrez gratuitement votre activité</div></a>
+                    <div class="col-md-3"></div>
+                </div>
+            </div>
+        </section>
+        <section id="testimonials">
+            <div class="col-md-12">
+                <div class="col-md-12 title-section">
+                    <h2>Ce qu'ils en disent</h2>
+                </div>
+                {% for testimonial in testimonials %}
+                    <div class="col-md-12 testimonial-container">
+                        <div class="col-md-2">
+                            <img src="{{ testimonial.photoUrl }}" alt="photo de {{ testimonial.name }}">
+                        </div>
+                        <div class="col-md-10">
+                            <p>{{ testimonial.content }}</p>
+                            <p><a href="{{ path('user', {'name' : testimonial.name}) }}">{{ testimonial.name }}</a> </p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+{% endblock %}

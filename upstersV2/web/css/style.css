@@ -4,9 +4,27 @@ orange : e45021
 grey : e6e6e6
 **/
 
+/***************************
+****************************
+
+        HOME PAGE
+
+****************************
+***************************/
+
+
+
+a {
+    color: #e45021;
+}
+
 #top-navbar > div,
 #call-action > div {
     background: #e45021;
+}
+
+#top-navbar .fa-inverse {
+    color: #e45021;
 }
 
 #presentation > div ,
@@ -23,9 +41,18 @@ grey : e6e6e6
 
 /** GENERAL **/
 
+#main-container {
+    margin-top: 50px;
+}
+
 .title-section {
-    background-color: rgba(255,255,255,0.3);
+    text-align: center;
     padding: 50px 0;
+}
+
+.title-section h2 {
+    color: #e45021;
+    text-transform: uppercase;
 }
 
 .btn.orange-btn {
@@ -49,23 +76,45 @@ grey : e6e6e6
     border-radius: 0;
 }
 
+.cat-img ,
+.navbar-header img {
+    border: solid 2px #e6e6e6;
+    border-radius: 15px;
+}
 
 /** TOP NAVBAR **/
 
 #top-navbar {
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+}
+
+#top-navbar,
+#top-navbar a {
     color: white;
+}
+
+#top-navbar a:hover {
+    color:  #349f8b;
 }
 
 #top-navbar div {
     height: 50px;
 }
 
+#top-navbar b {
+    font-weight: 300;
+}
+
 #top-navbar div div div div i,
 #top-navbar div div div div p,
-#top-navbar #greet-tab p{
+#top-navbar #greet-tab p {
     height: 50px;
     line-height: 50px;
-    font-size: 20px;
+    font-size: 16px;
+    font-weight: 100;
 }
 
 #social-tab,
@@ -99,6 +148,38 @@ grey : e6e6e6
     color: black;
 }
 
+#header .navbar ul li a:hover {
+    color: white;
+    -webkit-transition: 0.15s ease-in;
+}
+
+.nav>li>a:focus, .nav>li>a:hover {
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.navbar-brand, .navbar-nav>li>a {
+    text-shadow: none;
+}
+
+/** fill animation : https://codepen.io/davekilljoy/pen/wHAvb **/
+
+.fill:before {
+    content: "";
+    position: absolute;
+    background: #e45021!important;
+    bottom: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: -1;
+    -webkit-transition: bottom 0.15s ease-in;
+}
+
+.fill:hover:before {
+    bottom: 0;
+}
+
 /** MAP **/
 
 #map > div{
@@ -129,7 +210,11 @@ grey : e6e6e6
 
 /** LISTING FEATURES **/
 
-.service-card-large div{
+.service-card-large .cat-img {
+    margin: -50px 0 0 0;
+}
+
+.service-card-large > div{
     margin: 35px 0;
     background: white;
 }
@@ -163,25 +248,44 @@ grey : e6e6e6
     font-weight: 400;
 }
 
-.fake-btn{
+.service-card-large .fake-btn {
+    margin: 0;
+}
+
+.fake-btn {
+    margin: 30px 0;
     height: 50px;
     line-height: 50px;
     text-transform: uppercase;
     font-weight: 200;
 }
 
-.fake-btn-grey{
+.fake-btn-grey {
     background-color: #e6e6e6;
     color: black;
 }
-.fake-btn-orange{
+.fake-btn-orange {
     background-color: #e45021;
     color: white;
 }
 
-.fake-btn-orange-inv{
+.fake-btn-orange-inv {
     background-color: #e6e6e6;
     color: #e45021;
+}
+
+.fake-btn-green {
+    background-color: #349f8b;
+    color: white;
+}
+
+.fake-btn-green-inv {
+    background-color: #e6e6e6;
+    color: #349f8b;
+}
+
+#search-btn {
+    margin: 10px 0;
 }
 
 /** CATEGORIES **/
@@ -314,11 +418,39 @@ grey : e6e6e6
 }
 
 .testimonial-container img {
-    width: 200px;
+    height: 150px;
 }
 
 .testimonial-container div:nth-of-type(2){
-    height: 200px;
+    height: 150px;
     overflow: hidden;
     background: white;
+}
+
+.testimonial-container div:nth-of-type(2) p:nth-of-type(2) {
+    text-transform: uppercase;
+    color: #e45021;
+}
+
+/***************************
+****************************
+
+       PROFILE PAGE
+
+****************************
+***************************/
+
+.wip div{
+    margin: 100px 0;
+}
+
+.wip h1 {
+    font-size: 35px;
+    color: #e45021;
+    text-transform: uppercase;
+}
+
+.wip h2 {
+    font-size: 30px;
+    color: #349f8b;
 }
