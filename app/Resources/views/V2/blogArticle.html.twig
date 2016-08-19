@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+    <div class="container article-container" id="main-container">
+        <div class="text-center">
+            <h1> {{ post.name }} </h1>
+            <p>Tags : {% for tag in post.keywords %}<a href="">{{ tag }}</a>, {% endfor %}</p>
+        </div>
+        <div id="article-content">
+            {{ content|raw }}
+        </div>
+    </div>
+{% endblock %}

@@ -9,11 +9,62 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Entity\Article;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\Response;
 
 class MainController extends Controller{
+
+    /**
+     * @Route("/registerArticles", name="registerArticles")
+     */
+    public function registerArticleAction(){
+
+        $finder = new Finder();
+        $finder->in(__DIR__.'/../articles');
+
+        foreach ($finder as $file){
+            /*
+             * Parse filename
+             */
+            $pathName = $file->getRelativePathname();
+            $args = explode('-',$pathName);
+
+            $id = $args[0];
+            $name = $args[1];
+            $keywords = explode('.',$args[2]);
+            switch (explode('.',$args[3])[0]) {
+                case (800):
+                    $type = 'long';
+                    break;
+                case (400):
+                    $type = 'short';
+                    break;
+            }
+            $content = $file->getContents();
+            $published = false;
+
+            /*
+             * register article in database
+             */
+            $article = new Article();
+            $article->setId($id);
+            $article->setName($name);
+            $article->setKeywords($keywords);
+            $article->setType($type);
+            $article->setContent($content);
+            $article->setPublished($published);
+
+            $em = $this->getDoctrine()->getManager();
+            $em ->persist($article);
+            $em->flush();
+
+        }
+
+        return new  Response('Articles published !');
+    }
 
     /**
      * @Route("/", name="home")

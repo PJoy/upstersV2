@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+    <div class="container article-list-container" id="main-container">
+        <section id="article-list-header">
+            <div class="text-center">
+                <h1>Consultez nos articles ! </h1>
+            </div>
+        </section>
+        <section id="article-list">
+            {% for article in articles %}
+                <div class="col-md-4">
+                    <h2><a href="{{ path('blog', {'articleName' : article.name}) }}">{{ article.name }}</a></h2>
+                    <div class="article-content-preview">
+                        {{ article.content }}
+                    </div>
+                    <p>Par <a>Célia - Upsters</a></p>
+                </div>
+            {% endfor %}
+        </section>
+    </div>
+
+{% endblock %}
