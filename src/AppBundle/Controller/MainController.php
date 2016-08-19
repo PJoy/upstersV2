@@ -73,5 +73,4 @@ class MainController extends Controller{
             'testimonials' => $testimonials
         ]);
     }
-
 }
