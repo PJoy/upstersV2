@@ -26,7 +26,7 @@ a {
 #top-navbar .fa-inverse {
     color: #e45021;
 }
-http://localhost:8000/
+
 #presentation > div ,
 #categories > div ,
 #news > div ,
@@ -139,7 +139,7 @@ http://localhost:8000/
 
 #header .navbar ul li {
     margin-right: 5px;
-    width: 140px;
+    width: 120px;
     overflow: hidden;
     border-top: solid 5px #e45021;
 }
@@ -464,8 +464,6 @@ http://localhost:8000/
 ****************************
 ***************************/
 
-/** LIST **/
-
 .article-list-container {
     background: #e6e6e6;
 }
@@ -486,14 +484,8 @@ http://localhost:8000/
 }
 
 .article-content-preview {
-    padding: 10px;
+
     background: white;
     height: 300px;
     overflow: hidden;
-}
-
-/** POST **/
-
-#article-content {
-    background: #e6e6e6;
 }

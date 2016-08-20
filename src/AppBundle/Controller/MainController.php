@@ -10,6 +10,7 @@ namespace AppBundle\Controller;
 
 
 use AppBundle\Entity\Article;
+use AppBundle\Service\BlogManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Finder\Finder;
@@ -18,52 +19,51 @@ use Symfony\Component\HttpFoundation\Response;
 class MainController extends Controller{
 
     /**
-     * @Route("/registerArticles", name="registerArticles")
+     * @Route("/blog", name="blogIndex")
      */
-    public function registerArticleAction(){
+    public function blogIndexAction(){
 
-        $finder = new Finder();
-        $finder->in(__DIR__.'/../articles');
+        $bm = new BlogManager($this->getDoctrine()->getManager(),
+            $this->get('markdown.parser'));
+        $articles = $bm->getAllPublishedArticles();
 
-        foreach ($finder as $file){
-            /*
-             * Parse filename
-             */
-            $pathName = $file->getRelativePathname();
-            $args = explode('-',$pathName);
+        //DUMMY DATA
+        $user = array(
+            'name' => 'Julie',
+            'messages' => rand(0,9)
+        );
 
-            $id = $args[0];
-            $name = $args[1];
-            $keywords = explode('.',$args[2]);
-            switch (explode('.',$args[3])[0]) {
-                case (800):
-                    $type = 'long';
-                    break;
-                case (400):
-                    $type = 'short';
-                    break;
-            }
-            $content = $file->getContents();
-            $published = false;
+        return $this->render('V2/blogIndex.html.twig',[
+            'title' => 'Blog | Upsters',
+            'user' => $user,
+            'articles' => $articles
+        ]);
+    }
 
-            /*
-             * register article in database
-             */
-            $article = new Article();
-            $article->setId($id);
-            $article->setName($name);
-            $article->setKeywords($keywords);
-            $article->setType($type);
-            $article->setContent($content);
-            $article->setPublished($published);
+    /**
+     * @Route("/blog/{articleName}", name="blog")
+     */
+    public function showArticleAction($articleName){
 
-            $em = $this->getDoctrine()->getManager();
-            $em ->persist($article);
-            $em->flush();
+        $bm = new BlogManager($this->getDoctrine()->getManager(),
+            $this->get('markdown.parser'));
+        $article = $bm->getArticleIfPublished($articleName);
 
+        //DUMMY DATA
+        $user = array(
+            'name' => 'Julie',
+            'messages' => rand(0,9)
+        );
+
+        if (!$article){
+            throw $this->createNotFoundException('Cet article n\'existe pas encore !');
         }
 
-        return new  Response('Articles published !');
+        return $this->render('V2/blogArticle.html.twig',[
+            'title' => 'Entreprenons ensemble | Upsters',
+            'user' => $user,
+            'post' => $article,
+        ]);
     }
 
     /**

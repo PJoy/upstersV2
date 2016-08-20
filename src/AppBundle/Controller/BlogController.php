@@ -9,6 +9,7 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Service\BlogManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,52 +17,33 @@ use Symfony\Component\HttpFoundation\Response;
 class BlogController extends Controller
 {
     /**
-     * @Route("/blog", name="blogIndex")
+     * @Route("/commands/registerArticles", name="registerArticles")
      */
-    public function blogIndexAction(){
-        $em = $this->getDoctrine()->getManager();
-        $articles = $em->getRepository('AppBundle\Entity\Article')
-            ->findAll();
+    public function registerArticleAction(){
 
-        //DUMMY DATA
-        $user = array(
-            'name' => 'Julie',
-            'messages' => rand(0,9)
-        );
+        $bm = new BlogManager($this->getDoctrine()->getManager(), null);
+        $bm->registerArticles();
 
-        return $this->render('V2/blogIndex.html.twig',[
-            'title' => 'Blog | Upsters',
-            'user' => $user,
-            'articles' => $articles
-        ]);
+        return new  Response('Articles registered in database!');
     }
 
     /**
-     * @Route("/blog/{articleName}", name="blog")
+     * @Route("/commands/publish/{id}", name="publishArticle")
      */
-    public function showArticleAction($articleName){
+    public function publishArticleAction($id){
+        $bm = new BlogManager($this->getDoctrine()->getManager(), null);
+        $bm->publishArticle($id);
 
-        //FETCH ARTICLE
-        $em = $this->getDoctrine()->getManager();
-        $article = $em->getRepository('AppBundle\Entity\Article')
-            ->findOneBy(array('name' => $articleName));
+        return new  Response('Article '.$id.' published !');
+    }
 
-        $articleContent = $article->getContent();
+    /**
+     * @Route("/commands/unpublish/{id}", name="unpublishArticle")
+     */
+    public function unpublishArticleAction($id){
+        $bm = new BlogManager($this->getDoctrine()->getManager(), null);
+        $bm->unpublishArticle($id);
 
-        $formatedContent = $this->container->get('markdown.parser')
-            ->transform($articleContent);
-
-        //DUMMY DATA
-        $user = array(
-            'name' => 'Julie',
-            'messages' => rand(0,9)
-        );
-
-        return $this->render('V2/blogArticle.html.twig',[
-            'title' => 'Entreprenons ensemble | Upsters',
-            'user' => $user,
-            'post' => $article,
-            'content' => $formatedContent
-        ]);
+        return new  Response('Article '.$id.' unpublished :(');
     }
 }

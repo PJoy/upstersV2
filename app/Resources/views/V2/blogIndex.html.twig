@@ -16,7 +16,7 @@
                 <div class="col-md-4">
                     <h2><a href="{{ path('blog', {'articleName' : article.name}) }}">{{ article.name }}</a></h2>
                     <div class="article-content-preview">
-                        {{ article.content }}
+                        {{ article.content|raw }}
                     </div>
                     <p>Par <a>Célia - Upsters</a></p>
                 </div>

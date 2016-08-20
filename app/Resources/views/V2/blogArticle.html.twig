@@ -11,7 +11,7 @@
             <p>Tags : {% for tag in post.keywords %}<a href="">{{ tag }}</a>, {% endfor %}</p>
         </div>
         <div id="article-content">
-            {{ content|raw }}
+            {{ post.content|raw }}
         </div>
     </div>
 {% endblock %}
