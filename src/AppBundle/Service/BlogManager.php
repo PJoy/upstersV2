@@ -29,6 +29,9 @@ class BlogManager
         $article->setContent(
             $this->parser->transform($article->getContent())
         );
+        $article->setHeading(
+            $this->parser->transform($article->getHeading())
+        );
     }
 
     /**
@@ -62,7 +65,14 @@ class BlogManager
                     break;
             }
             $content = $file->getContents();
+            $title = explode('#', explode(PHP_EOL, $content)[0])[1];
+            $heading = explode(PHP_EOL.PHP_EOL,$content)[1];
+
             $published = false;
+            $author = "Célia - Upsters";
+            $date = null;
+            $media = 'images/articles/'.str_pad($id, 2, '0', STR_PAD_LEFT).'-01.jpeg';
+
 
             /*
              * register article in database
@@ -74,6 +84,11 @@ class BlogManager
             $article->setType($type);
             $article->setContent($content);
             $article->setPublished($published);
+            $article->setAuthor($author);
+            $article->setDate($date);
+            $article->setCover($media);
+            $article->setTitle($title);
+            $article->setHeading($heading);
 
             $this->em->persist($article);
             $this->em->flush();
@@ -94,10 +109,24 @@ class BlogManager
         return $articles;
     }
 
+    /**
+     * get article by name
+     * @return article if published
+     */
     public function getArticleIfPublished($name){
         $article = $this->em->getRepository('AppBundle:Article')->findOneBy(array('published' => true, 'name' => $name));
         if ($article !== null) $this->formatContent($article);
         return $article;
+    }
+
+    /**
+     * @param $article
+     * @return array : all published articles in random order
+     */
+    public function getRelatedArticles($article){
+        $allArticles = $this->getAllPublishedArticles();
+        shuffle($allArticles);
+        return $allArticles;
     }
 
 }

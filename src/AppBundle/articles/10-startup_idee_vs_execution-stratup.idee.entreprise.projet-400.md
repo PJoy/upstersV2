@@ -1,4 +1,4 @@
-Mots clés : startup / idée / entreprise / projet
+#Startup : Avoir l'Idée n'est pas le plus Important
 
 ![](media/image1.jpg)
 

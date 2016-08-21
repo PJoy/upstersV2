@@ -48,6 +48,31 @@ class Article
     private $published;
 
     /**
+     * @ORM\Column(type="string")
+     */
+    private $author;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $date;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $cover;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $title;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $heading;
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -142,4 +167,85 @@ class Article
     {
         $this->published = $published;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * @param mixed $author
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * @param mixed $date
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCover()
+    {
+        return $this->cover;
+    }
+
+    /**
+     * @param mixed $cover
+     */
+    public function setCover($cover)
+    {
+        $this->cover = $cover;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param mixed $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHeading()
+    {
+        return $this->heading;
+    }
+
+    /**
+     * @param mixed $heading
+     */
+    public function setHeading($heading)
+    {
+        $this->heading = $heading;
+    }
+
 }

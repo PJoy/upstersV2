@@ -1,6 +1,4 @@
-Mots clés : entreprise, micro
-entrepreneur/micro-entreprise/entrepreneur/entrepreneuriat, statut
-juridique
+#Comment Devenir Micro-entrepreneur ?
 
 ![](media/image1.jpeg)
 

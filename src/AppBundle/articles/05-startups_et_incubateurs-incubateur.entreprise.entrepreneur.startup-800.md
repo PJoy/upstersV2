@@ -1,4 +1,4 @@
-![](media/image1.jpeg)
+#Startup : Quand, Comment et Pourquoi se Faire Incuber ?
 
 Nombreuses sont les **startups** qui décident de rejoindre un
 **incubateur** pour les soutenir et les aider dans leur développement.

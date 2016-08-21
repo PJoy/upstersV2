@@ -1,3 +1,5 @@
+#Entreprises : les 7 Erreurs à Eviter en Content Marketing
+
 ![](media/image1.jpeg)
 
 Créer de **l'information**, un contenu utile à des fins **marketing**

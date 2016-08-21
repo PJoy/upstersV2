@@ -5,13 +5,24 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container article-container" id="main-container">
-        <div class="text-center">
-            <h1> {{ post.name }} </h1>
-            <p>Tags : {% for tag in post.keywords %}<a href="">{{ tag }}</a>, {% endfor %}</p>
+    <article>
+        <div class="container article-container" id="main-container">
+            <div class="text-center">
+                <h1> {{ article.title }} </h1>
+            </div>
+            <div id="article-content">
+                {{ article.content|raw }}
+            </div>
+            <p>Tags : {% for tag in article.keywords %}<a href="">{{ tag }}</a>, {% endfor %}</p>
+            <p class="published-by">Par <a>{{ article.author }}</a></p>
+
+            <div>
+                {% for article in related %}
+                    <div class="col-md-4">
+                        {% include 'V2/parts/blogPreviewCard.html.twig' %}
+                    </div>
+                {% endfor %}
+            </div>
         </div>
-        <div id="article-content">
-            {{ post.content|raw }}
-        </div>
-    </div>
+    </article>
 {% endblock %}

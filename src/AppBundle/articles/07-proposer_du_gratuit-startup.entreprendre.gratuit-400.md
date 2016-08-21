@@ -1,7 +1,4 @@
-Startups : faire du gratuit est-il durable ?
-
-Mots clés : Startup, entrepreneur/entreprendre, gratuit/gratuité,
-business modèle
+#Startups : Faire du Gratuit est-il Durable ?
 
 ![](media/image1.jpeg)
 

@@ -1,4 +1,4 @@
-Mots clé : startup / fintech / fiance(ment)
+#FinTech : les Petits Nouveaux à Garder à l'Oeil
 
 ![](media/image1.jpeg)
 

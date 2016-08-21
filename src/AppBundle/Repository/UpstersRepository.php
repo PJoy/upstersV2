@@ -15,7 +15,7 @@ class UpstersRepository extends EntityRepository
 {
     public function setPublishedTrue($id)
     {
-        return $this->createQueryBuilder('article')
+        $this->createQueryBuilder('article')
             ->update()
             ->set('article.published','?1')
             ->where('article.id = ?2')
@@ -23,6 +23,17 @@ class UpstersRepository extends EntityRepository
             ->setParameter(2, $id)
             ->getQuery()
             ->execute();
+
+        $this->createQueryBuilder('article')
+            ->update()
+            ->set('article.date', '?1')
+            ->where('article.id = ?2')
+            ->setParameter(1, date('d/m/Y'))
+            ->setParameter(2, $id)
+            ->getQuery()
+            ->execute();
+
+        return true;
     }
 
     public function setPublishedFalse($id)

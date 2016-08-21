@@ -1,4 +1,4 @@
-![](media/image1.jpg)
+#Les 6 Erreurs qui font Echouer les Startups
 
 De nouvelles **startups** sont crées chaque jour avec de nouveau
 projets. Certaines d’entre elles se transforment même en licorne et sont

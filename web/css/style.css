@@ -489,3 +489,40 @@ a {
     height: 300px;
     overflow: hidden;
 }
+
+/** PREVIEW **/
+
+.article-card {
+    padding: 20px 0;
+    background: white;
+}
+
+.article-card img {
+    height: 100px;
+    margin: 20px 0;
+}
+
+.article-card .article-date {
+    margin: 10px 0;
+    color: #e45021;
+}
+
+.article-card h2 {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.article-content-preview {
+    height: 200px;
+    overflow: hidden;
+}
+
+.article-card a p {
+    color: #e45021;
+}
+
+.published-by {
+    text-transform: uppercase;
+    color: #349f8b;
+    font-weight: 200;
+}

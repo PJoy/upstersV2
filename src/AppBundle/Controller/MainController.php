@@ -9,12 +9,9 @@
 namespace AppBundle\Controller;
 
 
-use AppBundle\Entity\Article;
 use AppBundle\Service\BlogManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Finder\Finder;
-use Symfony\Component\HttpFoundation\Response;
 
 class MainController extends Controller{
 
@@ -49,6 +46,8 @@ class MainController extends Controller{
             $this->get('markdown.parser'));
         $article = $bm->getArticleIfPublished($articleName);
 
+        $rel = $bm->getRelatedArticles(null);
+
         //DUMMY DATA
         $user = array(
             'name' => 'Julie',
@@ -62,7 +61,8 @@ class MainController extends Controller{
         return $this->render('V2/blogArticle.html.twig',[
             'title' => 'Entreprenons ensemble | Upsters',
             'user' => $user,
-            'post' => $article,
+            'article' => $article,
+            'related' => $rel
         ]);
     }
 
