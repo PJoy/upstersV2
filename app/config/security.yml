@@ -2,22 +2,28 @@
 # http://symfony.com/doc/current/book/security.html
 security:
 
+    encoders:
+
+        AppBundle\Entity\User: bcrypt
+
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory:
-            memory:
+
+        our_users:
+            entity: { class: AppBundle\Entity\User, property: email }
 
     firewalls:
-        secured_area:
-            pattern: ^/
-            form-login:
-                check_path: login
-                login_path: login
-            logout:
-                path: logout
-                target: /
-            anonymous: ~
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
 
+        main:
+            anonymous: ~
+            guard:
+                authenticators:
+                    - app.security.login_form_authenticator
+            logout:
+                path: /logout
 
     access_control:
-      - { path: ^/add, roles: ROLE_USER }
+        - { path: ^/commands, roles: ROLE_ADMIN }
