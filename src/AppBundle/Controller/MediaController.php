@@ -9,13 +9,19 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Form\MediaFormType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * @Route("/media")
+ */
 class MediaController extends Controller {
 
     /**
-     * @Route("/media", name="media")
+     * @Route("/", name="media_home")
      */
     public function mediaAction(){
 
@@ -30,4 +36,31 @@ class MediaController extends Controller {
             'user' => $user
         ]);
     }
+
+    /**
+     * @Route("/add", name="media_add")
+     */
+    public function mediaAddAction(Request $request)
+    {
+        $form = $this->createForm(MediaFormType::class);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $media = $form->getData();
+
+            $em = $this->getDoctrine()->getEntityManager();
+            $em->persist($media);
+            $em->flush();
+
+            $this->addFlash('success', 'Média ajouté !');
+
+            return $this->redirectToRoute('media_home');
+
+        }
+
+        return $this->render('media/add.html.twig', [
+            'mediaForm' => $form->createView()
+        ]);
+    }
+
 }

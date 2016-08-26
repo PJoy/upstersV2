@@ -11,11 +11,25 @@ namespace AppBundle\Controller;
 
 use AppBundle\Service\BlogManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * @Route("/commands")
+ * @Security("is_granted('ROLE_ADMIN')")
+ */
 class BlogController extends Controller
 {
+    /**
+     * @Route("/", name="blog_index")
+     */
+    public function commandIndexAction()
+    {
+        //$this->denyAccessUnlessGranted('ROLE_ADMIN');
+
+        return new Response("nothing to do here, available commands : /registerArticles, /publish, /unpublish");
+    }
     /**
      * @Route("/commands/registerArticles", name="registerArticles")
      */

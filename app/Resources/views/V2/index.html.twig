@@ -18,8 +18,8 @@
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
                                 <li class="active"><a class="fill" href="{{ path('home') }}">Accueil</a></li>
-                                <li><a class="fill" href="{{ path('user', {'name' : user.name}) }}">Mon profil</a></li>
-                                <li><a class="fill" href="{{ path('media') }}">Médiathèque</a></li>
+                                <li><a class="fill" href="/">Mon profil</a></li>
+                                <li><a class="fill" href="{{ path('media_home') }}">Médiathèque</a></li>
                                 <li><a class="fill" href="{{ path('ressources') }}">Recommander un prestataire</a></li>
                                 <li><a class="fill" href="{{ path('startups') }}">Rechercher une startup</a></li>
                                 <li><a class="fill" href="{{ path('home') }}">Forum</a></li>
@@ -135,8 +135,8 @@
                             Ajoutez les médias qui vous trouvez intéressants.</big></p>
                 </div>
                 <div class="btn-container">
-                    <a href="{{ path('media') }}"><div class="col-md-6"><div class="col-md-12 fake-btn fake-btn-orange-inv">Ajouter un média</div></div></a>
-                    <a href="{{ path('media') }}"><div class="col-md-6"><div class="col-md-12 fake-btn fake-btn-orange-inv">Consulter la médiathèque</div></div></a>
+                    <a href="{{ path('media_home') }}"><div class="col-md-6"><div class="col-md-12 fake-btn fake-btn-orange-inv">Ajouter un média</div></div></a>
+                    <a href="{{ path('media_home') }}"><div class="col-md-6"><div class="col-md-12 fake-btn fake-btn-orange-inv">Consulter la médiathèque</div></div></a>
                 </div>
                 <div class="layer">
                 </div>
@@ -200,7 +200,7 @@
                         </div>
                         <div class="col-md-10">
                             <p>{{ testimonial.content }}</p>
-                            <p><a href="{{ path('user', {'name' : testimonial.name}) }}">{{ testimonial.name }}</a> </p>
+                            <p><a href="/">{{ testimonial.name }}</a> </p>
                         </div>
                     </div>
                 {% endfor %}

@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container add-media-container">
+        <div class="row">
+            <div class="col-xs-12">
+
+                <h1>Ajouter un média</h1>
+
+                {{ form_start(mediaForm) }}
+                    {{ form_widget(mediaForm) }}
+
+                    <button type="submit" class="btn btn-primary">Ajouter</button>
+                {{ form_end(mediaForm) }}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

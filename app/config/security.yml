@@ -26,4 +26,5 @@ security:
                 path: /logout
 
     access_control:
-        - { path: ^/commands, roles: ROLE_ADMIN }
+        #- { path: ^/, roles: ROLE_USER}
+        #- { path: ^/commands, roles: ROLE_ADMIN }

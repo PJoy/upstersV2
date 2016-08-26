@@ -7,10 +7,16 @@
 {% block body %}
     <div class="container" id="main-container">
         <section class="wip" id="profile-main">
-        <div class="col-md-12 text-center">
-            <h1>Ceci est la page de l'annuaire des médias</h1>
-            <h2>En construction !</h2>
-        </div>
+            <div class="col-md-12 text-center">
+                <h1>Ceci est la page de l'annuaire des médias</h1>
+                <h2>En construction !</h2>
+            </div>
+
+            <div class="col-xs-4"></div>
+            <div class="col-xs-4 text-center">
+                <a href="{{ path('media_add') }}"><div class="col-md-12 fake-btn fake-btn-orange" id="search-btn">Ajouter un média</div></a>
+            </div>
+            <div class="col-xs-4"></div>
         </section>
     </div>
 {% endblock %}
