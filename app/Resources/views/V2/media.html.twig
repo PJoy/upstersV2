@@ -12,6 +12,23 @@
                 <h2>En construction !</h2>
             </div>
 
+            <div class="col-md-12">
+                <table>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Ajouté le</th>
+                        <th>Ajouté par</th>
+                    </tr>
+                    {% for media in medias %}
+                        <tr>
+                            <th><a href="{{ path('media_display', { 'name' : media.name} ) }}">{{ media.name }}</a> </th>
+                            <th>{{ media.submittedBy }}</th>
+                            <th>{{ media.dateSubmitted|date('d/m/Y') }}</th>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
             <div class="col-xs-4"></div>
             <div class="col-xs-4 text-center">
                 <a href="{{ path('media_add') }}"><div class="col-md-12 fake-btn fake-btn-orange" id="search-btn">Ajouter un média</div></a>

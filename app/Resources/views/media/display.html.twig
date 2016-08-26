@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container add-media-container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>{{ media.name }}</h1>
+            <h2>Lien</h2>
+            <p>{{ media.link }}</p>
+            <h2>Catégorie</h2>
+            <p>{{ media.category }}</p>
+            <h2>Posté par</h2>
+            <p>{{ media.submittedBy }}</p>
+            <h2>Posté le</h2>
+            <p>{{ media.dateSubmitted|date('d/m/Y') }}</p>
+            <h2>Commentaires</h2>
+            <p>{{ media.comment }}</p>
+            <h2>Recommandations</h2>
+            <p>{{ media.likesCount }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

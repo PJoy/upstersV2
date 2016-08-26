@@ -25,6 +25,10 @@ class MediaController extends Controller {
      */
     public function mediaAction(){
 
+        $medias = $this->getDoctrine()->getManager()
+            ->getRepository('AppBundle:Media')
+            ->findAll();
+
         //DUMMY DATA
         $user = array(
             'name' => 'José',
@@ -33,8 +37,10 @@ class MediaController extends Controller {
 
         return $this->render('V2/media.html.twig',[
             'title' => 'Annuaire des médias | Upsters',
-            'user' => $user
+            'user' => $user,
+            'medias' => $medias
         ]);
+
     }
 
     /**
@@ -60,6 +66,22 @@ class MediaController extends Controller {
 
         return $this->render('media/add.html.twig', [
             'mediaForm' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/{name}", name="media_display")
+     * TODO : url friendly names
+     */
+    public function mediaDisplayAction($name)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $media = $em->getRepository('AppBundle:Media')
+            ->findOneBy( ['name' => $name ]);
+
+        //TODO name shouldn't be 'add'
+        return $this->render('media/display.html.twig', [
+            'media' => $media
         ]);
     }
 
