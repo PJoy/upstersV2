@@ -13,7 +13,6 @@ use AppBundle\Form\MediaFormType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * @Route("/media")
@@ -29,15 +28,8 @@ class MediaController extends Controller {
             ->getRepository('AppBundle:Media')
             ->findAll();
 
-        //DUMMY DATA
-        $user = array(
-            'name' => 'José',
-            'messages' => rand(0,9)
-        );
-
         return $this->render('V2/media.html.twig',[
             'title' => 'Annuaire des médias | Upsters',
-            'user' => $user,
             'medias' => $medias
         ]);
 

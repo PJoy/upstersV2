@@ -27,7 +27,6 @@ class StartupsController extends Controller {
 
         return $this->render('V2/startups.html.twig',[
             'title' => 'Annuaire des startups | Upsters',
-            'user' => $user
         ]);
     }
 }

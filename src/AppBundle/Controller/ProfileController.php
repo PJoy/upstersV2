@@ -27,7 +27,6 @@ class ProfileController extends Controller {
 
         return $this->render('V2/profile.html.twig',[
             'title' => 'Profil de '.$name.' | Upsters',
-            'user' => $user
         ]);
     }
 }

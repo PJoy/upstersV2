@@ -40,7 +40,6 @@ class SecurityController extends Controller
             'security/login.html.twig',
             array(
                 // last username entered by the user
-                'user' => $user,
                 'form' => $form->createView(),
                 'error'         => $error,
             )

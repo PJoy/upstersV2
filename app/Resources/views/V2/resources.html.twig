@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+    <div class="container" id="resources-home-container">
+        <section class="wip" id="profile-main">
+            <div class="col-md-12 text-center">
+                <h1>Ceci est la page de l'annuaire des prestataires</h1>
+                <h2>En construction !</h2>
+            </div>
+
+            <div class="col-md-12">
+                <table>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Catégorie</th>
+                        <th>Entreprise</th>
+                    </tr>
+                    {% for resource in resources %}
+                        <tr>
+                            <th><a href="{{ path('resource_display',
+                                { 'name' : resource.name} ) }}">{{ resource.name }}</a> </th>
+                            <th>{{ resource.category }}</th>
+                            <th>{{ resource.company }}</th>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+
+        </section>
+    </div>
+{% endblock %}

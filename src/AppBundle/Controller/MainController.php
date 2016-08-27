@@ -60,7 +60,6 @@ class MainController extends Controller{
 
         return $this->render('V2/blogArticle.html.twig',[
             'title' => 'Entreprenons ensemble | Upsters',
-            'user' => $user,
             'article' => $article,
             'related' => $rel
         ]);
@@ -117,7 +116,6 @@ class MainController extends Controller{
 
         return $this->render('V2/index.html.twig',[
             'title' => 'Entreprenons ensemble | Upsters',
-            'user' => $user,
             'listingExtracts' => $listing_extracts,
             'categories' => $categories,
             'forumPosts' => $forum_posts,
