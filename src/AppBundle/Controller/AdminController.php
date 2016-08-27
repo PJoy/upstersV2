@@ -9,6 +9,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Media;
+use AppBundle\Entity\Resource;
 use AppBundle\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -30,9 +31,9 @@ class AdminController extends Controller
     }
 
     /**
-     * @Route("/register")
+     * @Route("/register/media")
      */
-    public function registerOldData()
+    public function registerOldDataMedia()
     {
         $finder = new Finder();
         $finder->files()
@@ -70,12 +71,57 @@ class AdminController extends Controller
             fclose($handle);
         }
 
+        return new Response('OK');
+    }
 
-        /*$media = new Media();
-        $media->setCategory()*/
+    /**
+     * @Route("/register/resources")
+     */
+    public function registerOldDataServices()
+    {
+        $finder = new Finder();
+        $finder->files()
+            ->in(__DIR__ . '/../from_migration')
+            ->name('services.csv')
+        ;
+        foreach ($finder as $file) { $csv = $file; }
 
-        //dump($rows);die;
+        $em = $this->getDoctrine()->getManager();
+
+            if (($handle = fopen($csv->getRealPath(), "r")) !== FALSE) {
+                $data = fgetcsv($handle, null, ";");
+                //first line
+
+                while (($data = fgetcsv($handle, null, ";")) !== FALSE) {
+                    $user = $this->getUser();
+
+                    $resource = new Resource();
+
+                    $resource->setName($data[17]);
+                    $resource->setCategory($data[4]);
+                    $resource->setCompany($data[0]);
+                    $resource->setTags(explode('[]',$data[1]));
+                    $resource->setAddress($data[5].$data[6].$data[7].$data[8]);
+                    $resource->setGPSLat($data[9]);
+                    $resource->setGPSLong($data[10]);
+                    $resource->setOpeningTime($data[11]);
+                    $resource->setWebsite($data[14]);
+                    $resource->setPhone($data[12]);
+                    $resource->setEmail($data[13]);
+                    $resource->setTwitter($data[15]);
+                    $resource->setFacebook($data[16]);
+                    $resource->setLinkedin($data[19]);
+                    $resource->setDescription($data[18]);
+
+                    $em->persist($resource);
+                    $em->flush();
+
+            }
+            fclose($handle);
+        }
 
         return new Response('OK');
     }
+
+
 }

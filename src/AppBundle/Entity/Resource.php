@@ -59,7 +59,7 @@ class Resource
 
     //OPTIONAL FIELDS
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
     private $phone;
     /**
@@ -83,7 +83,7 @@ class Resource
      */
     private $linkedin;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="simple_array")
      */
     private $tags;
 
