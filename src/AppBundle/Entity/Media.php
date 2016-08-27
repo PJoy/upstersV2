@@ -48,7 +48,7 @@ class Media
     private $submittedBy;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $comment;
 
@@ -61,6 +61,11 @@ class Media
      * @ORM\Column(type="date")
      */
     private $dateSubmitted;
+
+    /**
+     * @ORM\Column(type="simple_array")
+     */
+    private $tags;
 
 
     /**
@@ -182,5 +187,23 @@ class Media
     {
         $this->dateSubmitted = $dateSubmitted;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * @param mixed $tags
+     */
+    public function setTags($tags)
+    {
+        $this->tags = $tags;
+    }
+
+
 
 }
