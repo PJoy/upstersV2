@@ -41,6 +41,10 @@ a {
 
 /** GENERAL **/
 
+#shift-body {
+    margin: 50px 0 0 0;
+}
+
 #main-container {
     margin-top: 50px;
 }

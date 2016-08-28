@@ -11,27 +11,64 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Media;
 use AppBundle\Entity\Resource;
 use AppBundle\Entity\User;
+use AppBundle\Service\BlogManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Finder\Finder;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * @Route("/admin")
+ * @Security("is_granted('ROLE_ADMIN')")
  */
 class AdminController extends Controller
 {
+
+    /* HOME ADMIN */
     /**
      * @Route("/", name="admin")
      */
-    public function helloAction(){
-        return new Response('hello');
+    public function indexAction(){
+        return $this->render('admin/index.html.twig');
+    }
+
+    /* AJAX */
+
+    /**
+     * @Route("/AJAX/publish-unpublish/{id}", name="pubUnpub")
+     */
+    public function pubUnpub($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $article = $em->getRepository('AppBundle:Article')->findOneBy(array(
+            'id' => $id
+        ));
+
+        $bm = new BlogManager($this->getDoctrine()->getManager(), null);
+        if ($article->getPublished()){
+            $bm->unpublishArticle($id);
+
+            return new  Response('Article '.$id.' unpublished :(');
+        } else {
+            $bm->publishArticle($id);
+
+            return new  Response('Article '.$id.' published !');
+        }
+    }
+
+    /* MEDIA ADMIN */
+    /**
+     * @Route("/media", name="admin_media")
+     */
+    public function mediaIndexAction(){
+        return $this->render('admin/mediaIndex.html.twig');
     }
 
     /**
-     * @Route("/register/media")
+     * @Route("/media/register-old", name="register_old_media")
      */
     public function registerOldDataMedia()
     {
@@ -44,11 +81,11 @@ class AdminController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-            if (($handle = fopen($csv->getRealPath(), "r")) !== FALSE) {
-                $data = fgetcsv($handle, null, ";");
-                //first line
+        if (($handle = fopen($csv->getRealPath(), "r")) !== FALSE) {
+            $data = fgetcsv($handle, null, ";");
+            //first line
 
-                while (($data = fgetcsv($handle, null, ";")) !== FALSE) {
+            while (($data = fgetcsv($handle, null, ";")) !== FALSE) {
                 $user = $this->getUser();
 
                 $media = new Media();
@@ -74,8 +111,16 @@ class AdminController extends Controller
         return new Response('OK');
     }
 
+    /* RESOURCES ADMIN */
     /**
-     * @Route("/register/resources")
+     * @Route("/resources", name="admin_resource")
+     */
+    public function resourcesIndexAction(){
+        return $this->render('admin/resourceIndex.html.twig');
+    }
+
+    /**
+     * @Route("/resources/register-old", name="register_old_resources")
      */
     public function registerOldDataServices()
     {
@@ -88,33 +133,33 @@ class AdminController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-            if (($handle = fopen($csv->getRealPath(), "r")) !== FALSE) {
-                $data = fgetcsv($handle, null, ";");
-                //first line
+        if (($handle = fopen($csv->getRealPath(), "r")) !== FALSE) {
+            $data = fgetcsv($handle, null, ";");
+            //first line
 
-                while (($data = fgetcsv($handle, null, ";")) !== FALSE) {
-                    $user = $this->getUser();
+            while (($data = fgetcsv($handle, null, ";")) !== FALSE) {
+                $user = $this->getUser();
 
-                    $resource = new Resource();
+                $resource = new Resource();
 
-                    $resource->setName($data[17]);
-                    $resource->setCategory($data[4]);
-                    $resource->setCompany($data[0]);
-                    $resource->setTags(explode('[]',$data[1]));
-                    $resource->setAddress($data[5].$data[6].$data[7].$data[8]);
-                    $resource->setGPSLat($data[9]);
-                    $resource->setGPSLong($data[10]);
-                    $resource->setOpeningTime($data[11]);
-                    $resource->setWebsite($data[14]);
-                    $resource->setPhone($data[12]);
-                    $resource->setEmail($data[13]);
-                    $resource->setTwitter($data[15]);
-                    $resource->setFacebook($data[16]);
-                    $resource->setLinkedin($data[19]);
-                    $resource->setDescription($data[18]);
+                $resource->setName($data[17]);
+                $resource->setCategory($data[4]);
+                $resource->setCompany($data[0]);
+                $resource->setTags(explode('[]',$data[1]));
+                $resource->setAddress($data[5].$data[6].$data[7].$data[8]);
+                $resource->setGPSLat($data[9]);
+                $resource->setGPSLong($data[10]);
+                $resource->setOpeningTime($data[11]);
+                $resource->setWebsite($data[14]);
+                $resource->setPhone($data[12]);
+                $resource->setEmail($data[13]);
+                $resource->setTwitter($data[15]);
+                $resource->setFacebook($data[16]);
+                $resource->setLinkedin($data[19]);
+                $resource->setDescription($data[18]);
 
-                    $em->persist($resource);
-                    $em->flush();
+                $em->persist($resource);
+                $em->flush();
 
             }
             fclose($handle);
@@ -123,5 +168,47 @@ class AdminController extends Controller
         return new Response('OK');
     }
 
+
+    /* STARTUPS ADMIN */
+    /**
+     * @Route("/startups", name="admin_startups")
+     */
+    public function startupsIndexAction(){
+        return $this->render('admin/startupsIndex.html.twig');
+    }
+
+    /* BLOG ADMIN */
+    /**
+     * @Route("/blog", name="admin_blog")
+     */
+    public function blogIndexAction(){
+        $em = $this->getDoctrine()->getManager();
+        $articles = $em->getRepository('AppBundle:Article')->findAll();
+        $articlesRegistered = (count($articles)!=0);
+
+        return $this->render('admin/blogIndex.html.twig', [
+            'registered' => $articlesRegistered,
+            'articles' => $articles
+        ]);
+    }
+
+    /**
+     * @Route("/blog/register", name="register_articles")
+     */
+    public function registerArticleAction(){
+
+        $bm = new BlogManager($this->getDoctrine()->getManager(), null);
+        $bm->registerArticles();
+
+        return new  Response('Articles registered in database!');
+    }
+
+    /* USERS ADMIN */
+    /**
+     * @Route("/users", name="admin_users")
+     */
+    public function usersIndexAction(){
+        return $this->render('admin/usersIndex.html.twig');
+    }
 
 }

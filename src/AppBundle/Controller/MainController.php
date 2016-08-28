@@ -13,6 +13,7 @@ use AppBundle\Service\BlogManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+
 class MainController extends Controller{
 
     /**
@@ -24,21 +25,14 @@ class MainController extends Controller{
             $this->get('markdown.parser'));
         $articles = $bm->getAllPublishedArticles();
 
-        //DUMMY DATA
-        $user = array(
-            'name' => 'Julie',
-            'messages' => rand(0,9)
-        );
-
         return $this->render('V2/blogIndex.html.twig',[
             'title' => 'Blog | Upsters',
-            'user' => $user,
             'articles' => $articles
         ]);
     }
 
     /**
-     * @Route("/blog/{articleName}", name="blog")
+     * @Route("/blog/{articleName}", name="blog_article")
      */
     public function showArticleAction($articleName){
 
@@ -47,12 +41,6 @@ class MainController extends Controller{
         $article = $bm->getArticleIfPublished($articleName);
 
         $rel = $bm->getRelatedArticles(null);
-
-        //DUMMY DATA
-        $user = array(
-            'name' => 'Julie',
-            'messages' => rand(0,9)
-        );
 
         if (!$article){
             throw $this->createNotFoundException('Cet article n\'existe pas encore !');

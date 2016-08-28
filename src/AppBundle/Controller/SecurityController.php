@@ -20,12 +20,6 @@ class SecurityController extends Controller
      */
     public function loginAction(){
 
-        $user = array(
-            'name' => 'Julie',
-            'messages' => rand(0,9)
-        );
-
-
         $authenticationUtils = $this->get('security.authentication_utils');
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();

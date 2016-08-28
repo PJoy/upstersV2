@@ -21,28 +21,9 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class BlogController extends Controller
 {
-    /**
-     * @Route("/", name="blog_index")
-     */
-    public function commandIndexAction()
-    {
-        //$this->denyAccessUnlessGranted('ROLE_ADMIN');
-
-        return new Response("nothing to do here, available commands : /registerArticles, /publish, /unpublish");
-    }
-    /**
-     * @Route("/commands/registerArticles", name="registerArticles")
-     */
-    public function registerArticleAction(){
-
-        $bm = new BlogManager($this->getDoctrine()->getManager(), null);
-        $bm->registerArticles();
-
-        return new  Response('Articles registered in database!');
-    }
 
     /**
-     * @Route("/commands/publish/{id}", name="publishArticle")
+     * @Route("/publish/{id}", name="publishArticle")
      */
     public function publishArticleAction($id){
         $bm = new BlogManager($this->getDoctrine()->getManager(), null);
@@ -52,7 +33,7 @@ class BlogController extends Controller
     }
 
     /**
-     * @Route("/commands/unpublish/{id}", name="unpublishArticle")
+     * @Route("/unpublish/{id}", name="unpublishArticle")
      */
     public function unpublishArticleAction($id){
         $bm = new BlogManager($this->getDoctrine()->getManager(), null);

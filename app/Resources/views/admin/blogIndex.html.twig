@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Blog admin section</h1>
+    <h2>Register status</h2>
+    {% if registered %}
+        <p>Articles registered status : <span>✅</span></p>
+    {% else %}
+        <p>Articles registered status : <span>⛔️</span>, click <a href="{{ path('register_articles') }}">here</a> to register them. </p>
+    {% endif %}
+    <h2>Articles list</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Link</th>
+            <th></th>
+        </tr>
+        {% for article in articles %}
+            <tr>
+                <th>{{ article.id }}</th>
+                <th>{{ article.title }}</th>
+                <th>{{ article.author }}</th>
+                {% if  article.published %}
+                    <th><a href="{{ path('blog_article', {'articleName' : article.name}) }}">Link</a></th>
+                    <th><button id="unpublish-btn" class="btn" value="{{ article.id }}"><span>⛔️</span>Unpublish</button></th>
+                {% else %}
+                    <th>/</th>
+                    <th><button id="publish-btn" class="btn" value="{{ article.id }}"><span>✅</span>Publish</button></th>
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+
+{% block additional_javascript %}
+    <script>
+        function pubUnpub(id) {
+            var route = "{{ path('pubUnpub', {'id' : "PLACEHOLDER"}) }}";
+            route = route.replace("PLACEHOLDER",id);
+            $.post(route,
+                    function (response) {
+                        location.reload();
+                    })
+        }
+
+        $(document).ready(function () {
+            $('button').on('click', function () {
+                pubUnpub($(this).val());
+            })
+        })
+    </script>
+{%  endblock %}
+

@@ -62,6 +62,10 @@ class User implements UserInterface
             $roles[] = 'ROLE_USER';
         }
 
+        if ($this->id == 1){
+            $roles[] .= 'ROLE_ADMIN';
+        }
+
         return $roles;
     }
 

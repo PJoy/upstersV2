@@ -1,10 +1,10 @@
 <div class="article-preview col-md-12 article-card">
     <img src="/{{ article.cover }}" alt="Couverture de l'article {{ article.title }}">
     <p class="article-date">{{ article.date }}</p>
-    <h2><a href="{{ path('blog', {'articleName' : article.name}) }}">{{ article.title }}</a></h2>
+    <h2><a href="{{ path('blog_article', {'articleName' : article.name}) }}">{{ article.title }}</a></h2>
     <div class="article-content-preview">
         {{ article.heading|raw }}
-        <a href="{{ path('blog', {'articleName' : article.name}) }}">
+        <a href="{{ path('blog_article', {'articleName' : article.name}) }}">
             <p>[lire la suite]</p>
         </a>
     </div>
