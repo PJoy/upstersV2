@@ -21,17 +21,14 @@ class UserController extends Controller
      */
     public function registerAction(Request $request){
 
-        $user = array(
-            'name' => 'Julie',
-            'messages' => rand(0,9)
-        );
-
         $form = $this->createForm(UserRegistrationForm::class);
 
         $form->handleRequest($request);
         if($form->isValid()) {
-            /** @var  $user */
             $user = $form->getData();
+            if ($user->getName() === null) {
+                $user->setName(explode('@',$user->getEmail())[0]);
+            }
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);

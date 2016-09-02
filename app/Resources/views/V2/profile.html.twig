@@ -7,9 +7,30 @@
 {% block body %}
     <div class="container" id="main-container">
         <section class="wip" id="profile-main">
-        <div class="col-md-12 text-center">
-            <h1>Ceci est la page de profil de l'utilisateur wesh (si tant est qu'il existe !)</h1>
-            <h2>En construction !</h2>
+        <div class="col-md-12 ">
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <!-- TODO image -->
+                </div>
+                <div class="col-md-6">
+                    <h1>{{ user.username }}</h1>
+                    <h2>{{ user.email }}</h2>
+                    <p>Inscrit(e) le {{ user.dateRegistered|date }}</p>
+                    <p>... recommandations</p>
+                    <p>... ressource ajoutée à la médiathèque</p>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-4">
+                    <h2>Mettre à jour mon profil</h2>
+                </div>
+                <div class="col-md-4">
+                    <h2>Recommander un média</h2>
+                </div>
+                <div class="col-md-4">
+                    <h2>Recommander un prestataire</h2>
+                </div>
+            </div>
         </div>
         </section>
     </div>

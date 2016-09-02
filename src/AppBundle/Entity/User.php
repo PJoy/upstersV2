@@ -36,6 +36,11 @@ class User implements UserInterface
     private $email;
 
     /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $name;
+
+    /**
      * @ORM\Column(type="string")
      */
     private $password;
@@ -84,7 +89,7 @@ class User implements UserInterface
 
     public function getUsername()
     {
-        return $this->email;
+        return $this->name;
     }
 
     public function getRoles()
@@ -247,6 +252,22 @@ class User implements UserInterface
     public function setPitch($pitch)
     {
         $this->pitch = $pitch;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param mixed $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
     }
 
 }

@@ -9,6 +9,7 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -19,14 +20,12 @@ class ProfileController extends Controller {
      */
     public function profileAction($name){
 
-        //DUMMY DATA
-        $user = array(
-            'name' => $name,
-            'messages' => rand(0,9)
-        );
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository(User::class)->findOneBy(['name' => $name]);
 
         return $this->render('V2/profile.html.twig',[
             'title' => 'Profil de '.$name.' | Upsters',
+            'user' => $user
         ]);
     }
 }

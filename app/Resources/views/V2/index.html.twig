@@ -5,31 +5,7 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container" id="main-container">
-        <section id="header">
-            <div class="col-md-12">
-                <nav class="navbar">
-                    <div class="container-fluid">
-                        <div class="navbar-header">
-                            <a class="navbar-brand" href="#"><img src="{{ asset('images/logo.png') }}">
-                            </a>
-                        </div>
-
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav">
-                                <li class="active"><a class="fill" href="{{ path('home') }}">Accueil</a></li>
-                                <li><a class="fill" href="/">Mon profil</a></li>
-                                <li><a class="fill" href="{{ path('media_home') }}">Médiathèque</a></li>
-                                <li><a class="fill" href="{{ path('resources_home') }}">Recommander un prestataire</a></li>
-                                <li><a class="fill" href="{{ path('startups') }}">Rechercher une startup</a></li>
-                                <li><a class="fill" href="{{ path('home') }}">Forum</a></li>
-                                <li><a class="fill" href="{{ path('blogIndex') }}">Blog</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </section>
+    <div class="" id="main-container">
         <section id="map">
             <div class="col-md-12">
                 <div class="col-md-8" id="search-form">
@@ -55,23 +31,23 @@
                     <h2>Que trouve-t-on sur Upsters ?</h2>
                 </div>
                 <div class="col-md-3 pres-item text-center">
-                    <i class="fa fa-5x fa-book"></i>
+                    <img src="{{ asset('images/home_pictos/kezako-4.png') }}" width="100px">
                     <h3>Des prestataires qualifiés de confiance</h3>
                     <p>Trouvez dans l'annuaire tous les prestataires dont vous avez besoin, triés
                         selon les recommandations des entrepreneurs !</p>
                 </div>
                 <div class="col-md-3 pres-item text-center">
-                    <i class="fa fa-5x fa-building"></i>
+                    <img src="{{ asset('images/home_pictos/kezako-1.png') }}" width="100px">
                     <h3>Toutes les ressources entrepreneuriales nécessaires</h3>
                     <p>Participez à la médiathèque collaboratiqve en y inscivant les indispensables de l'entrepreneuriat !</p>
                 </div>
                 <div class="col-md-3 pres-item text-center">
-                    <i class="fa fa-5x fa-comments"></i>
+                    <img src="{{ asset('images/home_pictos/kezako-2.png') }}" width="100px">
                     <h3>Un forum dédié à l'entrepreneuriat</h3>
                     <p>Echangez entre entrepreneurs et profitez des réponses d'experts pour solutionner toutes vos questions !</p>
                 </div>
                 <div class="col-md-3 pres-item text-center">
-                    <i class="fa fa-5x fa-users"></i>
+                    <img src="{{ asset('images/home_pictos/kezako-3.png') }}" width="100px">
                     <h3>Comparez-vous !</h3>
                     <p>Qui se cache derrière chaque projet ? <br>
                         Comparez votre personalité, le contexte dans lequel vous avez créé ou encore la vision de votre stratup !</p>

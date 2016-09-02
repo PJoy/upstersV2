@@ -18,7 +18,6 @@
                     <div class="col-md-6">
                         <!--<p>Attention ! Vous visitez actuellement le prototype de la nouvelle version du site, <a href="http://upsters.eu">ANCIENNE VERSION ICI</a> </p>
                         -->
-                        <a href="/">Upsters</a>
                     </div>
                     <div class="col-md-6">
                         <div class="col-md-4" id="social-tab">
@@ -40,7 +39,7 @@
                                 <i class="fa fa-bell"></i>
                             </div>
                             <div class="col-md-4 text-center">
-                                <p>(5)</p>
+                                <p>(0)</p>
                             </div>
                             <div class="col-md-4 text-center">
                                 <i class="fa fa-angle-up"></i>
@@ -48,9 +47,9 @@
                         </div>
                         <div class="col-md-4 text-center" id="greet-tab">
                             {% if is_granted('ROLE_USER') %}
-                                <a href="{{ path('security_logout') }}">Logout</a>
+                                <p><a href="{{ path('security_logout') }}">Se déconnecter</a></p>
                             {% else %}
-                                <a href="{{ path('security_login') }}">Login</a>
+                                <p><a href="{{ path('security_login') }}">Se connecter</a></p>
                             {% endif %}
                             <!--<a href="#"><p>Salut, <b>yo</b></p></a>-->
                         </div>
@@ -64,6 +63,37 @@
             </section>
         {% endblock %}
 
+        {% block header %}
+            <section id="header">
+                <div class="col-md-12">
+                    <nav class="navbar">
+                        <div class="container-fluid">
+                            <div class="navbar-header">
+                                <a class="navbar-brand" href="{{ path('home') }}"><img src="{{ asset('images/logo.png') }}">
+                                </a>
+                            </div>
+
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                <ul class="nav navbar-nav">
+                                    <li class="active"><a class="fill" href="{{ path('home') }}">Accueil</a></li>
+                                    {% if app.user %}
+                                        <li><a class="fill" href="{{ path('user', {name : 'yo'}) }}">Mon profil</a></li>
+                                    {% else %}
+                                        <li><a class="fill" href="{{ path('security_login') }}">Mon profil</a></li>
+                                    {% endif %}
+                                    <li><a class="fill" href="{{ path('media_home') }}">Médiathèque</a></li>
+                                    <li><a class="fill" href="{{ path('resources_home') }}">Recommander un prestataire</a></li>
+                                    <li><a class="fill" href="{{ path('startups') }}">Rechercher une startup</a></li>
+                                    <li><a class="fill" href="{{ path('home') }}">Forum</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </section>
+
+        {% endblock %}
+
         <div id="shift-body">
             {% block body %}{% endblock %}
         </div>
@@ -72,7 +102,8 @@
                 <div class="col-md-12 text-center">
                             © 2015-2016 - Project by <a href="mailto:ludovic@dozee.fr" style="color: inherit"> Ludovic Rerolle</a> - Dev by <a href="http://www.julieborgeot.com/" style="color: inherit"> JB DEV </a> &amp; <a href="http://pjoy.fr" style="color: inherit">PJoy</a>
                             <br>
-                            <a href="https://docs.google.com/spreadsheets/d/1yN27aSusrHmE0NHqkwfPWzbD-VV4RulpaAC49kbTSoc/edit?usp=sharing">Signaler un bug </a>  - <a href="mailto:contact@upsters.fr">Contact</a> <br>
+                            <a href="https://docs.google.com/spreadsheets/d/1yN27aSusrHmE0NHqkwfPWzbD-VV4RulpaAC49kbTSoc/edit?usp=sharing">Signaler un bug </a>  - <a href="mailto:contact@upsters.fr">Contact</a> - <a class="fill" href="{{ path('blogIndex') }}">Blog</a>
+                    <br>
                 </div>
             </section>
         {% endblock %}

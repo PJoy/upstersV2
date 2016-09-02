@@ -55,7 +55,7 @@ class MediaController extends Controller {
             //TODO : set user before the form is actually submitted
             $media->setSubmittedBy($user);
             $media->setTags(explode(',',$media->getTags()));
-            
+
             $em = $this->getDoctrine()->getEntityManager();
             $em->persist($media);
             $em->flush();
