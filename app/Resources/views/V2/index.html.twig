@@ -68,6 +68,7 @@
                     <div class="col-md-4 text-center service-card-large">
                         <div class="col-md-12">
                             <img src="{{ extract.photoUrl }}" alt="photo de {{ extract.name }}, catégorie : {{ extract.categoryName }}">
+                            <br>
                             <img class="cat-img" src="{{ asset('images/icons/' ~ extract.category ~ '.png') }}" alt="logo de la catégorie {{ extract.categoryName }}">
                             <h4>{{ extract.categoryName }}</h4>
                             <h5>{{ extract.name }}</h5>
@@ -91,7 +92,7 @@
                         <h2>Trouvez des professionels qualifiés</h2>
                     </div>
                     {% for category in categories %}
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <img class="cat-img" src="{{ asset('images/icons/' ~ category.name ~ '.png') }}" alt="logo de la catégorie {{ category.displayName }}">
                             <h4>{{ category.displayName }}</h4>
                             <div class="category-pitch">
@@ -105,13 +106,13 @@
         <section id="medias">
             <div class="col-md-12 text-center" id="media-content">
                 <div class="text-container">
-                    <i class="fa fa-5x fa-building"></i><br>
-                    <h2>Participez et profitez de la médiathèque</h2>
+                    <img src="{{ asset('/images/home_pictos/mediatheque.png') }}" alt="image de la médiathèque" width="200px">
+                    <h2>Participez et profitez<br> de la médiathèque</h2>
                     <p><big>Trouvez une ressource utile pour vous : un article, un livre, un film...<br>
                             Ajoutez les médias qui vous trouvez intéressants.</big></p>
                 </div>
                 <div class="btn-container">
-                    <a href="{{ path('media_home') }}"><div class="col-md-6"><div class="col-md-12 fake-btn fake-btn-orange-inv">Ajouter un média</div></div></a>
+                    <a href="{{ path('media_add') }}"><div class="col-md-6"><div class="col-md-12 fake-btn fake-btn-orange-inv">Ajouter un média</div></div></a>
                     <a href="{{ path('media_home') }}"><div class="col-md-6"><div class="col-md-12 fake-btn fake-btn-orange-inv">Consulter la médiathèque</div></div></a>
                 </div>
                 <div class="layer">
@@ -132,9 +133,9 @@
                             <p class="forum-date">{{ post.date }}</p>
                             <h4>{{ post.title }}</h4>
                             <div class="post-content">
-                                <p>{{ post.content }}</p><br>
+                                <p>{{ post.content }}                             <a href="#">[lire la suite]</a>
+                                </p><br>
                             </div>
-                            <a href="#"><p>[lire la suite]</p></a>
                             <p class="forum-published-by">Publié par <b>{{ post.name }}</b></p>
                         </div>
                     </div>
@@ -155,11 +156,11 @@
                 <div class="text-container">
 
                     <h2>Vous proposez des services aux entrepreneurs ?</h2>
-                    <p><big>Enregistrez votre activité dans l'annuaire Upsters et faites vous recommander par des entrepreneurs</big></p>
+                    <p>Enregistrez votre activité dans l'annuaire Upsters et faites vous recommander par des entrepreneurs</p>
                 </div>
                 <div class="col-md-12 text-center" id="btn-cta-container">
                     <div class="col-md-3"></div>
-                    <a href="{{ path('resources_home') }}"><div class="col-md-6 fake-btn fake-btn-green-inv">Enregistrez gratuitement votre activité</div></a>
+                    <a href="{{ path('resource_add') }}"><div class="col-md-6 fake-btn fake-btn-green-inv">Enregistrez gratuitement votre activité</div></a>
                     <div class="col-md-3"></div>
                 </div>
             </div>
