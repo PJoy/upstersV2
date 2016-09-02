@@ -573,7 +573,50 @@ a {
 /***************************
 ****************************
 
-         REGISTER
+         JULIE
 
 ****************************
 ***************************/
+
+/*Home page*/
+
+/* Que trouve-t-on sur upsters */
+#presentation > div > div > h3
+{
+    font-size: 18px !important;
+}
+
+/* Extrait du listing */
+#listing-features > div > div.col-md-12.title-section > h2
+{
+    color: white;
+}
+
+/* News du forum */
+#news > div > div > div
+{
+    padding: 10px;
+}
+
+#news > div > div > div > p.forum-date
+{
+    font-weight: bold;
+    font-size: 12px !important; 
+}
+
+#news > div > div > div > h4
+{
+    font-size: 15px !important;  
+    margin: 15px 0px
+}
+
+#news > div > div > div > div > p
+{
+    font-weight: lighter;
+    font-size: 13px !important; 
+}
+
+/*#listing-features > div > div
+{
+    background-color: red;
+}*/
