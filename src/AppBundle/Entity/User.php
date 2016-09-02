@@ -50,6 +50,38 @@ class User implements UserInterface
      */
     private $roles = [];
 
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $dateRegistered;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $birthDate;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $startDate;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $mainProject;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $pitch;
+
+    public function __construct()
+    {
+        $date = new \DateTime();
+        $this->setDateRegistered($date);
+    }
+
+
     public function getUsername()
     {
         return $this->email;
@@ -137,5 +169,84 @@ class User implements UserInterface
         return $this->getUsername();
     }
 
+    /**
+     * @return mixed
+     */
+    public function getDateRegistered()
+    {
+        return $this->dateRegistered;
+    }
+
+    /**
+     * @param mixed $dateRegistered
+     */
+    public function setDateRegistered($dateRegistered)
+    {
+        $this->dateRegistered = $dateRegistered;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBirthDate()
+    {
+        return $this->birthDate;
+    }
+
+    /**
+     * @param mixed $birthDate
+     */
+    public function setBirthDate($birthDate)
+    {
+        $this->birthDate = $birthDate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStartDate()
+    {
+        return $this->startDate;
+    }
+
+    /**
+     * @param mixed $startDate
+     */
+    public function setStartDate($startDate)
+    {
+        $this->startDate = $startDate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMainProject()
+    {
+        return $this->mainProject;
+    }
+
+    /**
+     * @param mixed $mainProject
+     */
+    public function setMainProject($mainProject)
+    {
+        $this->mainProject = $mainProject;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPitch()
+    {
+        return $this->pitch;
+    }
+
+    /**
+     * @param mixed $pitch
+     */
+    public function setPitch($pitch)
+    {
+        $this->pitch = $pitch;
+    }
 
 }

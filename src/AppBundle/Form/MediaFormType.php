@@ -3,6 +3,8 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,10 +16,11 @@ class MediaFormType extends AbstractType
             ->add('name')
             ->add('link')
             ->add('category')
-            ->add('submittedBy')
-            ->add('likesCount')
-            ->add('dateSubmitted')
-            ->add('comment');
+            ->add('comment')
+            ->add('tags', TextType::class,[
+                'attr' => array( 'placeholder' => 'Entrez les mots-clé, séparés par des virgules')
+            ])
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

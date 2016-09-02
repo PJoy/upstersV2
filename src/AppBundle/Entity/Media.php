@@ -67,6 +67,11 @@ class Media
      */
     private $tags;
 
+    public function __construct()
+    {
+        $date = new \DateTime();
+        $this->setDateSubmitted($date);
+    }
 
     /**
      * @return mixed

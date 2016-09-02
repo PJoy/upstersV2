@@ -40,12 +40,22 @@ class MediaController extends Controller {
      */
     public function mediaAddAction(Request $request)
     {
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            throw $this->createAccessDeniedException();
+        }
+        $user = $this->getUser();
+
         $form = $this->createForm(MediaFormType::class);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $media = $form->getData();
 
+
+            //TODO : set user before the form is actually submitted
+            $media->setSubmittedBy($user);
+            $media->setTags(explode(',',$media->getTags()));
+            
             $em = $this->getDoctrine()->getEntityManager();
             $em->persist($media);
             $em->flush();
