@@ -64,7 +64,12 @@ class AdminController extends Controller
      * @Route("/media", name="admin_media")
      */
     public function mediaIndexAction(){
-        return $this->render('admin/mediaIndex.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $media = $em->getRepository('AppBundle:Media')->findAll();
+
+        return $this->render('admin/mediaIndex.html.twig', [
+            'media' => $media
+        ]);
     }
 
     /**
@@ -116,7 +121,12 @@ class AdminController extends Controller
      * @Route("/resources", name="admin_resource")
      */
     public function resourcesIndexAction(){
-        return $this->render('admin/resourceIndex.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $resources = $em->getRepository('AppBundle:Resource')->findAll();
+
+        return $this->render('admin/resourceIndex.html.twig', [
+            'resources' => $resources
+        ]);
     }
 
     /**
@@ -208,7 +218,12 @@ class AdminController extends Controller
      * @Route("/users", name="admin_users")
      */
     public function usersIndexAction(){
-        return $this->render('admin/usersIndex.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $users = $em->getRepository('AppBundle:User')->findAll();
+
+        return $this->render('admin/usersIndex.html.twig', [
+            'users' => $users
+        ]);
     }
 
 }

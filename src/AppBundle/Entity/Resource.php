@@ -88,6 +88,12 @@ class Resource
     private $tags;
 
     /**
+     * @ORM\Column(type="integer")
+     */
+    private $likesCount = 0;
+
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -342,5 +348,22 @@ class Resource
     {
         $this->tags = $tags;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getLikesCount()
+    {
+        return $this->likesCount;
+    }
+
+    /**
+     * @param mixed $likesCount
+     */
+    public function setLikesCount($likesCount)
+    {
+        $this->likesCount = $likesCount;
+    }
+
 
 }

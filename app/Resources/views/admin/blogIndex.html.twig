@@ -2,7 +2,7 @@
 
 {% block body %}
     <div class="container">
-    <h1>Blog admin section</h1>
+    <h1>Blog admin section</h1><a href="{{ path('admin') }}">Back to admin root</a>
     <h2>Register status</h2>
     {% if registered %}
         <p>Articles registered status : <span>✅</span></p>

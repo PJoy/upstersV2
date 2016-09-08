@@ -270,4 +270,14 @@ class User implements UserInterface
         $this->name = $name;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+
+
 }

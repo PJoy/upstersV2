@@ -26,7 +26,27 @@
                             <th>{{ resource.category }}</th>
                             <th>{{ resource.company }}</th>
                         </tr>
+
+                        <div class="col-md-4 text-center service-card-large">
+                            <div class="col-md-12">
+                                <img src="{{ extract.photoUrl }}" alt="photo de {{ extract.name }}, catégorie : {{ extract.categoryName }}">
+                                <br>
+                                <img class="cat-img" src="{{ asset('images/icons/' ~ extract.category ~ '.png') }}" alt="logo de la catégorie {{ extract.categoryName }}">
+                                <h4>{{ extract.categoryName }}</h4>
+                                <h5>{{ extract.name }}</h5>
+                                <div class="card-pitch">
+                                    <p>{{ extract.pitch }}</p>
+                                </div>
+                                <div class="card-recommendation">
+                                    <p><i class="fa fa-thumbs-o-up"></i> <b>{{ extract.recom }}</b> recommandations</p>
+                                </div>
+                                <a href=""><div class="col-md-6 fake-btn fake-btn-grey">Voir la suite</div></a>
+                                <a href=""><div class="col-md-6 fake-btn fake-btn-orange">Recommander</div></a>
+                            </div>
+                        </div>
+
                     {% endfor %}
+
                 </table>
             </div>
 
