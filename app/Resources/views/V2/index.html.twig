@@ -19,13 +19,13 @@
                         <form id="search-form-real" role="search" action="{{ path('resources_home') }}">
                         <div class="col-md-1"></div>
                         <div class="col-md-3">
-                            <input type="text" placeholder="Nom - Mot-clé" name="search">
+                            <input type="text" placeholder="Je cherche : prestataire / organisme/ livre / startup..." name="search">
                         </div>
                         <div class="col-md-4">
-                            <input type="text" placeholder="Ville">
+                            <input type="text" placeholder="Où : Lyon">
                         </div>
                         <div class="col-md-3">
-                            <div class="col-md-12 fake-btn fake-btn-orange" id="search-btn" onclick="$('#search-form-real').submit()" style="cursor: pointer">Rechercher</div>
+                            <div class="col-md-12 fake-btn fake-btn-orange" id="search-btn" onclick="$('#search-form-real').submit()" style="cursor: pointer">Chercher</div>
                         </div>
                         <div class="col-md-1"></div>
                         </form>
@@ -40,29 +40,36 @@
                 </div>
                 <div class="col-md-3 pres-item text-center">
                     <img src="{{ asset('images/home_pictos/kezako-4.png') }}" width="100px">
-                    <h3>Des prestataires qualifiés de confiance</h3>
-                    <p>Trouvez dans l'annuaire tous les prestataires dont vous avez besoin, triés
-                        selon les recommandations des entrepreneurs !</p>
+                    <h3>Un annuaire</h3>
+                    <p><b>De prestataires triés par vos recommandations:</b><br>
+                        Trouvez (enfin!) rapidement les prestataires les plus recommandés par les entrepreneurs.</p>
                 </div>
                 <div class="col-md-3 pres-item text-center">
                     <img src="{{ asset('images/home_pictos/kezako-1.png') }}" width="100px">
-                    <h3>Toutes les ressources entrepreneuriales nécessaires</h3>
-                    <p>Participez à la médiathèque collaboratiqve en y inscivant les indispensables de l'entrepreneuriat !</p>
+                    <h3>Une médiathèque</h3>
+                    <p><b>Avec les ressources entrepreneuriales indispensables:</b><br>
+                        Participez à la médiathèque collaborative en y inscrivant vos indispensables de l’ entrepreneuriat.
+                    </p>
                 </div>
                 <div class="col-md-3 pres-item text-center">
                     <img src="{{ asset('images/home_pictos/kezako-2.png') }}" width="100px">
-                    <h3>Un forum dédié à l'entrepreneuriat</h3>
-                    <p>Echangez entre entrepreneurs et profitez des réponses d'experts pour solutionner toutes vos questions !</p>
+                    <h3>Un forum</h3>
+                    <p><b>Dédié à l’entrepreneuriat</b>
+                        Echangez entre entrepreneurs et profitez des réponses d’experts pour solutionner toutes vos questions.
+
+                    </p>
                 </div>
                 <div class="col-md-3 pres-item text-center">
                     <img src="{{ asset('images/home_pictos/kezako-3.png') }}" width="100px">
-                    <h3>Comparez-vous !</h3>
-                    <p>Qui se cache derrière chaque projet ? <br>
-                        Comparez votre personalité, le contexte dans lequel vous avez créé ou encore la vision de votre stratup !</p>
+                    <h3>Un comparateur</h3>
+                    <p><b>Comparez-vous !</b><br>
+                        Qui se cache derrière chaque projet ?<br>
+                        Comparez votre personnalité, le contexte dans lequel vous avez créé ou encore la vision de votre start up avec les autres entrepreneurs d’Upsters !
+                    </p>
                 </div>
                 <div class="col-md-12 text-center" id="pres-cta">
                     <div class="col-md-3"></div>
-                    <a href="/"><div class="col-md-6 fake-btn fake-btn-orange">Je m'inscris</div></a>
+                    <a href="/"><div class="col-md-6 fake-btn fake-btn-orange">Je m'inscris !</div></a>
                     <div class="col-md-3"></div>
                 </div>
             </div>
@@ -116,8 +123,16 @@
                 <div class="text-container">
                     <img src="{{ asset('/images/home_pictos/mediatheque.png') }}" alt="image de la médiathèque" width="200px">
                     <h2>Participez et profitez<br> de la médiathèque</h2>
-                    <p><big>Trouvez une ressource utile pour vous : un article, un livre, un film...<br>
-                            Ajoutez les médias qui vous trouvez intéressants.</big></p>
+                    <div class="col-md-6">
+                        <p>Vous avez ENFIN trouvé LE livre de finance pour Entrepreneurs simple et utile  ?
+                            Vous avez vu un film passionnant sur les imprimantes 3D ?
+                            <br>
+                            Partagez les !
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>Trouvez le livre, l’article, la vidéo, ou toute autre ressource utile dans le quotidien de l’entrepreneur</p>
+                    </div>
                 </div>
                 <div class="btn-container">
                     <a href="{{ path('media_add') }}"><div class="col-md-6"><div class="col-md-12 fake-btn fake-btn-orange-inv">Ajouter un média</div></div></a>
@@ -163,8 +178,9 @@
             <div class="col-md-12 text-center">
                 <div class="text-container">
 
-                    <h2>Vous proposez des services aux entrepreneurs ?</h2>
-                    <p>Enregistrez votre activité dans l'annuaire Upsters et faites vous recommander par des entrepreneurs</p>
+                    <h2>Vous proposez un service dont les entrepreneurs ont besoin ?</h2>
+                    <p>Enregistrez-vous vite dans l’annuaire Upsters !
+                        Faites-vous recommander par des entrepreneurs pour être appelé par de nouveaux prospects.</p>
                 </div>
                 <div class="col-md-12 text-center" id="btn-cta-container">
                     <div class="col-md-3"></div>

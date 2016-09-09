@@ -59,69 +59,100 @@ class MainController extends Controller{
     public function indexAction(){
 
         //DUMMY SERVICE
-        $pitch1 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+        $pitch1 = "Je suis spécialisé dans l’accompagnement des startups dans leur phase de lancement
+";
         $service1 = array(
-            'name' => 'Jean-Marie Bigard',
+            'name' => 'Pierre Poizat',
+            'category' => 'incubateur',
+            'categoryName' => 'Incubateur',
+            'photoUrl' => 'images/home_pictos/ppoiz.jpg',
+            'pitch' => $pitch1,
+            'recom' => 15
+        );
+
+        $pitch2 = "Je suis spécialisé dans l’accompagnement comptable des startups !";
+
+        $service2 = array(
+            'name' => 'Pierre Bonsaquet',
             'category' => 'comptabilite',
             'categoryName' => 'Comptablité',
             'photoUrl' => 'images/bigard.png',
-            'pitch' => $pitch1,
-            'recom' => rand(1,99)
+            'pitch' => $pitch2,
+            'recom' => 21
+        );
+
+        $pitch3 = "Back end et Front end, le code n’a plus de secret pour moi :)
+";
+        $service3 = array(
+            'name' => 'Pierre Portejoie',
+            'category' => 'dev',
+            'categoryName' => 'Développement',
+            'photoUrl' => 'images/home_pictos/pierreporte.jpg',
+            'pitch' => $pitch3,
+            'recom' => 9
         );
 
         //DUMMY CATEGORY
         $cat1 = array(
             'name' => 'coworking',
             'displayName' => 'Coworking',
-            'pitch' => 'Trouvez les espaces de coworking les plus appréciés des entrepreneurs dans votre secteur.'
+            'pitch' => 'Il est temps de sortir de son canapé !
+Trouvez ici l’espace le plus approprié à votre activité et faites de nouvelles rencontres.
+'
         );
         $cat2 = array(
             'name' => 'comptabilite',
             'displayName' => 'Comptabilité',
-            'pitch' => 'TTrouvez la personne qu’il vous faut pour cajoler vos finances'
+            'pitch' => 'L\'allergie aux bilans comptables et aux déclarations de TVA ne vous quittent pas ? Il serait sage de consulter un
+expert comptable.
+'
         );
         $cat3 = array(
             'name' => 'autres',
             'displayName' => 'Prototypage',
-            'pitch' => 'Réalisez un exemplaire de votre produit, qu’il soit électronique, plastique, mécanique, ...'
+            'pitch' => 'Parce que tout n’est pas que numérique! Il existe des lieux magiques où l’on peut réaliser un prototype de ses (brillantes) idées.
+'
         );
         $cat4 = array(
             'name' => 'juridique',
             'displayName' => 'Juridique',
-            'pitch' => 'Trouvez l’expert qui éclairera enfin vos démarches juridiques avec ses conseils bienvenus.'
+            'pitch' => '“Aller directement en prison, ne passez pas par la case départ et ne touchez pas les 20 000 €” 
+Peut être auriez vous dû demander un petit conseil avant  !
+'
         );
         $cat5 = array(
             'name' => 'marketing',
             'displayName' => 'Marketing',
-            'pitch' => 'Exister online ou offline n’est pas du tout évident ! Place aux professionnels du Marketing.'
+            'pitch' => 'Pour ne plus être le/a seul/e à croire en votre produit ! Laissez les pro habiller la mariée et toucher vos cibles les plus fines.'
         );
         $cat6 = array(
             'name' => 'graphisme',
             'displayName' => 'Web Design',
-            'pitch' => 'Trouvez ici les développeurs, designers, et graphistes les plus aimés des entrepreneurs.'
+            'pitch' => 'Il faut de tout pour faire un site ! Et surtout des développeurs, designers et graphistes très compétents. 
+            En plus ceux là, on les aime bien.'
         );
 
         //DUMMY FORUM POST
         $post1 = array(
-            'title' => 'Titre de la conversation',
+            'title' => 'TRAVAILLER POUR UNE STARTUP GRATUITEMENT TOUT EN TOUCHANT LES ASSEDIC ?',
             'date' => '01/01/2017',
-            'name' => 'Jean Dujardin',
+            'name' => 'Claire Machin',
             'photoUrl' => 'images/images_forum/face-1.png',
-            'content' => "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. ",
+            'content' => "Oui c'est tout à fait possible. Il faut pour cela prendre rendez-vous avec Pôle Emploi pour en discuter avec "
         );
         $post2 = array(
-            'title' => 'Titre de la conversation',
+            'title' => 'QUI SONT LES INFLUENCEURS DE L’ÉCOSYSTÈME STARTUP FRANÇAIS ?',
             'date' => '01/01/2017',
-            'name' => 'Jean Dujardin',
+            'name' => 'Steven Truc',
             'photoUrl' => 'images/images_forum/face-2.png',
-            'content' => "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. ",
+            'content' => "Imaginez que vous vouliez faire buzzer votre dernier projet. Voici une liste des personnes à contacter absolument. Spontanément, je pense à",
         );
         $post3 = array(
-            'title' => 'Titre de la conversation',
+            'title' => 'CRÉER UN SOCIÉTÉ À L’ÉTRANGER POUR UNE ACTIVITÉ EN FRANCE ?',
             'date' => '01/01/2017',
-            'name' => 'Jean Dujardin',
+            'name' => 'Jules Bidule',
             'photoUrl' => 'images/images_forum/face-3.png',
-            'content' => "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. ",
+            'content' => "Créer une entreprise à l'étranger uniquement pour une activité en France n'aurait pas vraiment d'intérêt. Cela ne dispense pas",
         );
 
         //DUMMY TESTIMONIAL
@@ -146,7 +177,7 @@ class MainController extends Controller{
             'name' => 'Julie',
             'messages' => rand(0,9)
         );
-        $listing_extracts = array($service1, $service1, $service1);
+        $listing_extracts = array($service1, $service2, $service3);
         $categories = array($cat1, $cat2, $cat3, $cat4, $cat5, $cat6);
         $forum_posts = array($post1, $post2, $post3);
         $testimonials = array($testimonial1, $testimonial2, $testimonial3);
