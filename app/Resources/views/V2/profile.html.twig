@@ -7,31 +7,44 @@
 {% block body %}
     <div class="container" id="main-container">
         <section class="wip" id="profile-main">
-        <div class="col-md-12 ">
-            <div class="col-md-12">
-                <div class="col-md-6">
-                    <!-- TODO image -->
+            <div class="col-md-12 ">
+                <div class="col-md-12 profile-main">
+                    <div class="col-md-6 text-right avatar">
+                        {% if user.image %}
+                            <img src="{{ asset('uploads/avatars/' ~ user.image) }}" alt="Avatar de l'utilisateur d'Upsters {{ user.username }}">
+                        {% else %}
+                            <img src="{{ asset('images/bigard.png') }}" alt="Avatar par défaut de l'utilisateur d'Upsters {{ user.username }}">
+                        {% endif %}
+                    </div>
+                    <div class="col-md-6">
+                        <h1>{{ user.username }}</h1>
+                        <h2>{{ user.email }}</h2>
+                        <p>Inscrit(e) le {{ user.dateRegistered|date('d/m/Y') }}</p>
+                        <p><b>{{ recomCount }} </b>recommandation(s)</p>
+                        <p><b>{{ resourceCount }} </b>ressource(s) ajoutée à la médiathèque</p>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <h1>{{ user.username }}</h1>
-                    <h2>{{ user.email }}</h2>
-                    <p>Inscrit(e) le {{ user.dateRegistered|date }}</p>
-                    <p>... recommandations</p>
-                    <p>... ressource ajoutée à la médiathèque</p>
+                <div class="col-md-12 profile-actions">
+                    <a href="{{ path('user',{'name' : user.name}) }}">
+                        <div class="col-md-4 profile-update text-center">
+                            <img class="cat-img" src="{{ asset('images/icons/autres.png') }}" alt="logo de la catégorie autres">
+                            <h3>Mettre à jour mon profil </h3>
+                        </div>
+                    </a>
+                    <a href="{{ path('media_home') }}">
+                        <div class="col-md-4 profile-add-media text-center">
+                            <img class="cat-img" src="{{ asset('images/icons/imprimerie.png') }}" alt="logo de la catégorie imprimerie">
+                            <h3>Recommander un média </h3>
+                        </div>
+                    </a>
+                    <a href="{{ path('resources_home') }}">
+                        <div class="col-md-4 profile-add-resource text-center">
+                            <img class="cat-img" src="{{ asset('images/icons/coworking.png') }}" alt="logo de la catégorie coworking">
+                            <h3>Recommander un prestataire </h3>
+                        </div>
+                    </a>
                 </div>
             </div>
-            <div class="col-md-12">
-                <div class="col-md-4">
-                    <h2>Mettre à jour mon profil</h2>
-                </div>
-                <div class="col-md-4">
-                    <h2>Recommander un média</h2>
-                </div>
-                <div class="col-md-4">
-                    <h2>Recommander un prestataire</h2>
-                </div>
-            </div>
-        </div>
         </section>
     </div>
 {% endblock %}

@@ -23,10 +23,15 @@ class ProfileController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository(User::class)->findOneBy(['name' => $name]);
 
+        $resourceCount = rand(0,10);
+        $recomCount = rand(0,10);
+
         if (count($user)!=0){
             return $this->render('V2/profile.html.twig',[
                 'title' => 'Profil de '.$name.' | Upsters',
-                'user' => $user
+                'user' => $user,
+                'resourceCount' => $resourceCount,
+                'recomCount' => $recomCount
             ]);
         } else {
             return $this->render('profile/empty.thml.twig', [

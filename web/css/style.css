@@ -99,11 +99,14 @@ a {
 /** TOP NAVBAR **/
 
 #top-navbar {
-    border-bottom: solid 3px #e6E6E6;
     position: fixed;
     top: 0;
     z-index: 10;
     width: 100%;
+}
+
+#top-navbar .upsters-nav {
+    border-bottom: solid 3px #e6E6E6;
 }
 
 #top-navbar,
@@ -498,6 +501,38 @@ a {
     color: #349f8b;
 }
 
+.profile-actions > a > div {
+    padding: 40px;
+}
+.profile-actions > a > div:hover {
+    opacity: 0.9;
+}
+
+#profile-main h3{
+    font-weight: 100;
+    font-size: 50px;
+    color: white;
+}
+
+.profile-main {
+    background: #e6E6E6;
+}
+
+.profile-main .avatar > img{
+    width: 200px;
+    height: 200px;
+    border-radius: 200px;
+    object-fit: cover; /*if you still have IE in *CURRENT YEAR* you should feel ashamed*/
+}
+
+.profile-update,
+.profile-add-resource {
+    background: #349f8b;
+}
+
+.profile-add-media {
+    background: #e45021;
+}
 
 /***************************
 ****************************
