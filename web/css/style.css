@@ -215,6 +215,12 @@ a {
 
 /** MAP **/
 
+#map .pin-img {
+    width: 30px;
+    position: absolute;
+    display: none;
+}
+
 #map > div{
     height: 400px;
     background: url("../images/dummy-map.png") no-repeat bottom center;
