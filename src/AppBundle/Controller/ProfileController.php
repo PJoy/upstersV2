@@ -23,9 +23,15 @@ class ProfileController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository(User::class)->findOneBy(['name' => $name]);
 
-        return $this->render('V2/profile.html.twig',[
-            'title' => 'Profil de '.$name.' | Upsters',
-            'user' => $user
-        ]);
+        if (count($user)!=0){
+            return $this->render('V2/profile.html.twig',[
+                'title' => 'Profil de '.$name.' | Upsters',
+                'user' => $user
+            ]);
+        } else {
+            return $this->render('profile/empty.thml.twig', [
+                'title' => 'L\'utilisateur n\'existe pas ! | Upsters'
+            ]);
+        }
     }
 }

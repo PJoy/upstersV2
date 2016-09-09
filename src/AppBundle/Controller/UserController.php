@@ -24,6 +24,7 @@ class UserController extends Controller
         $form = $this->createForm(UserRegistrationForm::class);
 
         $form->handleRequest($request);
+
         if($form->isValid()) {
             $user = $form->getData();
             if ($user->getName() === null) {
@@ -34,8 +35,7 @@ class UserController extends Controller
             $em->persist($user);
             $em->flush();
 
-            //TODO : wtf is this ?
-            $this->addFlash('success', 'Welcome '.$user->getEmail());
+            $this->addFlash('success', 'Bienvenue '.$user->getEmail());
 
             return $this->get('security.authentication.guard_handler')
                 ->authenticateUserAndHandleSuccess(

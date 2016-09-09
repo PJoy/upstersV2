@@ -18,8 +18,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  * @ORM\Table(name="user")
  * @UniqueEntity(fields={"email"}, message="Adresse mail déjà utilisée !")
+ * @UniqueEntity(fields={"name"}, message="Nom déjà utilisé !")
  */
-class User implements UserInterface
+class User implements UserInterface//, \Serializable
 {
     /**
      * @ORM\Id
@@ -36,7 +37,7 @@ class User implements UserInterface
     private $email;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="string")
      */
     private $name;
 
@@ -76,9 +77,16 @@ class User implements UserInterface
     private $mainProject;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
     private $pitch;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     *
+     * @Assert\File(mimeTypes={ "image/*" })
+     */
+    private $image;
 
     public function __construct()
     {
@@ -278,6 +286,30 @@ class User implements UserInterface
         return $this->id;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
 
+    /**
+     * @param mixed $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    public function serialize()
+    {
+        // TODO: Implement serialize() method.
+    }
+
+    public function unserialize($serialized)
+    {
+        // TODO: Implement unserialize() method.
+    }
 
 }

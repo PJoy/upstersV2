@@ -11,12 +11,14 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Media;
 use AppBundle\Entity\Resource;
 use AppBundle\Entity\User;
+use AppBundle\Form\UserEditForm;
 use AppBundle\Service\BlogManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Constraints\DateTime;
 
@@ -223,6 +225,51 @@ class AdminController extends Controller
 
         return $this->render('admin/usersIndex.html.twig', [
             'users' => $users
+        ]);
+    }
+
+    /**
+     * @Route("/users/edit/{name}", name="admin_user_edit")
+     */
+    public function userEditAction($name, Request $request){
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('AppBundle:User')->findOneBy(array(
+            'name' => $name
+        ));
+
+        if ($user === null){
+            return $this->render('admin/emptyUser.html.twig');
+        }
+
+        $form = $this->createForm(UserEditForm::class, $user);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $file = $user->getImage();
+            if ($file !== null){
+                $fileName = md5(uniqid()).'.'.$file->guessExtension();
+                $file->move(
+                    $this->getParameter('avatars_dir'),
+                    $fileName
+                );
+                $user->setImage($fileName);
+            }
+
+            $user->setRoles(array());
+
+            $em = $this->getDoctrine()->getEntityManager();
+            //$em->merge($user);
+            $em->flush();
+
+            $this->addFlash('success', 'Prestataire modifié !');
+
+            return $this->redirectToRoute('admin_users');
+        }
+
+        return $this->render('admin/userEdit.html.twig', [
+            'userEditForm' => $form->createView()
         ]);
     }
 

@@ -77,9 +77,9 @@
                                 <ul class="nav navbar-nav">
                                     <li class="active"><a class="fill" href="{{ path('home') }}">Accueil</a></li>
                                     {% if app.user %}
-                                        <li><a class="fill" href="{{ path('user', {name : 'yo'}) }}">Mon profil</a></li>
+                                    <li><a class="fill" href="{{ path('user', {'name':app.user.username}) }}">Mon profil</a></li>
                                     {% else %}
-                                        <li><a class="fill" href="{{ path('security_login') }}">Mon profil</a></li>
+                                    <li><a class="fill" href="{{ path('security_login') }}">Mon profil</a></li>
                                     {% endif %}
                                     <li><a class="fill" href="{{ path('media_home') }}">Médiathèque</a></li>
                                     <li><a class="fill" href="{{ path('resources_home') }}">Recommander un prestataire</a></li>

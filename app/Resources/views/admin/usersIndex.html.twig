@@ -18,7 +18,7 @@
                     <th>{{ user.name }}</th>
                     <th>{{ user.email}}</th>
                     <th>{{ user.dateRegistered|date}}</th>
-                    <th><button><span></span>EDIT</button></th>
+                    <th><a href="{{ path('admin_user_edit', { 'name' : user.name|default('yo') }) }}" class="btn fake-btn-orange">edit</a> </th>
                 </tr>
             {% endfor %}
         </table>
