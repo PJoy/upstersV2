@@ -28,10 +28,14 @@ class LikeController extends Controller
         $date = new \DateTime();
 
         $em = $this->getDoctrine()->getManager();
-        $like = $em->getRepository('AppBundle:Like')->findBy(array(
+        $like = $em->getRepository('AppBundle:Like')->findOneBy(array(
             'contentType' => $contentType,
             'userId' => $userId,
             'contentId' => $contentId
+        ));
+
+        $content = $em->getRepository('AppBundle:'.$contentType)->findOneBy(array(
+            'id' => $contentId
         ));
 
         if ($like === null) {
@@ -46,11 +50,19 @@ class LikeController extends Controller
             $em->flush();
 
             //increase content like count
-            $content = $em->getRepository('AppBundle:'.$contentType)->findOneBy(array(
-                'id' => $contentId
-            ));
             $content->setLikesCount($content->getLikesCount()+1);
             $em->flush();
+
+            $response = 'like added';
+        } else {
+            //remove like
+            $em->remove($like);
+
+            //decrease content like count
+            $content->setLikesCount($content->getLikesCount()-1);
+            $em->flush();
+
+            $response = 'like removed';
         }
 
         return new Response('ok');

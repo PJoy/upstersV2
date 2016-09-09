@@ -55,14 +55,13 @@
                     {'id' : id, 'type' : 'Media', 'userId': {{ app.user.id }}},
                     {% endif %}
                     function (response) {
-                        //location.reload();
-                        $('#profile-main > div:nth-child(2) > table > tbody > tr:nth-child(2) > th:nth-child(4)').text(response);
+                        location.reload();
                     })
         }
 
         $(document).ready(function () {
             $('.recom-btn').on('click', function () {
-                like($(this).id);
+                like($(this).attr('id'));
             })
         })
     </script>

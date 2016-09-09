@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="like")
+ * @ORM\Table(name="like_")
  */
 
 class Like
