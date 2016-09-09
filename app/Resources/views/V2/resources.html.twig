@@ -54,3 +54,18 @@
         </section>
     </div>
 {% endblock %}
+
+{% block additional_javascript %}
+    <script>
+        var search = '{{ search }}';
+        console.log(search);
+        $('#profile-main > div:nth-child(2) > table > tbody > tr:not(:first-child)').each(function(){
+            if($(this).text().indexOf(search)>=0){
+                console.log('OK');
+            }else{
+                console.log('not ok');
+                $(this).hide();
+            }
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,187 @@
+-- MySQL dump 10.13  Distrib 5.7.10, for osx10.11 (x86_64)
+--
+-- Host: localhost    Database: upstersV2
+-- ------------------------------------------------------
+-- Server version	5.7.10
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `articles`
+--
+
+DROP TABLE IF EXISTS `articles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `articles` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `keywords` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
+  `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `content` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `published` tinyint(1) NOT NULL,
+  `author` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `date` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `cover` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `heading` longtext COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `articles`
+--
+
+LOCK TABLES `articles` WRITE;
+/*!40000 ALTER TABLE `articles` DISABLE KEYS */;
+INSERT INTO `articles` VALUES (1,'entrepreneur_vs_salarie','a:4:{i:0;s:13:\"entrepreneurs\";i:1;s:10:\"entreprise\";i:2;s:15:\"entrepreneuriat
+
+--
+-- Table structure for table `like`
+--
+
+DROP TABLE IF EXISTS `like`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `like` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `like`
+--
+
+LOCK TABLES `like` WRITE;
+/*!40000 ALTER TABLE `like` DISABLE KEYS */;
+/*!40000 ALTER TABLE `like` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `media`
+--
+
+DROP TABLE IF EXISTS `media`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `media` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `submitted_by_id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `link` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `category` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `comment` longtext COLLATE utf8_unicode_ci,
+  `likes_count` int(11) NOT NULL,
+  `date_submitted` date NOT NULL,
+  `tags` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:simple_array)',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_6A2CA10C5E237E06` (`name`),
+  KEY `IDX_6A2CA10C79F7D87D` (`submitted_by_id`),
+  CONSTRAINT `FK_6A2CA10C79F7D87D` FOREIGN KEY (`submitted_by_id`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `media`
+--
+
+LOCK TABLES `media` WRITE;
+/*!40000 ALTER TABLE `media` DISABLE KEYS */;
+INSERT INTO `media` VALUES (1,2,'L\'entreprise du bonheur','http://www.chez-mon-libraire.fr/livre/9782848994871-l-entreprise-du-bonheur-tony-hsieh','livre','yo',0,'2016-04-04','culture d\'entreprise,relation client,Hsieh'),(2,2,'Maddyness','http://www.maddyness.com/','page_web','yo',0,'2016-04-05','information,actualité,magazine'),(3,2,'Blog de Guilhem Bertholet','http://www.guilhembertholet.com/blog/','page_web','yo',0,'2016-04-06','blog,experience,conseil,histoires'),(4,2,'Effectuation, Les Principes De Ls/','image','yo',0,'2016-06-17','language corporel,conseils,erreurs'),(70,2,'E-commerce: 10 chiffres qui montrent l\'importance d\'une bonne stratégie de contenu','http://www.frenchweb.fr/e-commerce-10-chiffres-qui-montrent-limportance-dune-bonne-strategie-de-contenu/245300','article','yo',0,'2016-06-17','stratégie,e-commerce,stratégie de contenu'),(71,2,'Les 10 étapes de la création d\'entreprise','https://pbs.twimg.com/media/CkG1_jaXIAA2wDh.jpg','image','yo',0,'2016-06-17','création,entreprise,entreprendre'),(72,8,'poipiu','oiuoiu','oiuoiu','oiuoi',0,'2016-09-02','oiuoiu,oioi');
+/*!40000 ALTER TABLE `media` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `resource`
+--
+
+DROP TABLE IF EXISTS `resource`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `resource` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `category` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `company` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `address` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `gpslat` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `gpslong` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `website` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `description` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `phone` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `opening_time` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `twitter` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `facebook` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `linkedin` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `tags` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:simple_array)',
+  `likes_count` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_BC91F4165E237E06` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `resource`
+--
+
+LOCK TABLES `resource` WRITE;
+/*!40000 ALTER TABLE `resource` DISABLE KEYS */;
+INSERT INTO `resource` VALUES (1,'Upsters','info','Upsters','29 Quai St VincentLyonRhôneFrance','45.7685207','4.823541699999964','upsters.fr','Plateforme dédiée aux entrepreneurs','','ppjoydev@gmail.com','','','https://www.facebook.com/upsterswebsite/','','entrepreneur,entreprenariat,ressources,startup',0),(2,' HerveSultana','conseil','BEELYS','210 Avenue Jean JaurèsLyonRhôneFrance','45.735156','4.8357409999999845','https://www.beelys.camp/','Tu es étudiant ou jeune diplômé sur Lyon/StEtienne ? Et tu souhaites être formé à l’entrepreneuriat et à l’innovation ? Beelys t’accompagne et t’aide à concrétiser ton idée ou ton projet de création','','','','','','','',0),(3,' Leslie BONSACQUET','comptabilite','IN EXTENSO','LyonLyonRhôneFrance','45.75826','4.855387000000064','http://www.pointc.fr/    http://www.inextenso.fr','Construction du projet -Elaboration du prévisionnel financier Rédaction du Business Plan Recherche de financements Choix du statut et démarches juridiques Suivi comptable, juridique et gestion sociale','06 87 08 14 51','leslie.bonsacquet@inextenso.fr','','','','','prévisionnel financier,financements,juridique,comptabilité,innovation',0),(4,' Virginie Gallego-Roquelaure','formation','IAE LYON','Cours Albert ThomasLyonAuvergne Rhône-AlpesFrance','45.7463633','4.868920099999968','www.FFF.com','GRH, management, entrepreneuriat, territoire','','','','','','','',0),(5,'BAYLAC Alexandre','comptabilite','ACCOMPAGNEMENT A LA CREATION D\'ENTREPRISE - CHOIX DE FORME JURIDIQUE - BUSINESS PLAN ORGANISATION COMPTABLE - CONSEILS - RESULTAT FLASH - DECLARATIONS FISCALES ET SOCIALES - LIASSES FISCALES','35 Avenue LeclercLyonAuvergne Rhône-AlpesFrance','45.7382995','4.82545319999997','http','ACCOMPAGNEMENT A LA CREATION D\'ENTREPRISE - CHOIX DE FORME JURIDIQUE - BUSINESS PLAN\r\nORGANISATION COMPTABLE - CONSEILS - RESULTAT FLASH - DECLARATIONS FISCALES ET SOCIALES - LIASSES FISCALES','06 08 14 34 14','abaylac@cabconseils.fr','','','','','COMPTABLE,expert comptable,conseils,start up,previsionnel',0),(6,'Pierre PORTEJOIE','dev','Freelance','29 Quai St VincentLyonAuvergne Rhône-AlpesFrance','45.7685207','4.823541699999964','http://pjoy.fr','Mes compétences sont le développement logiciel, web ou d\'applications, l\'administration système et les réseaux.\r\nJe suis l\'un des 2 développeurs d\'Upsters !','686036143','portejoiepierre@gmail.com','9:30 - 20:00','@pjoy_','http://www.facebook.com/people/Developpement-Web-Lyon/100011868966419','http://fr.linkedin.com/in/pierre-portejoie-43923381','développement,informatique,web,logiciel,réseau,administration système,application,startup',0),(7,' Incubateur Jean Moulin','incubateur','Université Jean Moulin Lyon 3','22 Rue Professeur RolletLyonAuvergne Rhône-AlpesFrance','45.7470947','4.861115299999938','http://entreprendre.univ-lyon3.fr','2 dispositifs : « Start » et « Up »','','','','','','','',0),(8,' Romain LUCIANI','juridique','LEXPLUS AVOCATS','44 Rue de la RépubliqueLyonAuvergne Rhône-AlpesFrance','45.7604761','4.8351231000000325','http://www.lexplus-avocats.com/','LEXPLUS AVOCATS accompagne et conseille les entreprises et chefs d\'entreprise dans les toutes les étapes majeures de leur développement. ','04 28 40 05 00','romain.luciani@lexplus-avocats.com','9:00-12:30/14:00-17:00','https://twitter.com/LexplusAvocats','https://www.facebook.com/Lexplus-Avocats-584167161686435/','https://www.linkedin.com/in/romain-luciani-26700430?trk=nav_responsive_tab_profile','avocat,NTIC,Levée de fonds,contrats,propriété intellectuelle,fiscalité,droit des sociétés,droit de l\'informatique,optimisation fiscale,droit international,pacte d\'associés,recouvrement de créances,contentieux',0),(9,'German BRUNO','crowdfunding','CrowdyBase SAS','57 Rue BossuetLyonAuvergne Rhône-AlpesFrance','45.7680324','4.851739199999997','http','Crowdybox.com propose une boîte à outils qui facilite la préparation et la réussite d\'une campagne de crowdfunding grâce au Big Data.','06 81 81 17 91','contact@crowdybox.com','','@crowdybox','https://www.facebook.com/Crowdybox-La-toolbox-du-crowdfunding-975465595821030/','https://fr.linkedin.com/in/german-bruno-97419148','Crowdfunding,financement participatif,Big data',0),(10,' cedric.nieutin','incubateur','LE B612 - Incubateur Caisse d\'Epargne Rhône Alpes','42 Boulevard Eugène DeruelleLyonAuvergne Rhône-AlpesFrance','45.7628705','4.856925400000023','www.leb612.com','Accompagnement, hébergement et financement des startups évoluant dans le champ de la transformation digitale (Fintech, Insuretech, SmartData, Clouds, Security...)','','cedric.nieutin@leb612.com','','@nieutin_cedric','','linkedin.com/in/nieutin','startup,coaching,innovation,tech,fintech,transformation,business modeling,digital,caisse d\'épargne rhône alpes',0),(11,' Tristan THOMAS','autres','Confiserie des Arcades','Saint-ÉtienneSaint-ÉtienneAuvergne Rhône-AlpesFrance','45.3985269','4.41835709999998','www.confiseriedesarcades.fr','Revendeur  B2B et B2C spécialisé en confiserie, Chocolat, épicerie fine','','','','','','','',0),(12,'Pélissier Philippe (prestaconcept)','dev','PrestaConcept','5 Impasse MorelLyonAuvergne Rhône-AlpesFrance','45.7532332','4.879332299999987','http://www.prestaconcept.net','PrestConcept : Développement d\'application web sur mesure - expert Symfony','664890900','ppelissier@prestaconcept.net','','@prestaconcept','','','WEB,PHP,SYMFONY',0),(13,'Pélissier Philippe (kapeos)','invest','Kapeos','21 Allée des Primevères 69380','\\N','\\N','www.kapeos.com','Conseil levée de fonds et M&A','664890900','philippe.pelissier@kapeos.com','','@kapeos','','','Levée de fonds,M&A,Business Plan,Valorisation,Fonds,Venture,Retournement',0),(14,'Pélissier Philippe (squadata)','marketing','Squadata','5 Impasse MorelLyonAuvergne Rhône-AlpesFrance','45.7532332','4.879332299999987','http://www.squadata.net','Editeur de solutions BigData de Data Marketing (reciblage publicitaire) : Email Retargeting / Targeting / réactivation / Crm Onboarding / DMP','664890900','ppelissier@squadata.net','','@squadata','https://www.facebook.com/squadata','','bigdata,emailretargeting,dmp,reactivation,monetisation,adtech,publicité',0),(15,'VICHERY LAURENT','formation','MIND CONSULTING','Cauchy-à-la-TourCauchy-à-la-TourNord-Pas-de-Calais PicardieFrance','50.50223399999999','2.4473829999999452','www.mindconsulting.Fr','Directeur d\'un centre de formation, nous intervenons dans vos formations en sécurité au travail, ainsi que pour les formations d\'agent de sécurité.','','','','','','','',0),(16,' Carole Ritrovato','concours','Fondation Pour l\'Université de Lyon','210 Avenue Jean JaurèsLyonAuvergne Rhône-AlpesFrance','45.7352864','4.835484700000052','http://www.campus-creation.fr/','Programme/Concours de création d’entreprise pour étudiants et jeunes entrepreneurs','','','','','','','',0),(17,' Conception-Logo.com','graphisme','Conception-Logo.com','LavalLavalQuébecCanada','45.6066487','-73.71240899999998','https://conception-Logo.com/','Service complet d\'infographie (Logo, Cartes d\'affaires, Dépliant...)\r\nDélai 24-48h (jours ouvrables)','','','','','https://facebook.com/conception.logo','','logo,infographie,flyer,dépliant,graphisme',0),(18,' Stephane Guyot','incubateur','Incubateur Jean Moulin','22 Rue Professeur RolletLyonAuvergne Rhône-AlpesFrance','45.7470947','4.861115299999938','http://entreprendre.univ-lyon3.fr','Créé en 2013, L’Incubateur Jean Moulin est un véritable tremplin pour impulser votre projet de startup est ouvert à tous les entrepreneurs et idées.','','','','','','','',0),(19,' Tristan Falque','conseil','Imaginove','LyonLyonAuvergne-Rhône-AlpesFrance','45.7304251','4.83993780000003','imaginove.fr','Je suis spécialisé sur les thématiques de: Stratégie, levée de fonds/recherche de financement, et développement commercial dans les filières: contenus multimédia, numérique, robotique, objets connecté','','','','','','','',0),(20,' Pierre M','formation','INVEST IN LYON','2e ArrondissementLyonAuvergne-Rhône-AlpesFrance','45.7477113','4.824099899999965','www.investinlyon.com','Intervenant depuis 6 ans à l\'EM Lyon et pour les programmes Campus Création et JEA (FPUL) ; Interventions à l\'incubateur de l\'EM Lyon, à l\'ESDES ; Préparation au Pitch !','','','','','','','',0);
+/*!40000 ALTER TABLE `resource` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `roles` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:json_array)',
+  `date_registered` date DEFAULT NULL,
+  `birth_date` date DEFAULT NULL,
+  `start_date` date DEFAULT NULL,
+  `main_project` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `pitch` longtext COLLATE utf8_unicode_ci,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `image` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'portejoiepierre@gmail.com','$2y$13$53b0KpeMIYk.I55VFjYbc.6eb5or.gbqzRRHY1.PDJuIQKZYjfIqG','[]','2016-09-09',NULL,NULL,NULL,NULL,'portejoiepierre','7c8377d264387954efbb463ed88e7d12.jpeg'),(2,'wesh@wesh.wesh','$2y$13$txQfT9h7AJrwqd9tHV1WOO5rO23qUKEACOg3QybU2Xi1cfkn835Ma','[]',NULL,NULL,NULL,NULL,NULL,'yo1',NULL),(8,'ger@r.d5','$2y$13$2Ok8Yg0NlKnrBiMX/WO.9Ollo.R13CGHr2SLQCwMPQqGRicsdYi7K','[]','2016-09-02',NULL,NULL,NULL,NULL,'yo2',NULL);
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2016-09-09 15:52:47

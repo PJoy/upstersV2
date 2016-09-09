@@ -6,7 +6,7 @@
 
 {% block body %}
     <div class="container" id="media-home-container">
-        <section class="wip" id="profile-main">
+        <section class="" id="profile-main">
             <div class="col-md-12 text-center">
                 <h1>Ceci est la page de l'annuaire des médias</h1>
                 <h2>En construction !</h2>
@@ -18,12 +18,20 @@
                         <th>Nom</th>
                         <th>Ajouté par</th>
                         <th>Ajouté le</th>
+                        <th>Recommandations</th>
+                        <th></th>
                     </tr>
                     {% for media in medias %}
                         <tr>
                             <th><a href="{{ path('media_display', { 'name' : media.name} ) }}">{{ media.name }}</a> </th>
                             <th>{{ media.submittedBy }}</th>
                             <th>{{ media.dateSubmitted|date('d/m/Y') }}</th>
+                            <th>{{ media.likesCount }}</th>
+                            {% if app.user %}
+                                <th><div id="{{ media.id }}" class="btn fake-btn-orange recom-btn">Recommander</div></th>
+                            {% else %}
+                                <th><a href="{{ path('security_login') }}"><div id="{{ media.id }}" class="btn fake-btn-orange recom-btn-disabled">Recommander</div></a> </th>
+                            {% endif %}
                         </tr>
                     {% endfor %}
                 </table>
@@ -37,3 +45,25 @@
         </section>
     </div>
 {% endblock %}
+
+{% block additional_javascript %}
+    <script>
+        function like(id) {
+            var route = "{{ path('ajax_like') }}";
+            $.post(route,
+                    {% if app.user %}
+                    {'id' : id, 'type' : 'Media', 'userId': {{ app.user.id }}},
+                    {% endif %}
+                    function (response) {
+                        //location.reload();
+                        $('#profile-main > div:nth-child(2) > table > tbody > tr:nth-child(2) > th:nth-child(4)').text(response);
+                    })
+        }
+
+        $(document).ready(function () {
+            $('.recom-btn').on('click', function () {
+                like($(this).id);
+            })
+        })
+    </script>
+{%  endblock %}

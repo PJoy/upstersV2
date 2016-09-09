@@ -28,9 +28,15 @@ class ResourcesController extends Controller {
             ->getRepository('AppBundle:Resource')
             ->findAll();
 
-        return $this->render('V2/resources.html.twig',[
+        $search = '';
+        if(isset($_GET['search'])) {
+            $search = $_GET['search'];
+        }
+
+            return $this->render('V2/resources.html.twig',[
             'title' => 'Annuaire des prestataires | Upsters',
-            'resources' => $resources
+            'resources' => $resources,
+            'search' => $search
         ]);
 
     }

@@ -16,17 +16,19 @@
                 <a href="{{ path('resources_home') }}"><img class="pin-img" src="{{ asset('images/home_pictos/pin.png') }}" alt="tronche de cake"></a>
                 <div class="col-md-8" id="search-form">
                     <div style="position: relative; left: -50%;">
+                        <form id="search-form-real" role="search" action="{{ path('resources_home') }}">
                         <div class="col-md-1"></div>
                         <div class="col-md-3">
-                            <input type="text" placeholder="Nom - Mot-clé">
+                            <input type="text" placeholder="Nom - Mot-clé" name="search">
                         </div>
                         <div class="col-md-4">
                             <input type="text" placeholder="Ville">
                         </div>
                         <div class="col-md-3">
-                            <a href="{{ path('resources_home') }}"><div class="col-md-12 fake-btn fake-btn-orange" id="search-btn">Rechercher</div></a>
+                            <div class="col-md-12 fake-btn fake-btn-orange" id="search-btn" onclick="$('#search-form-real').submit()" style="cursor: pointer">Rechercher</div>
                         </div>
                         <div class="col-md-1"></div>
+                        </form>
                     </div>
                 </div>
             </div>
