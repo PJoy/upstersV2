@@ -16,7 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class SecurityController extends Controller
 {
     /**
-     * @Route("/login", name="security_login")
+     * @Route("/login-form", name="login_form")
      */
     public function loginAction(){
 
@@ -31,14 +31,20 @@ class SecurityController extends Controller
         ]);
 
         return $this->render(
-            'security/login.html.twig',
+            'user/login.html.twig',
             array(
                 // last username entered by the user
                 'form' => $form->createView(),
                 'error'         => $error,
             )
         );
+    }
 
+    /**
+     * @Route("/login", name="security_login")
+     */
+    public function loginRenderAction(){
+        return $this->render('user/loginFullPage.html.twig');
     }
 
     /**

@@ -1,7 +1,3 @@
-{% extends 'base.html.twig' %}
-
-{% block body %}
-
     <div class="container login-container">
         <div class="row">
             <div class="col-xs-12">
@@ -17,10 +13,7 @@
 
                     <button type="submit" class="btn btn-success">Login <span class="fa fa-lock"></span> </button>
                     <br>
-                    <a href="{{ path('user_register') }}">Register</a>
                 {{ form_end(form) }}
             </div>
         </div>
     </div>
-
-{% endblock %}

@@ -651,6 +651,27 @@ a {
     color: white;
 }
 
+.numberCircle:not(.active) {
+    background: #fff;
+    color: #e45021;
+}
+
+.register.active {
+    display: block;
+}
+
+.register:not(.active){
+    display: none;
+}
+
+.register-cat-entrepreneur{
+    background: #e45021;
+}
+
+.register-cat-resource{
+    background: #349f8b;
+}
+
 /***************************
 ****************************
 
