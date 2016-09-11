@@ -49,11 +49,16 @@
                         </div>
                         <div class="col-md-4 text-center" id="greet-tab">
                             {% if is_granted('ROLE_USER') %}
-                                <p><a href="{{ path('security_logout') }}">Se déconnecter</a></p>
+                                <p>Salut, <a href="{{ path('user', {'name':app.user.username}) }}">{{ app.user.username }}</a> | <a href="{{ path('security_logout') }}">Se déconnecter</a></p>
                             {% else %}
-                                <p><a href="{{ path('security_login') }}">Se connecter</a></p>
+                                <p><a href="#" data-featherlight="#lightbox-login">Se connecter</a> | <a href="{{ path('user_register') }}">S'enregistrer</a></p>
+                                <div class="popup-container" style="display: none">
+                                    <div id="lightbox-login" >
+                                        {{ render(controller('AppBundle:Security:login')) }}
+                                    </div>
+                                </div>
                             {% endif %}
-                            <!--<a href="#"><p>Salut, <b>yo</b></p></a>-->
+
                         </div>
                     </div>
                 </div>
