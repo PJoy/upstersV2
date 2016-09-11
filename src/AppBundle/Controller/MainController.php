@@ -190,4 +190,11 @@ Peut être auriez vous dû demander un petit conseil avant  !
             'testimonials' => $testimonials
         ]);
     }
+
+    /**
+     * @Route("/conditions-generales-d-utilisation", name="CGU")
+     */
+    public function cguAction(){
+        return $this->render('V2/CGU.html.twig');
+    }
 }

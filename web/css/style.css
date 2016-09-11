@@ -494,7 +494,7 @@ a {
 ***************************/
 
 .wip div{
-    margin: 10px 0;
+    /*margin: 10px 0;*/
 }
 
 .wip h1 {
@@ -629,6 +629,27 @@ a {
 ****************************
 ***************************/
 
+.numberCircle {
+    border-radius: 50%;
+
+    width: 70px;
+    height: 70px;
+    padding: 15px;
+
+    background: #fff;
+    border: 2px solid #e45021;
+    color: #e45021;
+    text-align: center;
+
+    font: 32px Arial, sans-serif;
+
+    margin-left: calc(50% - 35px);
+}
+
+.numberCircle.active {
+    background: #e45021;
+    color: white;
+}
 
 /***************************
 ****************************

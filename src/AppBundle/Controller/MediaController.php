@@ -28,7 +28,7 @@ class MediaController extends Controller {
             ->getRepository('AppBundle:Media')
             ->findAll();
 
-        return $this->render('V2/media.html.twig',[
+        return $this->render('media/index.html.twig',[
             'title' => 'Annuaire des médias | Upsters',
             'medias' => $medias
         ]);

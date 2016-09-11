@@ -33,7 +33,7 @@ class ResourcesController extends Controller {
             $search = $_GET['search'];
         }
 
-            return $this->render('V2/resources.html.twig',[
+            return $this->render('resource/index.html.twig',[
             'title' => 'Annuaire des prestataires | Upsters',
             'resources' => $resources,
             'search' => $search

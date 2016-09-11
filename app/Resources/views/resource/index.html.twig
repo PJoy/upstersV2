@@ -18,6 +18,8 @@
                         <th>Nom</th>
                         <th>Catégorie</th>
                         <th>Entreprise</th>
+                        <th>Recommandations</th>
+                        <th></th>
                     </tr>
                     {% for resource in resources %}
                         <tr>
@@ -25,6 +27,12 @@
                                 { 'name' : resource.name} ) }}">{{ resource.name }}</a> </th>
                             <th>{{ resource.category }}</th>
                             <th>{{ resource.company }}</th>
+                            <th>{{ resource.likesCount }}</th>
+                            {% if app.user %}
+                                <th><div id="{{ resource.id }}" class="btn fake-btn-orange recom-btn">Recommander</div></th>
+                            {% else %}
+                                <th><a href="{{ path('security_login') }}"><div id="{{ resource.id }}" class="btn fake-btn-orange recom-btn-disabled">Recommander</div></a> </th>
+                            {% endif %}
                         </tr>
 
                         {#<div class="col-md-4 text-center service-card-large">
@@ -67,5 +75,24 @@
                 $(this).hide();
             }
         });
+    </script>
+
+    <script>
+        function like(id) {
+            var route = "{{ path('ajax_like') }}";
+            $.post(route,
+                    {% if app.user %}
+                    {'id' : id, 'type' : 'Resource', 'userId': {{ app.user.id }}},
+                    {% endif %}
+                    function (response) {
+                        location.reload();
+                    })
+        }
+
+        $(document).ready(function () {
+            $('.recom-btn').on('click', function () {
+                like($(this).attr('id'));
+            })
+        })
     </script>
 {% endblock %}
