@@ -69,8 +69,6 @@
                                 'label' : 'Répéter le mot de passe'
                             }) }}
 
-                            <button type="submit" class="btn btn-primary" formnovalidate>S'inscrire !</button>
-                            {{ form_end(form) }}
                             <div id="to-step-1" class="btn fake-btn-orange">Prev</div>
                             <div id="to-step-3" class="btn fake-btn-orange">Next</div>
                         </div>
@@ -82,7 +80,9 @@
                     <div class="col-md-2"></div>
                     <div class="col-md-8">
                         <div class="col-xs-12 register-cat-entrepreneur">
-                            <div class="col-xs-1"><input type="checkbox"></div>
+                            <div class="col-xs-1">
+                                {{ form_row(form.roles.0) }}
+                            </div>
                             <div class="col-xs-2">
                                 <img src="{{ asset('images/icons/autres.png') }}" alt="icone de l'entrepreneur">
                             </div>
@@ -95,7 +95,7 @@
                             <div class="col-xs-1">
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox">
+                                        {{ form_row(form.roles.1) }}
                                     </label>
                                 </div>
 
@@ -117,7 +117,9 @@
                         </div>
                         <div class="col-xs-12">
                             <div class="col-xs-1"></div>
-                            <div class="col-xs-10 btn fake-btn-orange">S'inscrire</div>
+                            <button type="submit" class="btn btn-primary" formnovalidate>S'inscrire !</button>
+                            {{ form_end(form) }}
+
                             <div class="col-xs-1"></div>
                         </div>
                     </div>

@@ -671,8 +671,16 @@ a {
     background: #e45021;
 }
 
+.register-cat-entrepreneur div:first-child {
+    color: transparent;
+}
+
 .register-cat-resource{
     background: #349f8b;
+}
+
+.register-cat-resource div:first-child{
+    color: transparent;
 }
 
 /***************************
