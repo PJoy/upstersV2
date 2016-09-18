@@ -9,6 +9,9 @@ grey : e6e6e6
     /*margin: 200px;*/
 }
 
+section {
+    overflow: auto;
+}
 
 /***************************
 ****************************
@@ -52,7 +55,8 @@ a {
 /** GENERAL **/
 
 #shift-body {
-    margin: 50px 0 0 0;
+    background: #e6E6E6;
+    /*margin: 50px 0 0 0;*/
 }
 
 #main-container {
@@ -152,10 +156,18 @@ a {
     box-shadow: none;
     border-radius: 0;
 
-    margin: 50px 0;
+    margin: 50px 0 0 0;
 }
 
 /** HEADER **/
+
+#header {
+    padding-top: 50px;
+}
+
+#header div{
+    /*background: white;*/
+}
 
 #header .navbar-nav {
     overflow: hidden;
@@ -681,6 +693,31 @@ a {
 
 .register-cat-resource div:first-child{
     color: transparent;
+}
+
+body {
+    /*background: #e6E6E6;*/
+}
+
+.register-container h1 {
+    margin: 25px;
+    color: #e45021;
+    font-weight: 200;
+    text-transform: uppercase;
+}
+
+.register-container-in {
+    background: white;
+    padding: 50px 0;
+}
+
+.btn-facebook {
+    color: #fff;
+    background: 	#3b5998;
+}
+
+.btn-gmail {
+    color: #c71610;
 }
 
 /***************************
