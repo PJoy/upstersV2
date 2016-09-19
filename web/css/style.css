@@ -739,6 +739,26 @@ body {
 /***************************
 ****************************
 
+         RESOURCES
+         MEDIA
+
+****************************
+***************************/
+
+.display-resource-container h2,
+.display-media-container h2 {
+    color: #349f8b;
+}
+
+.display-resource-container h1,
+.display-media-container h1 {
+    color: #e45021;
+    text-transform: uppercase;
+}
+
+/***************************
+****************************
+
          JULIE
 
 ****************************

@@ -3,8 +3,19 @@
 {% block body %}
     <div class="container display-resource-container">
         <div class="row">
-            <div class="col-xs-12">
-                {{ dump(resource)  }}
+            <div class="col-xs-12 text-center">
+                <h1>{{ resource.name }}</h1>
+                <h2>{{ resource.likesCount }} recommandations</h2>
+                <h2>Catégorie</h2>
+                <p>{{ resource.category }}</p>
+                <h2>Entreprise</h2>
+                <p>{{ resource.company }}</p>
+                <h2>Adresse</h2>
+                <p>{{ resource.address }}</p>
+                <h2>Site Web</h2>
+                <p>{{ resource.website }}</p>
+                <h2>Description</h2>
+                <p>{{ resource.description }}</p>
             </div>
         </div>
     </div>
