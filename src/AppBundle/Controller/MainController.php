@@ -70,19 +70,18 @@ class MainController extends Controller{
             'recom' => 15
         );
 
-        $pitch2 = "Je suis spécialisé dans l’accompagnement comptable des startups !";
+        $pitch2 = "Crowdybox propose une boîte à outils qui facilite la préparation et la réussite d'une campagne de crowdfunding grâce au Big Data";
 
         $service2 = array(
-            'name' => 'Pierre Bonsaquet',
-            'category' => 'comptabilite',
-            'categoryName' => 'Comptablité',
-            'photoUrl' => 'images/bigard.png',
+            'name' => 'German Bruno',
+            'category' => 'crowdfounding',
+            'categoryName' => 'Crowdfounding',
+            'photoUrl' => 'images/home_pictos/germain.jpg',
             'pitch' => $pitch2,
             'recom' => 21
         );
 
-        $pitch3 = "Back end et Front end, le code n’a plus de secret pour moi :)
-";
+        $pitch3 = "Back end et Front end, le code n’a plus de secret pour moi !";
         $service3 = array(
             'name' => 'Pierre Portejoie',
             'category' => 'dev',

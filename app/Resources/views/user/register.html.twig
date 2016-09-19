@@ -80,44 +80,35 @@
                     <div class="col-md-2"></div>
                     <div class="col-md-8">
                         <div class="col-xs-12 register-cat-entrepreneur">
-                            <div class="col-xs-1">
+                            <div class="col-xs-1 checkbox-container">
                                 {{ form_row(form.roles.0) }}
                             </div>
                             <div class="col-xs-2">
                                 <img src="{{ asset('images/icons/autres.png') }}" alt="icone de l'entrepreneur">
                             </div>
-                            <div class="col-xs-8">Je suis entrepreneur et je souhaite consulter l'annuaire et la médiathèque</div>
-                            <div class="col-xs-1">
-                                <i class="fa fa-question-circle fa-3x"></i>
-                            </div>
+                            <div class="col-xs-9 register-cat-desc">Je suis entrepreneur et je souhaite consulter l'annuaire et la médiathèque</div>
                         </div>
                         <div class="col-xs-12 register-cat-resource">
-                            <div class="col-xs-1">
-                                <div class="checkbox">
-                                    <label>
-                                        {{ form_row(form.roles.1) }}
-                                    </label>
-                                </div>
-
+                            <div class="col-xs-1 checkbox-container">
+                                {{ form_row(form.roles.1) }}
                             </div>
                             <div class="col-xs-2">
                                 <img src="{{ asset('images/icons/finance.png') }}" alt="icone de l'entrepreneur">
                             </div>
-                            <div class="col-xs-8">Je fournis des services pour les entrepreneurs et je souhaite figurer dans l'annuaire</div>
-                            <div class="col-xs-1">
-                                <i class="fa fa-question-circle fa-3x"></i>
-                            </div>
+                            <div class="col-xs-9 register-cat-desc">Je fournis des services pour les entrepreneurs et je souhaite figurer dans l'annuaire</div>
                         </div>
-                        <div class="col-xs-12">
+                        <div class="col-xs-1"></div>
+                        <div class="col-xs-10 register-CTA-news">
                             <div class="checkbox">
                                 <label>
                                     <input type="checkbox"> Je souhaite recevoir par e-mail des promotions, des sondages et les actualités sur Upsters, ainsi que sur les campagnes et les services de ses partenaires.
                                 </label>
                             </div>
                         </div>
+                        <div class="col-xs-1"></div>
                         <div class="col-xs-12">
                             <div class="col-xs-1"></div>
-                            <button type="submit" class="btn btn-primary" formnovalidate>S'inscrire !</button>
+                            <button type="submit" class="btn fake-btn-green col-xs-10" formnovalidate>S'inscrire !</button>
                             {{ form_end(form) }}
 
                             <div class="col-xs-1"></div>
@@ -152,8 +143,10 @@
 
         jQuery('#to-step-3').click(function(){
             toStep(3);
-        })
+        });
 
+        //remove checkbox text (sorry...)
+        jQuery('.checkbox > label:not(:last)').contents().filter(function(){return this.nodeType === 3;}).remove();
 
     </script>
 {% endblock %}

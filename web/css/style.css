@@ -684,7 +684,7 @@ a {
 }
 
 .register-cat-entrepreneur div:first-child {
-    color: transparent;
+    /*color: transparent;*/
 }
 
 .register-cat-resource{
@@ -692,7 +692,7 @@ a {
 }
 
 .register-cat-resource div:first-child{
-    color: transparent;
+    /*color: transparent;*/
 }
 
 body {
@@ -718,6 +718,22 @@ body {
 
 .btn-gmail {
     color: #c71610;
+}
+
+.register-step-3 .checkbox label {
+    padding-left: 17px;
+}
+
+.register-step-3 .checkbox-container {
+    padding: 25px;
+}
+
+.register-cat-desc {
+    padding-top: 40px;
+}
+
+.register-CTA-news {
+    padding-top: 20px;
 }
 
 /***************************
