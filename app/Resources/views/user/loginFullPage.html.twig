@@ -2,9 +2,10 @@
 
 {% block body %}
     {{ render(controller('AppBundle:Security:login')) }}
+    <hr>
     <div class="container register-redirect-container">
         <div class="row">
-            <div class="col-xs-12"><a href="{{ path('user_register') }}">Register</a></div>
+            <div class="col-xs-12 btn"><a href="{{ path('user_register') }}">Register</a></div>
         </div>
     </div>
 {% endblock %}
