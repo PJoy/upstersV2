@@ -55,7 +55,6 @@ a {
 /** GENERAL **/
 
 #shift-body {
-    background: #e6E6E6;
     /*margin: 50px 0 0 0;*/
 }
 
@@ -643,6 +642,10 @@ a {
 
 ****************************
 ***************************/
+
+.register-div-main {
+    background: #e6E6E6;
+}
 
 .numberCircle {
     border-radius: 50%;
