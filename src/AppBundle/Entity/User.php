@@ -267,7 +267,8 @@ class User implements UserInterface//, \Serializable
      */
     public function getPitch()
     {
-        return $this->pitch;
+        if ($this->pitch != null) return $this->pitch;
+        else return 'Cet utilisateur n\'a encore donné aucun détail concernant son activité...';
     }
 
     /**

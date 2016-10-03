@@ -8,6 +8,7 @@
 
 namespace AppBundle\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -31,6 +32,14 @@ class Resource
     /**
      * @ORM\Column(type="string")
      */
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     *
+     * @Assert\File(mimeTypes={ "image/*" })
+     */
+    private $image;
+
     private $category;
     /**
      * @ORM\Column(type="string")
@@ -383,6 +392,22 @@ class Resource
     public function setViews($views)
     {
         $this->views = $views;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param mixed $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
     }
 
 

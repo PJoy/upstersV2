@@ -8,6 +8,7 @@
 
 namespace AppBundle\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -28,6 +29,13 @@ class Media
      * @ORM\Column(type="string", unique=true)
      */
     private $name;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     *
+     * @Assert\File(mimeTypes={ "image/*" })
+     */
+    private $image;
 
     /**
      * @ORM\Column(type="string")
@@ -51,7 +59,7 @@ class Media
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private $comment;
+    private $description;
 
     /**
      * @ORM\Column(type="integer")
@@ -77,6 +85,7 @@ class Media
     {
         $date = new \DateTime();
         $this->setDateSubmitted($date);
+        $this->views = 0;
     }
 
     /**
@@ -154,17 +163,17 @@ class Media
     /**
      * @return mixed
      */
-    public function getComment()
+    public function getDescription()
     {
-        return $this->comment;
+        return $this->description;
     }
 
     /**
-     * @param mixed $comment
+     * @param mixed $description
      */
-    public function setComment($comment)
+    public function setDescription($description)
     {
-        $this->comment = $comment;
+        $this->description = $description;
     }
 
     /**
@@ -229,6 +238,22 @@ class Media
     public function setViews($views)
     {
         $this->views = $views;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param mixed $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
     }
 
 

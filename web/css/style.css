@@ -198,6 +198,7 @@ a {
     width: 120px;
     overflow: hidden;
     border-top: solid 5px #e45021;
+    z-index: 2;
 }
 
 #header .navbar ul li a {
@@ -550,8 +551,8 @@ a {
 }
 
 .profile-main .avatar > img{
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     border-radius: 200px;
     object-fit: cover; /*if you still have IE in *CURRENT YEAR* you should feel ashamed*/
 }
@@ -571,6 +572,30 @@ a {
 }
 .profile-content p{
     margin: 0;
+}
+
+.profile-section:not(.active){
+    display: none;
+}
+
+.profile-recom-single img {
+    width: 100px;
+    height: 100px;
+    /*border-radius: 200px;*/
+    object-fit: cover; /*if you still have IE in *CURRENT YEAR* you should feel ashamed*/
+}
+
+#profile-main .profile-recom-single h3 {
+    font-size: 18px;
+    color: black;
+}
+
+.profile-section-recoms .btn:not(.active){
+    opacity: 0.7;
+}
+
+.profile-recom-single:not(.active){
+    display: none;
 }
 
 /***************************
