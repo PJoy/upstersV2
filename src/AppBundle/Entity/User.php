@@ -88,12 +88,23 @@ class User implements UserInterface//, \Serializable
      */
     private $image;
 
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $likedCount;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $likesCount;
+
     public function __construct()
     {
         $date = new \DateTime();
         $this->setDateRegistered($date);
+        $this->setLikedCount(0);
+        $this->setLikesCount(0);
     }
-
 
     public function getUsername()
     {
@@ -310,6 +321,38 @@ class User implements UserInterface//, \Serializable
     public function unserialize($serialized)
     {
         // TODO: Implement unserialize() method.
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLikedCount()
+    {
+        return $this->likedCount;
+    }
+
+    /**
+     * @param mixed $likedCount
+     */
+    public function setLikedCount($likedCount)
+    {
+        $this->likedCount = $likedCount;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLikesCount()
+    {
+        return $this->likesCount;
+    }
+
+    /**
+     * @param mixed $likesCount
+     */
+    public function setLikesCount($likesCount)
+    {
+        $this->likesCount = $likesCount;
     }
 
 }

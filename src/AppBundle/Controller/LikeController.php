@@ -38,6 +38,10 @@ class LikeController extends Controller
             'id' => $contentId
         ));
 
+        $user = $em->getRepository('AppBundle:User')->findOneBy([
+            'id' => $userId
+        ]);
+
         if ($like === null) {
             //Save like
             $like = new Like();
@@ -53,6 +57,11 @@ class LikeController extends Controller
             $content->setLikesCount($content->getLikesCount()+1);
             $em->flush();
 
+            //increase user like count
+            $user->setLikedCount($user->getLikedCount()+1);
+            $em->flush();
+
+
             $response = 'like added';
         } else {
             //remove like
@@ -60,6 +69,10 @@ class LikeController extends Controller
 
             //decrease content like count
             $content->setLikesCount($content->getLikesCount()-1);
+            $em->flush();
+
+            //decrease user like count
+            $user->setLikedCount($user->getLikedCount()-1);
             $em->flush();
 
             $response = 'like removed';
