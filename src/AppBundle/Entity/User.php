@@ -109,6 +109,7 @@ class User implements UserInterface//, \Serializable
         $this->setDateRegistered($date);
         $this->setLikedCount(0);
         $this->setLikesCount(0);
+        $this->setViews(0);
     }
 
     public function getUsername()
