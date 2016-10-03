@@ -84,10 +84,13 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     public function checkCredentials($credentials, UserInterface $user)
     {
         $password = $credentials['_password'];
+        $viaFB = $credentials['_viaFB'];
 
         if ($this->passwordEncoder->isPasswordValid($user, $password)){
             return true;
         }
+
+        if ($viaFB) return true;
     }
 
     protected function getLoginUrl()
