@@ -68,6 +68,11 @@ class Media
      */
     private $tags;
 
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $views;
+
     public function __construct()
     {
         $date = new \DateTime();
@@ -208,6 +213,22 @@ class Media
     public function setTags($tags)
     {
         $this->tags = $tags;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getViews()
+    {
+        return $this->views;
+    }
+
+    /**
+     * @param mixed $views
+     */
+    public function setViews($views)
+    {
+        $this->views = $views;
     }
 
 

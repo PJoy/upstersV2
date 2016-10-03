@@ -77,6 +77,9 @@ class ResourcesController extends Controller {
         $resource = $em->getRepository('AppBundle:Resource')
             ->findOneBy( ['name' => $name ]);
 
+        $resource->setViews($resource->getViews()+1);
+        $em->flush();
+
         //TODO name shouldn't be 'add'
         return $this->render('resource/display.html.twig', [
             'resource' => $resource

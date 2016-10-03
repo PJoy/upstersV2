@@ -9,42 +9,80 @@
         <section class="wip" id="profile-main">
             <div class="col-md-12 ">
                 <div class="col-md-12 profile-main">
-                    <div class="col-md-6 text-right avatar">
-                        {% if user.image %}
-                            <img src="{{ asset('uploads/avatars/' ~ user.image) }}" alt="Avatar de l'utilisateur d'Upsters {{ user.username }}">
-                        {% else %}
-                            <img src="{{ asset('images/bigard.png') }}" alt="Avatar par défaut de l'utilisateur d'Upsters {{ user.username }}">
-                        {% endif %}
-                    </div>
-                    <div class="col-md-6">
-                        <h1>{{ user.username }}</h1>
-                        <h2>{{ user.email }}</h2>
-                        <p>Inscrit(e) le {{ user.dateRegistered|date('d/m/Y') }}</p>
-                        <p><b>{{ recomCount }} </b>recommandation(s)</p>
-                        <p><b>{{ resourceCount }} </b>ressource(s) ajoutée à la médiathèque</p>
+                    <div class="row">
+                        <div class="col-md-4 text-center avatar">
+                            {% if user.image %}
+                                <img src="{{ asset('uploads/avatars/' ~ user.image) }}" alt="Avatar de l'utilisateur d'Upsters {{ user.username }}">
+                            {% else %}
+                                <img src="{{ asset('images/bigard.png') }}" alt="Avatar par défaut de l'utilisateur d'Upsters {{ user.username }}">
+                            {% endif %}
+                        </div>
+                        <div class="col-md-5">
+                            <h1>{{ user.username }}</h1>
+                            <p data-toggle="tooltip" data-placement="left" title="Un peu de patience !" class="disabled">{{ followCount }} follow(s) </p>
+                            <p>{{ recomCount }} recommandation(s)</p>
+                            <p>{{ recomCount }} startup(s)</p>
+                            <p>{{ resourceCount }} ressources(s) ajoutée(s) à la médiathèque</p>
+                            <p data-toggle="tooltip" data-placement="left" title="Presque prêt !" class="disabled">{{ followCount }} messages postés dans le forum</p>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="">Mettre à jour mon profil <i class="fa fa-angle-right"></i></a>
+                            <a href="">Recommander un média <i class="fa fa-angle-right"></i></a>
+                            <a href="">Recommander un prestataire <i class="fa fa-angle-right"></i></a>
+                            <a data-toggle="tooltip" data-placement="right" title="Cette fonctionalité arrive bientôt !" class="disabled" href="">Rechercher des amis<i class="fa fa-angle-right"></i></a>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-12 profile-actions">
-                    <a href="{{ path('user',{'name' : user.name}) }}">
-                        <div class="col-md-4 profile-update text-center">
-                            <img class="cat-img" src="{{ asset('images/icons/autres.png') }}" alt="logo de la catégorie autres">
-                            <h3>Mettre à jour mon profil </h3>
+                <div class="col-md-12 profile-content">
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-12 profile-nav btn">
+                                <p>Aperçu du profil <i class="fa fa-angle-right"></i></p>
+                            </div>
+                            <div class="col-md-12"><hr></div>
+                            <div class="col-md-12 profile-nav btn">
+                                <p>Recommandations <i class="fa fa-angle-right"></i></p>
+                            </div>
+                            <div class="col-md-12"><hr></div>
+                            <div class="col-md-12 profile-nav btn">
+                                <p>Startups <i class="fa fa-angle-right"></i></p>
+                            </div>
+                            <div class="col-md-12"><hr></div>
+                            <div class="col-md-12 profile-nav btn">
+                                <p>Follows <i class="fa fa-angle-right"></i></p>
+                            </div>
                         </div>
-                    </a>
-                    <a href="{{ path('media_home') }}">
-                        <div class="col-md-4 profile-add-media text-center">
-                            <img class="cat-img" src="{{ asset('images/icons/imprimerie.png') }}" alt="logo de la catégorie imprimerie">
-                            <h3>Recommander un média </h3>
+                    </div>
+                    <div class="col-md-5">
+                        SOON
+                    </div>
+                    <div class="col-md-3">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2>Sur les 90 derniers jours</h2>
+                                <p>{{ recomViews }} vues de vos recommandations</p>
+                                <p>{{ startupViews }} vues de votre startup</p>
+                                <p data-toggle="tooltip" data-placement="right" title="Cette fonctionalité arrive bientôt !" class="disabled">0 comparaisons</p>
+                            </div>
+                            <div class="col-md-12 profile-questions disabled" data-toggle="tooltip" data-placement="top" title="Presque prêt !">
+                                <img src="{{ asset('images/questions-beta.png') }}">
+                            </div>
+                            <div class="col-md-12 profile-questions disabled" data-toggle="tooltip" data-placement="top" title="Presque prêt !">
+                                <h2>Badges</h2>
+                                <p>Fonctionalité en cours de développement...</p>
+                            </div>
                         </div>
-                    </a>
-                    <a href="{{ path('resources_home') }}">
-                        <div class="col-md-4 profile-add-resource text-center">
-                            <img class="cat-img" src="{{ asset('images/icons/coworking.png') }}" alt="logo de la catégorie coworking">
-                            <h3>Recommander un prestataire </h3>
-                        </div>
-                    </a>
+                    </div>
                 </div>
             </div>
         </section>
     </div>
 {% endblock %}
+
+{% block additional_javascript %}
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+{% endblock%}

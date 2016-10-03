@@ -81,6 +81,9 @@ class MediaController extends Controller {
         $media = $em->getRepository('AppBundle:Media')
             ->findOneBy( ['name' => $name ]);
 
+        $media->setViews($media->getViews()+1);
+        $em->flush();
+
         //TODO name shouldn't be 'add'
         return $this->render('media/display.html.twig', [
             'media' => $media

@@ -92,6 +92,10 @@ class Resource
      */
     private $likesCount = 0;
 
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $views;
 
     /**
      * @return mixed
@@ -363,6 +367,22 @@ class Resource
     public function setLikesCount($likesCount)
     {
         $this->likesCount = $likesCount;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getViews()
+    {
+        return $this->views;
+    }
+
+    /**
+     * @param mixed $views
+     */
+    public function setViews($views)
+    {
+        $this->views = $views;
     }
 
 

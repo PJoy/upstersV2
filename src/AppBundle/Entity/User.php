@@ -98,6 +98,11 @@ class User implements UserInterface//, \Serializable
      */
     private $likesCount;
 
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $views;
+
     public function __construct()
     {
         $date = new \DateTime();
@@ -353,6 +358,22 @@ class User implements UserInterface//, \Serializable
     public function setLikesCount($likesCount)
     {
         $this->likesCount = $likesCount;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getViews()
+    {
+        return $this->views;
+    }
+
+    /**
+     * @param mixed $views
+     */
+    public function setViews($views)
+    {
+        $this->views = $views;
     }
 
 }

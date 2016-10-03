@@ -13,6 +13,9 @@ section {
     overflow: auto;
 }
 
+body {
+    background: #e6E6E6;
+}
 /***************************
 ****************************
 
@@ -21,7 +24,14 @@ section {
 ****************************
 ***************************/
 
+.disabled {
+    opacity: 0.30;
+}
 
+.disabled:hover {
+    text-decoration: none;
+    cursor: not-allowed;
+}
 
 a {
     color: #e45021;
@@ -59,6 +69,7 @@ a {
 }
 
 #main-container {
+    background: white;
     margin-top: 50px;
 }
 
@@ -162,6 +173,7 @@ a {
 
 #header {
     padding-top: 50px;
+    background: white;
 }
 
 #header div{
@@ -533,7 +545,8 @@ a {
 }
 
 .profile-main {
-    background: #e6E6E6;
+    /*background: #e6E6E6;*/
+    padding: 10px;
 }
 
 .profile-main .avatar > img{
@@ -550,6 +563,14 @@ a {
 
 .profile-add-media {
     background: #e45021;
+}
+
+.profile-nav {
+    background: #e45021;
+    color: white;
+}
+.profile-content p{
+    margin: 0;
 }
 
 /***************************
@@ -762,6 +783,18 @@ body {
 .display-media-container h1 {
     color: #e45021;
     text-transform: uppercase;
+}
+
+/***************************
+****************************
+
+         TEST
+
+****************************
+***************************/
+
+.profile-questions img{
+    width: 100%;
 }
 
 /***************************
