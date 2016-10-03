@@ -643,6 +643,10 @@ a {
 ****************************
 ***************************/
 
+.fb-login-button{
+    margin: 5px;
+}
+
 .register-div-main {
     background: #e6E6E6;
 }
@@ -733,6 +737,7 @@ body {
 
 .register-cat-desc {
     padding-top: 40px;
+    color: white;
 }
 
 .register-CTA-news {
