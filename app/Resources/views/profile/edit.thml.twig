@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>Modifier un profil</h1>
+
+                {{ form_start(userEditForm) }}
+                {{ form_widget(userEditForm) }}
+                <button type="submit" class="btn btn-primary">OK</button>
+                {{ form_end(userEditForm) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

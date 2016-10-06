@@ -41,7 +41,7 @@ twig:
         - bootstrap_3_layout.html.twig
     #fb key : 1208681975854701 / fb dev key : 1208682615854637
     globals:
-        fbKey: "1208681975854701"
+        fbKey: "1208682615854637"
 
 # Doctrine Configuration
 doctrine:

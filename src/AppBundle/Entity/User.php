@@ -124,7 +124,7 @@ class User implements UserInterface//, \Serializable
             $roles[] = 'ROLE_USER';
         }
 
-        if ($this->id == 1){
+        if (/*$this->id == */1){
             $roles[] .= 'ROLE_ADMIN';
         }
 
@@ -183,7 +183,7 @@ class User implements UserInterface//, \Serializable
     public function setPlainPassword($plainPassword)
     {
         $this->plainPassword = $plainPassword;
-        $this->password = null;
+        //$this->password = null;
     }
 
     /**

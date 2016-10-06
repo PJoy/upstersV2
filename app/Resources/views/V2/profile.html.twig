@@ -26,10 +26,10 @@
                             <p data-toggle="tooltip" data-placement="left" title="Presque prêt !" class="disabled">{{ followCount }} messages postés dans le forum</p>
                         </div>
                         <div class="col-md-3">
-                            <a href="">Mettre à jour mon profil <i class="fa fa-angle-right"></i></a>
-                            <a href="">Recommander un média <i class="fa fa-angle-right"></i></a>
-                            <a href="">Recommander un prestataire <i class="fa fa-angle-right"></i></a>
-                            <a data-toggle="tooltip" data-placement="right" title="Cette fonctionalité arrive bientôt !" class="disabled" href="">Rechercher des amis<i class="fa fa-angle-right"></i></a>
+                            <a href="{{ path('user_edit', {'name': user.name}) }}">Mettre à jour un profil <i class="fa fa-angle-right"></i></a><br>
+                            <a href="{{ path('media_home') }}">Recommander un média <i class="fa fa-angle-right"></i></a><br>
+                            <a href="{{ path('resources_home') }}">Recommander un prestataire <i class="fa fa-angle-right"></i></a><br>
+                            <a data-toggle="tooltip" data-placement="right" title="Cette fonctionalité arrive bientôt !" class="disabled" href="">Rechercher des amis<i class="fa fa-angle-right"></i></a><br>
                         </div>
                     </div>
                 </div>

@@ -12,8 +12,10 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Like;
 use AppBundle\Entity\Media;
 use AppBundle\Entity\User;
+use AppBundle\Form\UserEditForm;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\BrowserKit\Request;
 
 class ProfileController extends Controller {
 
@@ -35,8 +37,8 @@ class ProfileController extends Controller {
         $likeCount = 0;
         $forumCount = 0;
 
-        $recoms = $em->getRepository(Like::class)->findAll([
-            'user_id' => $user->getId()
+        $recoms = $em->getRepository(Like::class)->findBy([
+            'userId' => $user->getId()
         ]);
 
         $totalRecomViews = 0;
@@ -79,5 +81,50 @@ class ProfileController extends Controller {
                 'title' => 'L\'utilisateur n\'existe pas ! | Upsters'
             ]);
         }
+    }
+
+    /**
+     * @Route("/user/{name}/edit", name="user_edit")
+     */
+    function editProfileAction($name, Request $request){
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('AppBundle:User')->findOneBy(array(
+            'name' => $name
+        ));
+
+        if ($user === null){
+            return $this->render('admin/emptyUser.html.twig');
+        }
+
+        $form = $this->createForm(UserEditForm::class, $user);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $file = $user->getImage();
+            if ($file !== null){
+                $fileName = md5(uniqid()).'.'.$file->guessExtension();
+                $file->move(
+                    $this->getParameter('avatars_dir'),
+                    $fileName
+                );
+                $user->setImage($fileName);
+            }
+
+            $user->setRoles(array());
+
+            $em = $this->getDoctrine()->getEntityManager();
+            //$em->merge($user);
+            $em->flush();
+
+            $this->addFlash('success', 'Prestataire modifié !');
+
+            return $this->redirectToRoute('admin_users');
+        }
+
+        return $this->render('profile/edit.thml.twig',[
+            'userEditForm' => $form->createView()
+        ]);
     }
 }

@@ -16,6 +16,16 @@ section {
 body {
     background: #e6E6E6;
 }
+
+.btn {
+    border-radius: 0!important;
+    text-transform: uppercase;
+}
+
+input {
+    border-radius: 0!important;
+    border: none!important;
+}
 /***************************
 ****************************
 
@@ -387,11 +397,12 @@ a {
 }
 
 #presentation .pres-item {
-    padding: 30px 0;
+    /*padding: 30px 0;*/
 }
 
 #presentation .pres-item h3 {
     font-size: 20px;
+    color: #349f8b;
 }
 
 #presentation .btn {
@@ -451,10 +462,11 @@ a {
 #news .news-card h4 {
     font-weight: bold;
     text-transform: uppercase;
+    height: 55px;
 }
 
 #news .news-card .post-content {
-    height: 200px;
+    /*height: 200px;*/
     overflow: hidden;
 }
 
@@ -679,6 +691,23 @@ a {
 
 .login-container {
     width: 400px;
+    background: #e6E6E6;
+}
+
+.login-btn{
+    width: 350px;
+    text-transform: uppercase;
+    border-radius: 0;
+    border: 1px solid #e45021;
+}
+
+.login-container input{
+    border-radius: 0;
+    border: none;
+}
+
+#login-disclaimer{
+    font-size: 11px;
 }
 
 /***************************
@@ -689,6 +718,10 @@ a {
 ****************************
 ***************************/
 
+.register-container h1{
+    font-size: 28px;
+}
+
 .fb-login-button{
     margin: 5px;
 }
@@ -698,7 +731,7 @@ a {
 }
 
 .numberCircle {
-    border-radius: 50%;
+    border-radius: 5px;
 
     width: 70px;
     height: 70px;
@@ -720,8 +753,9 @@ a {
 }
 
 .numberCircle:not(.active) {
-    background: #fff;
-    color: #e45021;
+    background: #e45021;
+    color: white;
+    opacity: 0.5;
 }
 
 .register.active {
@@ -734,6 +768,7 @@ a {
 
 .register-cat-entrepreneur{
     background: #e45021;
+    margin-bottom: 10px;
 }
 
 .register-cat-entrepreneur div:first-child {
@@ -750,6 +785,10 @@ a {
 
 body {
     /*background: #e6E6E6;*/
+}
+
+.register-container input {
+    background: #e6E6E6;
 }
 
 .register-container h1 {

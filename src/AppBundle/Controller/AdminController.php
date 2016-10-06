@@ -241,11 +241,19 @@ class AdminController extends Controller
             return $this->render('admin/emptyUser.html.twig');
         }
 
+        dump($user);
+
+        $userImage = $user->getImage();
+        $userHash = $user->getPassword();
+
         $form = $this->createForm(UserEditForm::class, $user);
+        dump($user);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            dump($user);
+
 
             $file = $user->getImage();
             if ($file !== null){
@@ -255,12 +263,18 @@ class AdminController extends Controller
                     $fileName
                 );
                 $user->setImage($fileName);
+            } else {
+                $user->setImage($userImage);
             }
 
-            $user->setRoles(array());
+            dump($user);
 
+            $user->setRoles(array());
             $em = $this->getDoctrine()->getEntityManager();
-            //$em->merge($user);
+
+            $user->setPassword($userHash);
+            dump($user);die;
+
             $em->flush();
 
             $this->addFlash('success', 'Prestataire modifié !');

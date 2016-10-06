@@ -24,6 +24,8 @@ class UserEditForm extends AbstractType
                 'choices' => array(
                     'User' => 'ROLE_USER',
                     'Admin' => 'ROLE_ADMIN',
+                    'Entrepreneur' => 'ROLE_ENTREPRENEUR',
+                    'Prestataire' => 'ROLE_RESOURCE'
                 ),
                 'multiple' => true,
                 'expanded' => true
@@ -34,7 +36,7 @@ class UserEditForm extends AbstractType
             ->add('pitch')
             ->add('image', FileType::class, array(
                 'data_class' => null,
-                'required' => false
+                'required' => false,
             ));
     }
 

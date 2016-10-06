@@ -79,6 +79,8 @@
                 <div class="col-md-12 title-section">
                     <h2>Extraits du listing</h2>
                 </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
                 {% for extract in listingExtracts %}
                     <div class="col-md-4 text-center service-card-large">
                         <div class="col-md-12">
@@ -98,6 +100,8 @@
                         </div>
                     </div>
                 {% endfor %}
+                </div>
+                <div class="col-md-2"></div>
             </div>
         </section>
         <section id="categories">
@@ -107,7 +111,7 @@
                         <h2>Trouvez des professionels qualifiés</h2>
                     </div>
                     {% for category in categories %}
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                             <img class="cat-img" src="{{ asset('images/icons/' ~ category.name ~ '.png') }}" alt="logo de la catégorie {{ category.displayName }}">
                             <h4>{{ category.displayName }}</h4>
                             <div class="category-pitch">
@@ -149,6 +153,8 @@
                     <h2>Les news du forum</h2>
                 </div>
 
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
                 {% for post in forumPosts %}
                     <div class="col-md-4">
                         <div class="col-md-12 news-card">
@@ -163,11 +169,14 @@
                         </div>
                     </div>
                 {% endfor %}
+                </div>
+                <div class="col-md-1"></div>
+
 
                 <div class="col-md-12 text-center" id="btn-cta-container">
                     <div class="col-md-3"></div>
                     <div class="col-md-6">
-                        <a href="/"><div class="col-md-12 fake-btn fake-btn-orange">Aller sur le forum</div></a>
+                        <a href="/"><div class="col-md-12 fake-btn fake-btn-orange disabled" data-toggle="tooltip" data-placement="right" title="Cette fonctionalité arrive très bientôt !">Aller sur le forum</div></a>
                     </div>
                     <div class="col-md-3"></div>
                 </div>
@@ -211,6 +220,13 @@
 {% endblock %}
 
 {% block additional_javascript %}
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+
+
     <script src="{{ asset('js/homepage.js') }}"></script>
     <script>
         //fade out alert
