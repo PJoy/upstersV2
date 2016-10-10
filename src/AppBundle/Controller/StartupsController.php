@@ -11,22 +11,45 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * @Route("/startups")
+ */
 class StartupsController extends Controller {
 
     /**
-     * @Route("/statups", name="startups")
+     * @Route("/", name="startups_home")
      */
     public function startupAction(){
+        $startups = $this->getDoctrine()->getManager()
+            ->getRepository('AppBundle:Startup')
+            ->findAll();
 
-        //DUMMY DATA
-        $user = array(
-            'name' => 'Jean Jean',
-            'messages' => rand(0,9)
-        );
+        $search = '';
+        if(isset($_GET['search'])) {
+            $search = $_GET['search'];
+        }
 
-        return $this->render('V2/startups.html.twig',[
+        return $this->render('startups/index.html.twig',[
             'title' => 'Annuaire des startups | Upsters',
+            'startups' => $startups,
+            'search' => $search
         ]);
+    }
+
+    /**
+     * @Route("/{name}", name="startup_display")
+     */
+    public function startupDisplayAction(){
+        return new Response('soon...');
+    }
+
+    /**
+     * @Route("/add", name="startup_add")
+     */
+    public function mediaAddAction(Request $request) {
+        return new Response('soon...');
+
     }
 }

@@ -249,35 +249,39 @@ a {
 
 /** MAP **/
 
-#map .pin-img {
+#map {
+    height: 100%;
+}
+
+#map-section .pin-img {
     width: 30px;
     position: absolute;
     display: none;
 }
 
-#map > div{
+#map-section > div{
     height: 400px;
     background: url("../images/dummy-map.png") no-repeat bottom center;
     background-size: 130%;
 }
 
-#map #search-form {
+#map-section #search-form {
     position: absolute;
     bottom: 0;
     left: 16.66666667%;
 }
 
-#map #search-form > div {
+#map-section #search-form > div {
     background-color: rgba(52,159,139,0.5);
     height: 70px;
 }
 
-#map #search-form input,
-#map #search-form button{
+#map-section #search-form input,
+#map-section #search-form button{
     margin: 20px 0;
 }
 
-#map #search-form input{
+#map-section #search-form input{
     height: 30px;
 }
 

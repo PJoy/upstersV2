@@ -6,14 +6,11 @@
 
 {% block body %}
     <div class="" id="main-container">
-        <section id="map">
+        <section id="map-section">
             <div class="col-md-12">
-                <a href="{{ path('resources_home') }}"><img class="pin-img" src="{{ asset('images/home_pictos/pin.png') }}" alt="tronche de cake"></a>
-                <a href="{{ path('resources_home') }}"><img class="pin-img" src="{{ asset('images/home_pictos/pin.png') }}" alt="tronche de cake"></a>
-                <a href="{{ path('resources_home') }}"><img class="pin-img" src="{{ asset('images/home_pictos/pin.png') }}" alt="tronche de cake"></a>
-                <a href="{{ path('resources_home') }}"><img class="pin-img" src="{{ asset('images/home_pictos/pin.png') }}" alt="tronche de cake"></a>
-                <a href="{{ path('resources_home') }}"><img class="pin-img" src="{{ asset('images/home_pictos/pin.png') }}" alt="tronche de cake"></a>
-                <a href="{{ path('resources_home') }}"><img class="pin-img" src="{{ asset('images/home_pictos/pin.png') }}" alt="tronche de cake"></a>
+
+                {% include 'V2/parts/map.html.twig' %}
+
                 <div class="col-md-8" id="search-form">
                     <div style="position: relative;">
                         <form id="search-form-real" role="search" action="{{ path('resources_home') }}">
@@ -228,4 +225,8 @@
 
 
     <script src="{{ asset('js/homepage.js') }}"></script>
+
+    <!-- gmaps -->
+
+    <!-- /gmaps -->
 {% endblock %}

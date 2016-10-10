@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+    <div class="container" id="resources-home-container">
+        <section class="wip" id="profile-main">
+            <div class="col-md-12 text-center">
+                <h1>Ceci est la page de l'annuaire des prestataires</h1>
+                <h2>En construction !</h2>
+            </div>
+
+            <div class="col-md-12">
+                <table class="table table-striped table-hover">
+                    <tr>
+                        <th>Nom</th>
+                        <th>Enregistré par</th>
+                        <th>Recommandations</th>
+                        <th></th>
+                    </tr>
+                    {% for startup in startups %}
+                        <tr>
+                            <th><a href="{{ path('startup_display',
+                                { 'name' : startup.name} ) }}">{{ startup.name }}</a> </th>
+                            <th>{{ resource.submittedBy}}</th>
+                            <th>{{ resource.likesCount }}</th>
+                            {% if app.user %}
+                                <th><div id="{{ resource.id }}" class="btn fake-btn-orange recom-btn">Recommander</div></th>
+                            {% else %}
+                                <th><a href="{{ path('security_login') }}"><div id="{{ resource.id }}" class="btn fake-btn-orange recom-btn-disabled">Recommander</div></a> </th>
+                            {% endif %}
+                        </tr>
+
+                    {% endfor %}
+
+                    <div class="col-xs-4"></div>
+                    <div class="col-xs-4 text-center">
+                        <a href="{{ path('startup_add') }}"><div class="col-md-12 fake-btn fake-btn-orange" id="search-btn">Ajouter une startup</div></a>
+                    </div>
+                    <div class="col-xs-4"></div>
+
+                </table>
+            </div>
+
+
+        </section>
+    </div>
+{% endblock %}
+
+{% block additional_javascript %}
+{% endblock %}
