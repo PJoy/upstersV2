@@ -20,6 +20,7 @@ use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
 use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
@@ -236,23 +237,16 @@ class AdminController extends Controller
         $user = $em->getRepository('AppBundle:User')->findOneBy(array(
             'name' => $name
         ));
-
         if ($user === null){
             return $this->render('admin/emptyUser.html.twig');
         }
 
-        dump($user);
-
-        $userImage = $user->getImage();
-        $userHash = $user->getPassword();
-
         $form = $this->createForm(UserEditForm::class, $user);
-        dump($user);
+
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            dump($user);
 
 
             $file = $user->getImage();
@@ -263,18 +257,9 @@ class AdminController extends Controller
                     $fileName
                 );
                 $user->setImage($fileName);
-            } else {
-                $user->setImage($userImage);
             }
 
-            dump($user);
-
-            $user->setRoles(array());
-            $em = $this->getDoctrine()->getEntityManager();
-
-            $user->setPassword($userHash);
-            dump($user);die;
-
+            //$user->setRoles(array());
             $em->flush();
 
             $this->addFlash('success', 'Prestataire modifié !');
