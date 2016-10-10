@@ -17,3 +17,29 @@
         </div>
     </div>
 {% endblock %}
+
+{% block additional_javascript %}
+    <script>
+        var autocomplete;
+
+        function initAutocomplete() {
+            autocomplete = new google.maps.places.Autocomplete(
+                    (document.getElementById('startup_form_address')),
+                    {types: ['geocode']});
+            autocomplete.addListener('place_changed', fillInAddress);
+        }
+
+        function fillInAddress() {
+            var place = autocomplete.getPlace();
+
+            var lat = place.geometry.location.lat(),
+                    long = place.geometry.location.lng();
+
+            $('#startup_form_GPSLat').val(lat);
+            $('#startup_form_GPSLong').val(long);
+        }
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ gmapKey }}&libraries=places,geometry&callback=initAutocomplete&language=fr-FR" async defer></script>
+
+{% endblock %}

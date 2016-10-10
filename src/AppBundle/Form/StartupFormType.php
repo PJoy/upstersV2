@@ -13,6 +13,8 @@ class StartupFormType extends AbstractType
         $builder
             ->add('name')
             ->add('address')
+            ->add('GPSLat')
+            ->add('GPSLong')
             ->add('website')
             ->add('description')
             ->add('phone')
