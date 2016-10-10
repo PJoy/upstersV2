@@ -37,12 +37,12 @@ class User implements UserInterface//, \Serializable
     private $email;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $firstName;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $lastName;
 
@@ -52,17 +52,17 @@ class User implements UserInterface//, \Serializable
     private $name;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $gender;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $nationality;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $studies;
 
@@ -318,7 +318,7 @@ class User implements UserInterface//, \Serializable
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = $this->firstName+$this->lastName;
     }
 
     /**

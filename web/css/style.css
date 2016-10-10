@@ -613,6 +613,38 @@ a {
 /***************************
 ****************************
 
+         PROFILE EDIT
+
+****************************
+***************************/
+
+.edit-user-container{
+    background: white;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.edit-user-container img{
+    width: 150px;
+    height: 150px;
+    object-fit: cover; /*if you still have IE in *CURRENT YEAR* you should feel ashamed*/
+}
+
+.edit-user-container input{
+    background: #e6E6E6;
+}
+
+.edit-user-container h2{
+    color: #e45021;
+}
+
+.edit-user-container button{
+    margin: 10px;
+}
+
+/***************************
+****************************
+
           BLOG
 
 ****************************

@@ -96,6 +96,9 @@ class ProfileController extends Controller {
             return $this->render('admin/emptyUser.html.twig');
         }
 
+        $userImage = $user->getImage();
+
+
         $form = $this->createForm(UserEditForm::class, $user);
 
 
@@ -112,18 +115,22 @@ class ProfileController extends Controller {
                     $fileName
                 );
                 $user->setImage($fileName);
+            } else {
+            $user->setImage($userImage);
             }
 
-            //$user->setRoles(array());
+
+        //$user->setRoles(array());
             $em->flush();
 
             $this->addFlash('success', 'Prestataire modifié !');
 
-            return $this->redirectToRoute('admin_users');
+            return $this->redirectToRoute('user', ['name' => $user->getName()]);
         }
 
-        return $this->render('admin/userEdit.html.twig', [
-            'userEditForm' => $form->createView()
+        return $this->render('profile/edit.thml.twig', [
+            'userEditForm' => $form->createView(),
+            'profilePic' => $user->getImage()
         ]);
     }
 }
