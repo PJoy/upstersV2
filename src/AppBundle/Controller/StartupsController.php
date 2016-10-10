@@ -9,8 +9,10 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Form\StartupFormType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -39,17 +41,53 @@ class StartupsController extends Controller {
     }
 
     /**
-     * @Route("/{name}", name="startup_display")
+     * @Route("/add", name="startup_add")
      */
-    public function startupDisplayAction(){
-        return new Response('soon...');
+    public function startupAddAction(Request $request) {
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            throw $this->createAccessDeniedException();
+        }
+        $user = $this->getUser();
+
+        $form = $this->createForm(StartupFormType::class);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $startup = $form->getData();
+
+
+            //TODO : set user before the form is actually submitted
+            $startup->setSubmittedBy($user);
+
+            $em = $this->getDoctrine()->getEntityManager();
+            $em->persist($startup);
+            $em->flush();
+
+            $this->addFlash('success', 'Startup ajoutée !');
+
+            return $this->redirectToRoute('startups_home');
+        }
+
+        return $this->render('startups/add.html.twig', [
+            'startupFrom' => $form->createView()
+        ]);
     }
 
     /**
-     * @Route("/add", name="startup_add")
+     * @Route("/{name}", name="startup_display")
      */
-    public function mediaAddAction(Request $request) {
-        return new Response('soon...');
+    public function startupDisplayAction($name){
+        $em = $this->getDoctrine()->getManager();
+        $startup = $em->getRepository('AppBundle:Startup')
+            ->findOneBy( ['name' => $name ]);
 
+        $startup->setViews($startup->getViews()+1);
+        $em->flush();
+
+        //TODO name shouldn't be 'add'
+        return $this->render('startup/display.html.twig', [
+            'startup' => $startup
+        ]);
     }
+
 }

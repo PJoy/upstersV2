@@ -25,15 +25,16 @@ class Startup
     private $id;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
-     *
-     * @Assert\File(mimeTypes={ "image/*" })
+     * @ORM\Column(type="string")
      */
     private $name;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
+     *
+     * @Assert\File(mimeTypes={ "image/*" })
      */
+
     private $image;
 
     /**
@@ -41,11 +42,11 @@ class Startup
      */
     private $address;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $GPSLat;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $GPSLong;
     /**
@@ -59,23 +60,23 @@ class Startup
 
     //OPTIONAL FIELDS
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $phone;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $email;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $facebook;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $likesCount = 0;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $views;
 

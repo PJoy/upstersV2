@@ -24,12 +24,12 @@
                         <tr>
                             <th><a href="{{ path('startup_display',
                                 { 'name' : startup.name} ) }}">{{ startup.name }}</a> </th>
-                            <th>{{ resource.submittedBy}}</th>
-                            <th>{{ resource.likesCount }}</th>
+                            <th>{{ startup.submittedBy}}</th>
+                            <th>{{ startup.likesCount }}</th>
                             {% if app.user %}
-                                <th><div id="{{ resource.id }}" class="btn fake-btn-orange recom-btn">Recommander</div></th>
+                                <th><div id="{{ startup.id }}" class="btn fake-btn-orange recom-btn">Recommander</div></th>
                             {% else %}
-                                <th><a href="{{ path('security_login') }}"><div id="{{ resource.id }}" class="btn fake-btn-orange recom-btn-disabled">Recommander</div></a> </th>
+                                <th><a href="{{ path('security_login') }}"><div id="{{ startup.id }}" class="btn fake-btn-orange recom-btn-disabled">Recommander</div></a> </th>
                             {% endif %}
                         </tr>
 
@@ -50,4 +50,22 @@
 {% endblock %}
 
 {% block additional_javascript %}
+    <script>
+        function like(id) {
+            var route = "{{ path('ajax_like') }}";
+            $.post(route,
+                    {% if app.user %}
+                    {'id' : id, 'type' : 'Startup', 'userId': {{ app.user.id }}},
+                    {% endif %}
+                    function (response) {
+                        location.reload();
+                    })
+        }
+
+        $(document).ready(function () {
+            $('.recom-btn').on('click', function () {
+                like($(this).attr('id'));
+            })
+        })
+    </script>
 {% endblock %}
