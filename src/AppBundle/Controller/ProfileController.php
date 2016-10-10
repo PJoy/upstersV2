@@ -15,7 +15,8 @@ use AppBundle\Entity\User;
 use AppBundle\Form\UserEditForm;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\BrowserKit\Request;
+use Symfony\Component\HttpFoundation\Request;
+
 
 class ProfileController extends Controller {
 
@@ -91,16 +92,17 @@ class ProfileController extends Controller {
         $user = $em->getRepository('AppBundle:User')->findOneBy(array(
             'name' => $name
         ));
-
         if ($user === null){
             return $this->render('admin/emptyUser.html.twig');
         }
 
         $form = $this->createForm(UserEditForm::class, $user);
 
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
 
             $file = $user->getImage();
             if ($file !== null){
@@ -112,10 +114,7 @@ class ProfileController extends Controller {
                 $user->setImage($fileName);
             }
 
-            $user->setRoles(array());
-
-            $em = $this->getDoctrine()->getEntityManager();
-            //$em->merge($user);
+            //$user->setRoles(array());
             $em->flush();
 
             $this->addFlash('success', 'Prestataire modifié !');
@@ -123,7 +122,7 @@ class ProfileController extends Controller {
             return $this->redirectToRoute('admin_users');
         }
 
-        return $this->render('profile/edit.thml.twig',[
+        return $this->render('admin/userEdit.html.twig', [
             'userEditForm' => $form->createView()
         ]);
     }

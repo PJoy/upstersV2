@@ -39,7 +39,32 @@ class User implements UserInterface//, \Serializable
     /**
      * @ORM\Column(type="string")
      */
+    private $firstName;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $lastName;
+
+    /**
+     * @ORM\Column(type="string")
+     */
     private $name;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $gender;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $nationality;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $studies;
 
     /**
      * @ORM\Column(type="string")
@@ -376,6 +401,86 @@ class User implements UserInterface//, \Serializable
     public function setViews($views)
     {
         $this->views = $views;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * @param mixed $firstName
+     */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * @param mixed $lastName
+     */
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGender()
+    {
+        return $this->gender;
+    }
+
+    /**
+     * @param mixed $gender
+     */
+    public function setGender($gender)
+    {
+        $this->gender = $gender;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNationality()
+    {
+        return $this->nationality;
+    }
+
+    /**
+     * @param mixed $nationality
+     */
+    public function setNationality($nationality)
+    {
+        $this->nationality = $nationality;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStudies()
+    {
+        return $this->studies;
+    }
+
+    /**
+     * @param mixed $studies
+     */
+    public function setStudies($studies)
+    {
+        $this->studies = $studies;
     }
 
 }
