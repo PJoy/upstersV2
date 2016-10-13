@@ -171,6 +171,48 @@ Peut être auriez vous dû demander un petit conseil avant  !
             'content' => "On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who "
         );
 
+        $startups = $this->getDoctrine()->getManager()
+            ->getRepository('AppBundle:Startup')
+            ->findAll();
+
+        $resources = $this->getDoctrine()->getManager()
+            ->getRepository('AppBundle:Resource')
+            ->findAll();
+
+        $mapData = [];
+
+        foreach ($startups as $startup){
+
+             $lat = floatval($startup->getGPSLat());
+             $long = floatval($startup->getGPSLong());
+
+            if ($lat != 0 && $long != 0){
+                array_push($mapData,[
+                    'type' => 'startup',
+                    'name' => $startup->getName(),
+                    'lat' => $lat,
+                    'long' => $long
+                ]);
+            }
+        }
+        foreach ($resources as $resource){
+
+            $lat = floatval($resource->getGPSLat());
+            $long = floatval($resource->getGPSLong());
+
+            if ($lat != 0 && $long != 0){
+
+                array_push($mapData, [
+                    'type' => 'resource',
+                    'name' => $resource->getName(),
+                    'category' => $resource->getCategory(),
+                    'lat' => $lat,
+                    'long' => $long
+                ]);
+            }
+        }
+
+
         //DUMMY DATA
         $user = array(
             'name' => 'Julie',
@@ -186,7 +228,8 @@ Peut être auriez vous dû demander un petit conseil avant  !
             'listingExtracts' => $listing_extracts,
             'categories' => $categories,
             'forumPosts' => $forum_posts,
-            'testimonials' => $testimonials
+            'testimonials' => $testimonials,
+            'mapData' => $mapData
         ]);
     }
 

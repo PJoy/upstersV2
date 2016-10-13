@@ -87,12 +87,12 @@
                                     {% if app.user %}
                                     <li><a class="fill" href="{{ path('user', {'name':app.user.username}) }}">Mon profil</a></li>
                                     {% else %}
-                                    <li><a class="fill" href="{{ path('login') }}">Mon profil</a></li>
+                                    <li><a class="fill" href="{{ path('user_register') }}">Mon profil</a></li>
                                     {% endif %}
                                     <li><a class="fill" href="{{ path('media_home') }}">Médiathèque</a></li>
                                     <li><a class="fill" href="{{ path('resources_home') }}">Recommander !</a></li>
-                                    <li><a class="fill" href="{{ path('startups') }}">Liste startups</a></li>
-                                    <li><a class="fill" href="{{ path('home') }}">Forum</a></li>
+                                    <li><a class="fill" href="{{ path('startups_home') }}">Liste startups</a></li>
+                                    <li><a class="fill disabled" href="{{ path('home') }}">Forum</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -141,6 +141,11 @@
             <!-- featherlight -->
             <script src="//cdn.rawgit.com/noelboss/featherlight/1.5.0/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
             <!-- /featherlight -->
+
+            <script>
+                //fade out alert
+                jQuery('.alert').delay(2000).fadeOut();
+            </script>
 
         {% endblock %}
         {% block additional_javascript %}

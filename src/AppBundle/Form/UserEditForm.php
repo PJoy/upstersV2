@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -17,24 +18,31 @@ class UserEditForm extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', EmailType::class)
-            ->add('name')
-            ->add('name')
-            ->add('roles', ChoiceType::class, array(
+            ->add('firstName')
+            ->add('lastName')
+            ->add('nationality')
+            ->add('gender', ChoiceType::class, [
+                'choices' => array(
+                    'Homme' => 'M',
+                    'Femme' => 'F',
+                    'Autre' => 'O'
+                )
+            ])
+            /*->add('roles', ChoiceType::class, array(
                 'choices' => array(
                     'User' => 'ROLE_USER',
                     'Admin' => 'ROLE_ADMIN',
+                    'Entrepreneur' => 'ROLE_ENTREPRENEUR',
+                    'Prestataire' => 'ROLE_RESOURCE'
                 ),
                 'multiple' => true,
                 'expanded' => true
-            ))
+            ))*/
             ->add('birthDate')
-            ->add('startDate')
-            ->add('mainProject')
             ->add('pitch')
             ->add('image', FileType::class, array(
                 'data_class' => null,
-                'required' => false
+                'required' => false,
             ));
     }
 
@@ -50,3 +58,8 @@ class UserEditForm extends AbstractType
         return 'app_bundle_user_edit_form';
     }
 }
+
+
+
+
+

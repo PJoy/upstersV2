@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container display-startup-container">
+        <div class="row">
+            <div class="col-xs-12">
+
+                <h1>Ajouter une startup</h1>
+
+                {{ form_start(startupFrom) }}
+                {{ form_widget(startupFrom) }}
+
+                <button type="submit" class="btn btn-primary">Ajouter</button>
+                {{ form_end(startupFrom) }}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block additional_javascript %}
+    <script>
+        var autocomplete;
+
+        function initAutocomplete() {
+            autocomplete = new google.maps.places.Autocomplete(
+                    (document.getElementById('startup_form_address')),
+                    {types: ['geocode']});
+            autocomplete.addListener('place_changed', fillInAddress);
+        }
+
+        function fillInAddress() {
+            var place = autocomplete.getPlace();
+
+            var lat = place.geometry.location.lat(),
+                    long = place.geometry.location.lng();
+
+            $('#startup_form_GPSLat').val(lat);
+            $('#startup_form_GPSLong').val(long);
+        }
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ gmapKey }}&libraries=places,geometry&callback=initAutocomplete&language=fr-FR" async defer></script>
+
+{% endblock %}

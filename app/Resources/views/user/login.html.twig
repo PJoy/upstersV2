@@ -1,9 +1,10 @@
 <div class="container login-container">
     <div class="row">
-        <div class="col-xs-12 text-center">
-            <h1>Connexion</h1>
+        <div class="col-xs-12">
+            <h2 class="text-center">CONNECTEZ-VOUS</h2>
+            <p class="text-center">à votre compte UPSTERS</p>
             <hr>
-            <div class="col-md-12 fb-login-button" scope="public_profile,email" onlogin="checkLoginState();">Me connecter via Facebook</div>
+            <div class="col-md-12 fb-login-button text-center" scope="public_profile,email" onlogin="checkLoginState();">Me connecter via Facebook</div>
 
             <div class="col-xs-5"><hr></div>
             <div class="col-xs-2">OU</div>
@@ -18,7 +19,18 @@
             {{ form_row(form._username) }}
             {{ form_row(form._password) }}
             {{ form_row(form._viaFB) }}
-            <button type="submit" class="btn fake-btn-green">Login <span class="fa fa-lock"></span> </button>
+            <br>
+            <div class="text-center col-md-12">
+                <button type="submit" class="btn fake-btn-orange-inv login-btn text-center">Connexion !</button>
+            </div>
+            <hr>
+            <hr>
+            <div class="col-md-6">
+                <a href="{{ path('user_register') }}" id="login-disclaimer">Vous n'avez pas de compte ?</a>
+            </div>
+            <div class="col-md-6 btn fake-btn-orange">INSCRIPTION</div>
+
+
             <!--<div class="col-md-12 fake-btn fake-btn-orange" onclick="$('.login-container form').submit()" style="cursor: pointer">Login</div>-->
             <br>
             {{ form_end(form) }}

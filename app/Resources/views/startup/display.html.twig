@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container display-startup-container">
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <h1>{{ startup.name }}</h1>
+                <h2>{{ startup.likesCount }} recommandations</h2>
+                <h2>Adresse</h2>
+                <p>{{ startup.address }}</p>
+                <h2>Site Web</h2>
+                <p>{{ startup.website }}</p>
+                <h2>Description</h2>
+                <p>{{ startup.description }}</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

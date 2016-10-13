@@ -26,10 +26,10 @@
                             <p data-toggle="tooltip" data-placement="left" title="Presque prêt !" class="disabled">{{ followCount }} messages postés dans le forum</p>
                         </div>
                         <div class="col-md-3">
-                            <a href="">Mettre à jour mon profil <i class="fa fa-angle-right"></i></a>
-                            <a href="">Recommander un média <i class="fa fa-angle-right"></i></a>
-                            <a href="">Recommander un prestataire <i class="fa fa-angle-right"></i></a>
-                            <a data-toggle="tooltip" data-placement="right" title="Cette fonctionalité arrive bientôt !" class="disabled" href="">Rechercher des amis<i class="fa fa-angle-right"></i></a>
+                            <a href="{{ path('user_edit', {'name': user.name}) }}">Mettre à jour un profil <i class="fa fa-angle-right"></i></a><br>
+                            <a href="{{ path('media_home') }}">Recommander un média <i class="fa fa-angle-right"></i></a><br>
+                            <a href="{{ path('resources_home') }}">Recommander un prestataire <i class="fa fa-angle-right"></i></a><br>
+                            <a data-toggle="tooltip" data-placement="right" title="Cette fonctionalité arrive bientôt !" class="disabled" href="">Rechercher des amis<i class="fa fa-angle-right"></i></a><br>
                         </div>
                     </div>
                 </div>
@@ -74,7 +74,9 @@
                                 <div id="servicebtn" class="fake-btn-green btn col-md-3 active" onclick="showResources()">Services</div>
                                 <div class="col-md-1"></div>
                                 <div id="mediabtn" class="fake-btn-green btn col-md-3 " onclick="showMedia()">Médias</div>
-                                <div class="col-md-5"></div>
+                                <div class="col-md-1"></div>
+                                <div id="stratupbtn" class="fake-btn-green btn col-md-3 " onclick="showStartups()">Startups</div>
+                                <div class="col-md-1"></div>
                                 <div class="col-md-12">
                                     <hr>
                                 </div>
@@ -91,7 +93,7 @@
                                         </div>
                                         <div class="col-md-5">
                                             <h3>{{ recom.name }}</h3>
-                                            <p>{{ recom.category }}</p>
+                                            {% if recom.type != 'Startup' %}<p>{{ recom.category }}</p> {% endif %}
                                         </div>
                                         <div class="col-md-4">
                                             <p>{{ recom.likesCount }} recommandation(s) !</p>
@@ -149,15 +151,22 @@
         function showResources() {
             $('.profile-recom-single').removeClass('active');
             $('.profile-recom-type-Resource').addClass('active');
-            $('#servicebtn').addClass('active');
+            $('.btn').addClass('active');
             $('#mediabtn').removeClass('active')
         }
 
         function showMedia() {
             $('.profile-recom-single').removeClass('active');
             $('.profile-recom-type-Media').addClass('active');
-            $('#servicebtn').removeClass('active');
+            $('.btn').removeClass('active');
             $('#mediabtn').addClass('active')
+        }
+
+        function showStartups() {
+            $('.profile-recom-single').removeClass('active');
+            $('.profile-recom-type-Startup').addClass('active');
+            $('.btn').removeClass('active');
+            $('#startupbtn').addClass('active')
         }
     </script>
 {% endblock%}

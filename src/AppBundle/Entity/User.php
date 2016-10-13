@@ -37,9 +37,34 @@ class User implements UserInterface//, \Serializable
     private $email;
 
     /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $firstName;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $lastName;
+
+    /**
      * @ORM\Column(type="string")
      */
     private $name;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $gender;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $nationality;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $studies;
 
     /**
      * @ORM\Column(type="string")
@@ -124,7 +149,7 @@ class User implements UserInterface//, \Serializable
             $roles[] = 'ROLE_USER';
         }
 
-        if ($this->id == 1){
+        if (/*$this->id == */1){
             $roles[] .= 'ROLE_ADMIN';
         }
 
@@ -183,7 +208,7 @@ class User implements UserInterface//, \Serializable
     public function setPlainPassword($plainPassword)
     {
         $this->plainPassword = $plainPassword;
-        $this->password = null;
+        //$this->password = null;
     }
 
     /**
@@ -293,7 +318,7 @@ class User implements UserInterface//, \Serializable
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = $this->firstName+$this->lastName;
     }
 
     /**
@@ -376,6 +401,86 @@ class User implements UserInterface//, \Serializable
     public function setViews($views)
     {
         $this->views = $views;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * @param mixed $firstName
+     */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * @param mixed $lastName
+     */
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGender()
+    {
+        return $this->gender;
+    }
+
+    /**
+     * @param mixed $gender
+     */
+    public function setGender($gender)
+    {
+        $this->gender = $gender;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNationality()
+    {
+        return $this->nationality;
+    }
+
+    /**
+     * @param mixed $nationality
+     */
+    public function setNationality($nationality)
+    {
+        $this->nationality = $nationality;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStudies()
+    {
+        return $this->studies;
+    }
+
+    /**
+     * @param mixed $studies
+     */
+    public function setStudies($studies)
+    {
+        $this->studies = $studies;
     }
 
 }

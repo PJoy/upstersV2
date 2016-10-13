@@ -41,7 +41,8 @@ twig:
         - bootstrap_3_layout.html.twig
     #fb key : 1208681975854701 / fb dev key : 1208682615854637
     globals:
-        fbKey: "1208681975854701"
+        fbKey: "1208682615854637"
+        gmapKey: "AIzaSyBTBGWmugxUPxuYSkl_vqXIh6mEd_b9Qmo"
 
 # Doctrine Configuration
 doctrine:
@@ -72,3 +73,4 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+

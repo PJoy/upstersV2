@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container edit-user-container">
+        <div class="col-md-12 text-center">
+            <h1>Modifier un profil</h1>
+            {{ form_start(userEditForm) }}
+        </div>
+        <div class="col-md-12">
+            <h2 class="text-center">Mes infos</h2>
+            <div class="col-md-12">
+                {% if profilePic is not empty %}
+                    <img src="{{ asset('uploads/avatars/'~profilePic) }}">
+                {% endif %}
+                {{ form_row(userEditForm.image) }}
+            </div>
+            <div class="col-md-6">{{ form_row(userEditForm.firstName) }}</div>
+            <div class="col-md-6">{{ form_row(userEditForm.lastName) }}</div>
+            <div class="col-md-6">{{ form_row(userEditForm.gender) }}</div>
+            <div class="col-md-6">{{ form_row(userEditForm.birthDate) }}</div>
+            <div class="col-md-6">{{ form_row(userEditForm.nationality) }}</div>
+        </div>
+    <div class="col-md-12">
+        <h2 class="text-center">Mon profil d'entrepreneur</h2>
+        <div class="col-md-12">
+            {{ form_row(userEditForm.pitch) }}
+        </div>
+    </div>
+        <div class="col-md-12 text-center">
+            <button type="submit" class="btn fake-btn-orange">ENREGISTRER</button>
+            {{ form_end(userEditForm) }}
+        </div>
+{% endblock %}

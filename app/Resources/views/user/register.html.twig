@@ -11,7 +11,7 @@
                 <div class="register-container-in col-md-12">
                 <div class="col-xs-12">
                     <div class="col-xs-4 text-center">
-                        <div id="number1" class="numberCircle active">1</div>
+                        <div id="number1" class="numberCircle active" >1</div>
                         <div class="col-xs-3"></div>
                         <div class="col-xs-6">
                             <p>Je choisis ma méthode d'inscription</p>
@@ -64,8 +64,8 @@
                     <div class="col-md-4">
                         <div class="col-xs-12">
                             {{ form_start(form) }}
-                            {{ form_row(form.email) }}
                             {{ form_row(form.name) }}
+                            {{ form_row(form.email) }}
                             {{ form_row(form.plainPassword.first, {
                                 'label' : 'Mot de passe'
                             }) }}
@@ -83,16 +83,17 @@
                     <div class="col-md-2"></div>
                     <div class="col-md-8">
                         <div class="col-xs-12 register-cat-entrepreneur">
-                            <div class="col-xs-1 checkbox-container">
+                            <div class="col-xs-2 checkbox-container">
                                 {{ form_row(form.roles.0) }}
                             </div>
-                            <div class="col-xs-11 register-cat-desc">Je suis entrepreneur et je souhaite consulter l'annuaire et la médiathèque</div>
+                            <div class="col-xs-10 register-cat-desc">Je suis entrepreneur et je souhaite consulter l'annuaire et la médiathèque</div>
                         </div>
+                        <hr>
                         <div class="col-xs-12 register-cat-resource">
-                            <div class="col-xs-1 checkbox-container">
+                            <div class="col-xs-2 checkbox-container">
                                 {{ form_row(form.roles.1) }}
                             </div>
-                            <div class="col-xs-11 register-cat-desc">Je fournis des services pour les entrepreneurs et je souhaite figurer dans l'annuaire</div>
+                            <div class="col-xs-10 register-cat-desc">Je fournis des services pour les entrepreneurs et je souhaite figurer dans l'annuaire</div>
                         </div>
                         <div class="col-xs-1"></div>
                         <div class="col-xs-10 register-CTA-news">
