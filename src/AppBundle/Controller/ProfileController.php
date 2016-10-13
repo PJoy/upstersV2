@@ -53,8 +53,8 @@ class ProfileController extends Controller {
             $totalRecomViews += $object->getViews();
             array_push($recomObjects,$object);
             $recomCount++;
-            //dump($object);exit;
         }
+
 
         $startupViews = 0;
 
