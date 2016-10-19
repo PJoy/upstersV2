@@ -19,7 +19,7 @@ class SearchController extends Controller
      * @Route("/search", name="search_results")
      */
     function searchAction(){
-        if ( $_GET['args'] == 0 )
+        if ( $_GET['args'] == null )
             return $this->render('search/empty.html.twig');
 
         $args = explode(',', $_GET['args']);
