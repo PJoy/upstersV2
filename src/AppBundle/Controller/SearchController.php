@@ -9,9 +9,17 @@
 namespace AppBundle\Controller;
 
 
-class SearchController
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+class SearchController extends Controller
 {
-    function searchAction($searchTerm){
+    /**
+     * @Route("/search/", name="search_results")
+     */
+    function searchAction(){
+        $args = $_GET;
+
         $resources = $this->getDoctrine()->getManager()
             ->getRepository('AppBundle:Resource')
             ->findAll();
@@ -23,6 +31,18 @@ class SearchController
         $startups = $this->getDoctrine()->getManager()
             ->getRepository('AppBundle:Startup')
             ->findAll();
+
+        $sMedia = serialize($media[0]);
+        echo strcmp($args,$sMedia);
+
+
+        dump(serialize($media[0]));die;
+
+        return $this->render('search/index.html.twig',[
+            'resources' => $resources,
+            'medias' => $media,
+            'startups' => $startups
+        ]);
     }
 
 }

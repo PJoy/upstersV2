@@ -1,0 +1,155 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Résultats de la recherche
+{% endblock %}
+
+{% block body %}
+    <div class="container" id="media-home-container">
+        <section class="" id="profile-main">
+            <div class="col-md-12 text-center">
+                <h1>Résultats de la recherche :</h1>
+                <h2>Media</h2>
+            </div>
+
+            <div class="col-md-12">
+                <table class="table table-striped table-hover">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Ajouté par</th>
+                        <th>Ajouté le</th>
+                        <th>Recommandations</th>
+                        <th></th>
+                    </tr>
+                    {% for media in medias %}
+                        <tr>
+                            <th>{{ media.id}}</th>
+                            <th><a href="{{ path('media_display', { 'name' : media.name} ) }}">{{ media.name }}</a> </th>
+                            <th>{{ media.submittedBy }}</th>
+                            <th>{{ media.dateSubmitted|date('d/m/Y') }}</th>
+                            <th>{{ media.likesCount }}</th>
+                            {% if app.user %}
+                                <th><div id="{{ media.id }}" class="btn fake-btn-orange recom-btn">Recommander</div></th>
+                            {% else %}
+                                <th><a href="{{ path('security_login') }}"><div id="{{ media.id }}" class="btn fake-btn-orange recom-btn-disabled">Recommander</div></a> </th>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+            <div class="col-xs-4"></div>
+            <div class="col-xs-4 text-center">
+                <a href="{{ path('media_add') }}"><div class="col-md-12 fake-btn fake-btn-orange" id="search-btn">Ajouter un média</div></a>
+            </div>
+            <div class="col-xs-4"></div>
+        </section>
+    </div>
+
+    <div class="container" id="resources-home-container">
+        <section class="wip" id="profile-main">
+            <div class="col-md-12 text-center">
+                <h2>Prestataires</h2>
+            </div>
+
+            <div class="col-md-12">
+                <table class="table table-striped table-hover">
+                    <tr>
+                        <th>Nom</th>
+                        <th>Catégorie</th>
+                        <th>Entreprise</th>
+                        <th>Recommandations</th>
+                        <th></th>
+                    </tr>
+                    {% for resource in resources %}
+                        <tr>
+                            <th><a href="{{ path('resource_display',
+                                { 'name' : resource.name} ) }}">{{ resource.name }}</a> </th>
+                            <th>{{ resource.category }}</th>
+                            <th>{{ resource.company }}</th>
+                            <th>{{ resource.likesCount }}</th>
+                            {% if app.user %}
+                                <th><div id="{{ resource.id }}" class="btn fake-btn-orange recom-btn">Recommander</div></th>
+                            {% else %}
+                                <th><a href="{{ path('security_login') }}"><div id="{{ resource.id }}" class="btn fake-btn-orange recom-btn-disabled">Recommander</div></a> </th>
+                            {% endif %}
+                        </tr>
+
+                        {#<div class="col-md-4 text-center service-card-large">
+                            <div class="col-md-12">
+                                <img src="{{ extract.photoUrl }}" alt="photo de {{ extract.name }}, catégorie : {{ extract.categoryName }}">
+                                <br>
+                                <img class="cat-img" src="{{ asset('images/icons/' ~ extract.category ~ '.png') }}" alt="logo de la catégorie {{ extract.categoryName }}">
+                                <h4>{{ extract.categoryName }}</h4>
+                                <h5>{{ extract.name }}</h5>
+                                <div class="card-pitch">
+                                    <p>{{ extract.pitch }}</p>
+                                </div>
+                                <div class="card-recommendation">
+                                    <p><i class="fa fa-thumbs-o-up"></i> <b>{{ extract.recom }}</b> recommandations</p>
+                                </div>
+                                <a href=""><div class="col-md-6 fake-btn fake-btn-grey">Voir la suite</div></a>
+                                <a href=""><div class="col-md-6 fake-btn fake-btn-orange">Recommander</div></a>
+                            </div>
+                        </div>#}
+
+                    {% endfor %}
+
+                    <div class="col-xs-4"></div>
+                    <div class="col-xs-4 text-center">
+                        <a href="{{ path('resource_add') }}"><div class="col-md-12 fake-btn fake-btn-orange" id="search-btn">Ajouter un prestataire</div></a>
+                    </div>
+                    <div class="col-xs-4"></div>
+
+
+                </table>
+            </div>
+
+
+        </section>
+    </div>
+
+    <div class="container" id="resources-home-container">
+        <section class="wip" id="profile-main">
+            <div class="col-md-12 text-center">
+                <h2>Startups</h2>
+            </div>
+
+            <div class="col-md-12">
+                <table class="table table-striped table-hover">
+                    <tr>
+                        <th>Nom</th>
+                        <th>Enregistré par</th>
+                        <th>Recommandations</th>
+                        <th></th>
+                    </tr>
+                    {% for startup in startups %}
+                        <tr>
+                            <th><a href="{{ path('startup_display',
+                                { 'name' : startup.name} ) }}">{{ startup.name }}</a> </th>
+                            <th>{{ startup.submittedBy}}</th>
+                            <th>{{ startup.likesCount }}</th>
+                            {% if app.user %}
+                                <th><div id="{{ startup.id }}" class="btn fake-btn-orange recom-btn">Recommander</div></th>
+                            {% else %}
+                                <th><a href="{{ path('security_login') }}"><div id="{{ startup.id }}" class="btn fake-btn-orange recom-btn-disabled">Recommander</div></a> </th>
+                            {% endif %}
+                        </tr>
+
+                    {% endfor %}
+
+                    <div class="col-xs-4"></div>
+                    <div class="col-xs-4 text-center">
+                        <a href="{{ path('startup_add') }}"><div class="col-md-12 fake-btn fake-btn-orange" id="search-btn">Ajouter une startup</div></a>
+                    </div>
+                    <div class="col-xs-4"></div>
+
+                </table>
+            </div>
+
+
+        </section>
+    </div>
+
+{% endblock %}
