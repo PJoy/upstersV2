@@ -39,12 +39,39 @@ class Notification
     /**
      * @ORM\Column(type="integer")
      */
+    private $notifObjectId;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
     private $authorId;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $destId;
 
     /**
      * @ORM\Column(type="string")
      */
     private $message;
+
+    /**
+     * Notification constructor.
+     * @param $type
+     * @param $notifObject
+     * @param $notifObjectId
+     * @param $destId
+     * @param $message
+     */
+    public function __construct($type, $notifObject, $notifObjectId, $destId)
+    {
+        $this->type = $type;
+        $this->notifObject = $notifObject;
+        $this->notifObjectId = $notifObjectId;
+        $this->destId = $destId;
+    }
+
 
     /**
      * @return mixed
@@ -134,5 +161,36 @@ class Notification
         $this->authorId = $authorId;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getDestId()
+    {
+        return $this->destId;
+    }
+
+    /**
+     * @param mixed $destId
+     */
+    public function setDestId($destId)
+    {
+        $this->destId = $destId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNotifObjectId()
+    {
+        return $this->notifObjectId;
+    }
+
+    /**
+     * @param mixed $notifObjectId
+     */
+    public function setNotifObjectId($notifObjectId)
+    {
+        $this->notifObjectId = $notifObjectId;
+    }
 
 }

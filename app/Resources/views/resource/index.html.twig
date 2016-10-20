@@ -31,7 +31,7 @@
                             {% if app.user %}
                                 <th><div id="{{ resource.id }}" class="btn fake-btn-orange recom-btn">Recommander</div></th>
                             {% else %}
-                                <th><a href="{{ path('security_login') }}"><div id="{{ resource.id }}" class="btn fake-btn-orange recom-btn-disabled">Recommander</div></a> </th>
+                                <th><a href="{{ path('login') }}"><div id="{{ resource.id }}" class="btn fake-btn-orange recom-btn-disabled">Recommander</div></a> </th>
                             {% endif %}
                         </tr>
 

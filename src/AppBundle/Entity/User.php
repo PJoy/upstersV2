@@ -318,7 +318,7 @@ class User implements UserInterface//, \Serializable
      */
     public function setName($name)
     {
-        $this->name = $this->firstName+$this->lastName;
+        $this->name = $name;
     }
 
     /**

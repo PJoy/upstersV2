@@ -20,7 +20,6 @@ class UserRegistrationForm extends AbstractType
     {
         $builder
             ->add('email', EmailType::class)
-            ->add('name', TextType::class)
             ->add('plainPassword', RepeatedType::class,[
                 'type' => PasswordType::class
             ])

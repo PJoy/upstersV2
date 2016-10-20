@@ -10,6 +10,7 @@ namespace AppBundle\Controller;
 
 
 use AppBundle\Entity\Like;
+use AppBundle\Entity\Notification;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -59,8 +60,6 @@ class LikeController extends Controller
 
             //increase user like count
             $user->setLikedCount($user->getLikedCount()+1);
-            $em->flush();
-
 
             $response = 'like added';
         } else {
@@ -73,9 +72,20 @@ class LikeController extends Controller
 
             //decrease user like count
             $user->setLikedCount($user->getLikedCount()-1);
-            $em->flush();
 
             $response = 'like removed';
+        }
+
+        //send notification
+        $likes = $em->getRepository(Like::class)->findBy([
+            'contentType' => $contentType,
+            'contentId' => $contentId
+        ]);
+
+        foreach ($likes as $like){
+            $notification = new Notification('like',$contentType,$contentId,$like->getUserId());
+            $notification->setMessage($response);
+            $em->flush();
         }
 
         return new Response('ok');
