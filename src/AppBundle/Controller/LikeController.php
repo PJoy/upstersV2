@@ -84,9 +84,10 @@ class LikeController extends Controller
         }
 
         $em->flush();
-        $unread = $em->getRepository('AppBundle:Notification')->findAll([
+
+        $unread = $em->getRepository('AppBundle:Notification')->findBy([
             'destId' => $notifiedUser->getId(),
-            'unread' => true
+            'wasRead' => false
         ]);
 
         $user->setUnreadNotifications(count($unread));
