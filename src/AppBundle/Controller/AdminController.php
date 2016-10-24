@@ -272,4 +272,21 @@ class AdminController extends Controller
         ]);
     }
 
+    /**
+     * @Route("/AJAX/read", name="ajax_read")
+     */
+    public function ajaxReadAction(Request $request){
+        $id = $request->get('id');
+
+        $em = $this->getDoctrine()->getManager();
+        $notif = $em->getRepository('AppBundle:Notification')->findOneBy([
+            'id' => $id
+        ]);
+
+        $notif->setWasRead(true);
+        $em->flush();
+
+        return new Response('yo');
+    }
+
 }

@@ -66,7 +66,7 @@ class LikeController extends Controller
 
             $response = 'Nouvelle recommandation';
 
-            $notification = new Notification('Recommandation',$contentType,$contentId,$like->getUserId());
+            $notification = new Notification('Recommandation',$contentType,$contentId,$notifiedUser);
             $notification->setMessage($response);
             $user->setUnreadNotifications($user->getUnreadNotifications() + 1);
             $em->persist($notification);
