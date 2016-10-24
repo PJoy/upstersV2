@@ -40,7 +40,6 @@
 
                         <div class="col-md-2" id="notif-tab">
                             {% if is_granted('ROLE_USER') %}
-
                             {% if app.user.unreadNotifications == 0 or app.user.unreadNotifications == null %}
                                 <div class="col-md-4 text-center">
                                     <i class="fa fa-bell"></i>

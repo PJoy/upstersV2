@@ -29,7 +29,7 @@ class UserController extends Controller
             $user = $form->getData();
             echo explode('@',$user->getEmail())[0];
             if ($user->getName() === null) {
-                $user->setName(explode('@',$user->getEmail())[0]);
+                $user->setName(explode('@',$user->getEmail())[0].rand(0,99));
             }
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);

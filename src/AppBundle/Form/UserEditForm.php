@@ -18,6 +18,7 @@ class UserEditForm extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('name')
             ->add('firstName')
             ->add('lastName')
             ->add('nationality')
