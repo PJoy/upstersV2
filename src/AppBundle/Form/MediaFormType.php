@@ -16,7 +16,7 @@ class MediaFormType extends AbstractType
             ->add('name')
             ->add('link')
             ->add('category')
-            ->add('comment')
+            ->add('description')
             ->add('tags', TextType::class,[
                 'attr' => array( 'placeholder' => 'Entrez les mots-clé, séparés par des virgules')
             ])

@@ -39,12 +39,41 @@ class Notification
     /**
      * @ORM\Column(type="integer")
      */
+    private $notifObjectId;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
     private $authorId;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="integer")
+     */
+    private $destId;
+
+    /**
+     * @ORM\Column(type="text")
      */
     private $message;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $wasRead;
+
+
+    /**
+     * Notification constructor.
+     */
+    public function __construct($type, $notifObject, $notifObjectId, $destId)
+    {
+        $this->type = $type;
+        $this->notifObject = $notifObject;
+        $this->notifObjectId = $notifObjectId;
+        $this->destId = $destId;
+        $this->wasRead = false;
+    }
+
 
     /**
      * @return mixed
@@ -133,6 +162,55 @@ class Notification
     {
         $this->authorId = $authorId;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getDestId()
+    {
+        return $this->destId;
+    }
+
+    /**
+     * @param mixed $destId
+     */
+    public function setDestId($destId)
+    {
+        $this->destId = $destId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNotifObjectId()
+    {
+        return $this->notifObjectId;
+    }
+
+    /**
+     * @param mixed $notifObjectId
+     */
+    public function setNotifObjectId($notifObjectId)
+    {
+        $this->notifObjectId = $notifObjectId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getWasRead()
+    {
+        return $this->wasRead;
+    }
+
+    /**
+     * @param mixed $wasRead
+     */
+    public function setWasRead($wasRead)
+    {
+        $this->wasRead = $wasRead;
+    }
+
 
 
 }

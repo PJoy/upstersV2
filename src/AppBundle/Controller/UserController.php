@@ -27,15 +27,15 @@ class UserController extends Controller
 
         if($form->isValid()) {
             $user = $form->getData();
+            echo explode('@',$user->getEmail())[0];
             if ($user->getName() === null) {
                 $user->setName(explode('@',$user->getEmail())[0]);
             }
-
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
-
             $this->addFlash('success', 'Bienvenue '.$user->getEmail());
+
 
             return $this->get('security.authentication.guard_handler')
                 ->authenticateUserAndHandleSuccess(

@@ -10,6 +10,7 @@ namespace AppBundle\Controller;
 
 
 use AppBundle\Entity\Like;
+use AppBundle\Entity\Notification;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -42,6 +43,10 @@ class LikeController extends Controller
             'id' => $userId
         ]);
 
+        $notifiedUser = $em->getRepository('AppBundle:User')->findOneBy([
+            'id' => $content->getSubmittedBy()
+        ]);
+
         if ($like === null) {
             //Save like
             $like = new Like();
@@ -55,28 +60,38 @@ class LikeController extends Controller
 
             //increase content like count
             $content->setLikesCount($content->getLikesCount()+1);
-            $em->flush();
 
             //increase user like count
             $user->setLikedCount($user->getLikedCount()+1);
-            $em->flush();
 
+            $response = 'Nouvelle recommandation';
 
-            $response = 'like added';
+            $notification = new Notification('Recommandation',$contentType,$contentId,$notifiedUser->getId());
+            $notification->setMessage($response);
+            $em->persist($notification);
+
         } else {
             //remove like
             $em->remove($like);
 
             //decrease content like count
             $content->setLikesCount($content->getLikesCount()-1);
-            $em->flush();
 
             //decrease user like count
             $user->setLikedCount($user->getLikedCount()-1);
-            $em->flush();
 
             $response = 'like removed';
         }
+
+        $em->flush();
+        $unread = $em->getRepository('AppBundle:Notification')->findAll([
+            'destId' => $notifiedUser->getId(),
+            'unread' => true
+        ]);
+
+        $user->setUnreadNotifications(count($unread));
+        $em->flush();
+
 
         return new Response('ok');
     }

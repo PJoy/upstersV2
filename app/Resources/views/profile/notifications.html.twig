@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container" id="media-home-container">
+        <section class="" id="profile-main">
+            <div class="col-md-12 text-center">
+                <h1>Index des notifications</h1>
+            </div>
+
+            <div class="col-md-12">
+                <table class="table table-striped table-hover">
+                    {% for notification in notifications %}
+                        <tr {% if notification.wasRead == 1 %} class="disabled" {% endif %}>
+                            <th>{{ notification.type }}</th>
+                            <th>{{ notification.message }}</th>
+                            <th><a href="{{ path(notification.notifObject|lower~'_display',{'name':objects[loop.index0].name}) }}">{{ objects[loop.index0].name }}</a></th>
+                            <th><a class="read-btn" id="{{ notification.id }}">{% if notification.wasRead == 0 %}✅ marquer comme lu {% endif %}</a> </th>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+        </section>
+    </div>
+
+
+{% endblock %}
+
+{% block additional_javascript %}
+    <script>
+        function read(id) {
+            var route = "{{ path('ajax_read') }}";
+            $.post(route,
+                    {% if app.user %}
+                    {'id' : id},
+                    {% endif %}
+                    function (response) {
+                        location.reload();
+                    })
+        }
+
+        $(document).ready(function () {
+            $('.read-btn').on('click', function () {
+                read($(this).attr('id'));
+            })
+        })
+    </script>
+{%  endblock %}
