@@ -66,9 +66,8 @@ class LikeController extends Controller
 
             $response = 'Nouvelle recommandation';
 
-            $notification = new Notification('Recommandation',$contentType,$contentId,$notifiedUser);
+            $notification = new Notification('Recommandation',$contentType,$contentId,$notifiedUser->getId());
             $notification->setMessage($response);
-            $user->setUnreadNotifications($user->getUnreadNotifications() + 1);
             $em->persist($notification);
 
         } else {
@@ -85,6 +84,14 @@ class LikeController extends Controller
         }
 
         $em->flush();
+        $unread = $em->getRepository('AppBundle:Notification')->findAll([
+            'destId' => $notifiedUser->getId(),
+            'unread' => true
+        ]);
+
+        $user->setUnreadNotifications(count($unread));
+        $em->flush();
+
 
         return new Response('ok');
     }

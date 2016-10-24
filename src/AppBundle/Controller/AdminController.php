@@ -286,6 +286,18 @@ class AdminController extends Controller
         $notif->setWasRead(true);
         $em->flush();
 
+        $unread = $em->getRepository('AppBundle:Notification')->findAll([
+            'destId' => $notif->getDestId(),
+            'unread' => true
+        ]);
+
+        $user = $em->getRepository('AppBundle:User')->findOneBy([
+            'id' => $notif->getDestId()
+        ]);
+
+        $user->setUnreadNotifications(count($unread));
+
+
         return new Response('yo');
     }
 
