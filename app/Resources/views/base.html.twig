@@ -37,17 +37,33 @@
                                 <a href="#"><i class="fa fa-comment"></i></a>
                             </div>
                         </div>
+
                         <div class="col-md-2" id="notif-tab">
-                            <div class="col-md-4 text-center">
-                                <i class="fa fa-bell"></i>
-                            </div>
-                            <div class="col-md-4 text-center">
-                                <p>(0)</p>
-                            </div>
-                            <div class="col-md-4 text-center">
-                                <i class="fa fa-angle-up"></i>
-                            </div>
+                            {% if app.user.unreadNotifications == 0 or app.user.unreadNotifications == null %}
+                                <div class="col-md-4 text-center">
+                                    <i class="fa fa-bell"></i>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    <p>(0)</p>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    <i class="fa fa-angle-up"></i>
+                                </div>
+                            {% else %}
+                                <a href="{{ path('user_notifications', {'name':app.user.username}) }}">
+                                    <div class="col-md-4 text-center">
+                                        <i class="fa fa-bell nactive"></i>
+                                    </div>
+                                    <div class="col-md-4 text-center">
+                                        <p>({{ app.user.unreadNotifications }})</p>
+                                    </div>
+                                    <div class="col-md-4 text-center">
+                                        <i class="fa fa-angle-up"></i>
+                                    </div>
+                                </a>
+                            {% endif %}
                         </div>
+
                         <div class="col-md-4 text-center" id="greet-tab">
                             {% if is_granted('ROLE_USER') %}
                                 <p>Salut, <a href="{{ path('user', {'name':app.user.username}) }}">{{ app.user.username }}</a> | <a href="{{ path('security_logout') }}">Se déconnecter</a></p>

@@ -85,6 +85,36 @@ class ProfileController extends Controller {
     }
 
     /**
+     * @Route("/user/{name}/notifications", name="user_notifications")
+     */
+    function displayNotificationsAction($name){
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('AppBundle:User')->findOneBy(array(
+            'name' => $name
+        ));
+
+        $notifications = $em->getRepository('AppBundle:Notification')->findBy(array(
+            'destId' => $user->getId()
+        ));
+
+        $objects = [];
+
+        foreach ($notifications as $notification){
+            $object = $em->getRepository('AppBundle:'.$notification->getNotifObject())->findOneBy([
+                'id' => $notification->getNotifObjectId()
+            ]);
+            array_push($objects, $object);
+        }
+
+        //dump($notifications);die;
+
+        return $this->render('profile/notifications.html.twig', [
+            'notifications' => $notifications,
+            'objects' => $objects
+        ]);
+    }
+
+    /**
      * @Route("/user/{name}/edit", name="user_edit")
      */
     function editProfileAction($name, Request $request){

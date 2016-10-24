@@ -107,6 +107,11 @@ class Resource
     private $views;
 
     /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     */
+    private $submittedBy;
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -410,5 +415,20 @@ class Resource
         $this->image = $image;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getSubmittedBy()
+    {
+        return $this->submittedBy;
+    }
+
+    /**
+     * @param mixed $submittedBy
+     */
+    public function setSubmittedBy($submittedBy)
+    {
+        $this->submittedBy = $submittedBy;
+    }
 
 }

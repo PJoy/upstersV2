@@ -42,7 +42,7 @@ class Notification
     private $notifObjectId;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $authorId;
 
@@ -52,17 +52,18 @@ class Notification
     private $destId;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="text")
      */
     private $message;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    private $wasRead;
+
+
+    /**
      * Notification constructor.
-     * @param $type
-     * @param $notifObject
-     * @param $notifObjectId
-     * @param $destId
-     * @param $message
      */
     public function __construct($type, $notifObject, $notifObjectId, $destId)
     {
@@ -70,6 +71,7 @@ class Notification
         $this->notifObject = $notifObject;
         $this->notifObjectId = $notifObjectId;
         $this->destId = $destId;
+        $this->wasRead = false;
     }
 
 
@@ -192,5 +194,23 @@ class Notification
     {
         $this->notifObjectId = $notifObjectId;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getWasRead()
+    {
+        return $this->wasRead;
+    }
+
+    /**
+     * @param mixed $wasRead
+     */
+    public function setWasRead($wasRead)
+    {
+        $this->wasRead = $wasRead;
+    }
+
+
 
 }

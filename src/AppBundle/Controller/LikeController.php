@@ -43,6 +43,10 @@ class LikeController extends Controller
             'id' => $userId
         ]);
 
+        $notifiedUser = $em->getRepository('AppBundle:User')->findOneBy([
+            'id' => $content->getSubmittedBy()
+        ]);
+
         if ($like === null) {
             //Save like
             $like = new Like();
@@ -56,19 +60,23 @@ class LikeController extends Controller
 
             //increase content like count
             $content->setLikesCount($content->getLikesCount()+1);
-            $em->flush();
 
             //increase user like count
             $user->setLikedCount($user->getLikedCount()+1);
 
-            $response = 'like added';
+            $response = 'Nouvelle recommandation';
+
+            $notification = new Notification('Recommandation',$contentType,$contentId,$like->getUserId());
+            $notification->setMessage($response);
+            $user->setUnreadNotifications($user->getUnreadNotifications() + 1);
+            $em->persist($notification);
+
         } else {
             //remove like
             $em->remove($like);
 
             //decrease content like count
             $content->setLikesCount($content->getLikesCount()-1);
-            $em->flush();
 
             //decrease user like count
             $user->setLikedCount($user->getLikedCount()-1);
@@ -76,17 +84,7 @@ class LikeController extends Controller
             $response = 'like removed';
         }
 
-        //send notification
-        $likes = $em->getRepository(Like::class)->findBy([
-            'contentType' => $contentType,
-            'contentId' => $contentId
-        ]);
-
-        foreach ($likes as $like){
-            $notification = new Notification('like',$contentType,$contentId,$like->getUserId());
-            $notification->setMessage($response);
-            $em->flush();
-        }
+        $em->flush();
 
         return new Response('ok');
     }

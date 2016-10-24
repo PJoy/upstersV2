@@ -124,6 +124,11 @@ class User implements UserInterface//, \Serializable
     private $likesCount;
 
     /**
+     * @ORM\Column(type="integer")
+     */
+    private $unreadNotifications;
+
+    /**
      * @ORM\Column(type="string")
      */
     private $views;
@@ -135,6 +140,7 @@ class User implements UserInterface//, \Serializable
         $this->setLikedCount(0);
         $this->setLikesCount(0);
         $this->setViews(0);
+        $this->setUnreadNotifications(0);
     }
 
     public function getUsername()
@@ -482,5 +488,22 @@ class User implements UserInterface//, \Serializable
     {
         $this->studies = $studies;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getUnreadNotifications()
+    {
+        return $this->unreadNotifications;
+    }
+
+    /**
+     * @param mixed $unreadNotifications
+     */
+    public function setUnreadNotifications($unreadNotifications)
+    {
+        $this->unreadNotifications = $unreadNotifications;
+    }
+
 
 }

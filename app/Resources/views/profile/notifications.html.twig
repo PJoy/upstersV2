@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container" id="media-home-container">
+        <section class="" id="profile-main">
+            <div class="col-md-12 text-center">
+                <h1>Index des notifications</h1>
+            </div>
+
+            <div class="col-md-12">
+                <table class="table table-striped table-hover">
+                    {% for notification in notifications %}
+                        <tr>
+                            <th>{{ notification.type }}</th>
+                            <th>{{ notification.message }}</th>
+                            <th><a href="{{ path(notification.notifObject|lower~'_display',{'name':objects[loop.index0].name}) }}">{{ objects[loop.index0].name }}</a></th>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+        </section>
+    </div>
+
+
+{% endblock %}
+
