@@ -15,6 +15,7 @@ use AppBundle\Entity\User;
 use AppBundle\Form\UserEditForm;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\Request;
 
 
@@ -55,6 +56,27 @@ class ProfileController extends Controller {
             $recomCount++;
         }
 
+        $finder = new Finder();
+        $finder->in(__DIR__ . '/../articles/questions');
+        //$pathname = $finder->getRelativePathname();
+        foreach ($finder as $file){
+            $content = str_replace('"','',$file->getContents());
+            $lines = explode(PHP_EOL,$content);
+            $qr = [];
+            $ql = [];
+            $i = 0;
+            foreach ($lines as $line){
+                $e = explode(';',$line);
+                $qr[$i] = $e[0];
+                $ql[$i] = $e[1];
+                $i++;
+            }
+        }
+        $r = rand(0,$i);
+        $question = [$qr[$r],$ql[$r]];
+
+
+
 
         $startupViews = 0;
 
@@ -75,7 +97,8 @@ class ProfileController extends Controller {
                 'recomViews' => $totalRecomViews,
                 'startupViews' => $startupViews,
                 'recoms' => $recomObjects,
-                'projects' => $projects
+                'projects' => $projects,
+                'question' => $question
             ]);
         } else {
             return $this->render('profile/empty.thml.twig', [
