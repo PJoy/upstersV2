@@ -15,6 +15,21 @@
         console.log(pins);
 
         pins.forEach(function(a,e){
+            if (
+                    a.category != 'info' &&
+                    a.category != 'conseil' &&
+                    a.category != 'comptabilite' &&
+                    a.category != 'formation' &&
+                    a.category != 'dev' &&
+                    a.category != 'incubateur' &&
+                    a.category != 'juridique' &&
+                    a.category != 'crowfunding' &&
+                    a.category != 'autres' &&
+                    a.category != 'marketing' &&
+                    a.category != 'concours' &&
+                    a.category != 'graphisme' &&
+                    a.category != 'conseil'
+            ) a.category = 'autres';
             markers[e] = new google.maps.Marker({
                 position: new google.maps.LatLng(a.lat, a.long),
                 map: map,

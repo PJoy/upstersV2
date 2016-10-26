@@ -40,11 +40,51 @@ class SearchController extends Controller
         $selectedMedia = [];
         $selectedStartups = [];
 
+        $mapData = [];
+        
+
         foreach ($args as $arg){
             foreach ($resources as $resource){
-                if (strpos(serialize($resource), $arg) > 0) array_push($selectedResources,$resource); }
-            foreach ($mediaz as $media){ if (strpos(serialize($media), $arg) > 0) array_push($selectedMedia,$media); }
-            foreach ($startups as $startup){ if (strpos(serialize($startup), $arg) > 0) array_push($selectedStartups,$startup); }
+                if (strpos(serialize($resource), $arg) > 0) {
+                    array_push($selectedResources,$resource);
+                    $lat = floatval($resource->getGPSLat());
+                    $long = floatval($resource->getGPSLong());
+
+                    if ($lat != 0 && $long != 0){
+
+                        array_push($mapData, [
+                            'type' => 'resource',
+                            'name' => $resource->getName(),
+                            'category' => $resource->getCategory(),
+                            'lat' => $lat,
+                            'long' => $long
+                        ]);
+                    }
+
+                }
+            }
+            foreach ($mediaz as $media){
+                if (strpos(serialize($media), $arg) > 0) {
+                    array_push($selectedMedia,$media);
+                }
+            }
+            foreach ($startups as $startup){
+                if (strpos(serialize($startup), $arg) > 0) {
+                    array_push($selectedStartups,$startup);
+                    $lat = floatval($startup->getGPSLat());
+                    $long = floatval($startup->getGPSLong());
+
+                    if ($lat != 0 && $long != 0){
+                        array_push($mapData,[
+                            'type' => 'startup',
+                            'name' => $startup->getName(),
+                            'lat' => $lat,
+                            'long' => $long
+                        ]);
+                    }
+
+                }
+            }
         }
 
         if (empty($selectedResources) && empty($selectedMedia) && empty($selectedStartups))
@@ -53,7 +93,8 @@ class SearchController extends Controller
         return $this->render('search/index.html.twig',[
             'resources' => $selectedResources,
             'medias' => $selectedMedia,
-            'startups' => $selectedStartups
+            'startups' => $selectedStartups,
+            'mapData' => $mapData
         ]);
     }
 

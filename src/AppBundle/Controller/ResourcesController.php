@@ -29,14 +29,36 @@ class ResourcesController extends Controller {
             ->findAll();
 
         $search = '';
+
+        $mapData = [];
+
+        foreach ($resources as $resource){
+
+            $lat = floatval($resource->getGPSLat());
+            $long = floatval($resource->getGPSLong());
+
+            if ($lat != 0 && $long != 0){
+
+                array_push($mapData, [
+                    'type' => 'resource',
+                    'name' => $resource->getName(),
+                    'category' => $resource->getCategory(),
+                    'lat' => $lat,
+                    'long' => $long
+                ]);
+            }
+        }
+
+
         if(isset($_GET['search'])) {
             $search = $_GET['search'];
         }
 
             return $this->render('resource/index.html.twig',[
-            'title' => 'Annuaire des prestataires | Upsters',
-            'resources' => $resources,
-            'search' => $search
+                'title' => 'Annuaire des prestataires | Upsters',
+                'resources' => $resources,
+                'search' => $search,
+                'mapData' => $mapData
         ]);
 
     }

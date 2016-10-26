@@ -6,11 +6,37 @@
 
 {% block body %}
     <div class="container" id="resources-home-container">
+
+        <section id="map-section">
+            <div class="col-md-12">
+
+                {% include 'V2/parts/map.html.twig' %}
+
+                <div class="col-md-8" id="search-form">
+                    <div style="position: relative;">
+                        <form id="search-form-real" role="search" action="{{ path('search_results') }}">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-3">
+                                <input type="text" placeholder="Je cherche : prestataire / organisme/ livre / startup..." name="args">
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" placeholder="Où : Lyon">
+                            </div>
+                            <div class="col-md-3">
+                                <div class="col-md-12 fake-btn fake-btn-orange" id="search-btn" onclick="$('#search-form-real').submit()" style="cursor: pointer">Chercher</div>
+                            </div>
+                            <div class="col-md-1"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="wip" id="profile-main">
             <div class="col-md-12 text-center">
                 <h1>Ceci est la page de l'annuaire des prestataires</h1>
-                <h2>En construction !</h2>
             </div>
+
 
             <div class="col-md-12">
                 <table class="table table-striped table-hover">
