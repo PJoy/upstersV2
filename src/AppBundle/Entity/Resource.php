@@ -40,6 +40,9 @@ class Resource
      */
     private $image;
 
+    /**
+     * @ORM\Column(type="string")
+     */
     private $category;
     /**
      * @ORM\Column(type="string")
@@ -110,6 +113,15 @@ class Resource
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
      */
     private $submittedBy;
+
+    /**
+     * Resource constructor.
+     * @param $views
+     */
+    public function __construct()
+    {
+        $this->views = 0;
+    }
 
     /**
      * @return mixed

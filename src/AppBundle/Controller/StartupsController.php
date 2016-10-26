@@ -33,10 +33,29 @@ class StartupsController extends Controller {
             $search = $_GET['search'];
         }
 
+        $mapData = [];
+
+        foreach ($startups as $startup){
+
+            $lat = floatval($startup->getGPSLat());
+            $long = floatval($startup->getGPSLong());
+
+            if ($lat != 0 && $long != 0){
+                array_push($mapData,[
+                    'type' => 'startup',
+                    'name' => $startup->getName(),
+                    'lat' => $lat,
+                    'long' => $long
+                ]);
+            }
+        }
+
+
         return $this->render('startups/index.html.twig',[
             'title' => 'Annuaire des startups | Upsters',
             'startups' => $startups,
-            'search' => $search
+            'search' => $search,
+            'mapData' => $mapData
         ]);
     }
 

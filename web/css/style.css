@@ -897,8 +897,17 @@ body {
 ****************************
 ***************************/
 
-.profile-questions img{
-    width: 100%;
+.profile-questions {
+    font-size: 11px;
+    background: #e6E6E6;
+}
+
+.dis {
+    background: #e6E6E6;
+    display: none;
+}
+
+.profile-questions .radio label {
 }
 
 /***************************

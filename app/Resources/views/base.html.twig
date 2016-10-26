@@ -163,7 +163,14 @@
             <script>
                 //fade out alert
                 jQuery('.alert').delay(2000).fadeOut();
-            </script>
+
+                $("input").on('keyup', function (e) {
+                    if (e.keyCode == 13) {
+                        $('#search-form-real').submit()
+                    }
+                });
+
+        </script>
 
         {% endblock %}
         {% block additional_javascript %}

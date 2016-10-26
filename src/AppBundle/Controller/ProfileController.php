@@ -9,12 +9,14 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\AppBundle;
 use AppBundle\Entity\Like;
 use AppBundle\Entity\Media;
 use AppBundle\Entity\User;
 use AppBundle\Form\UserEditForm;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\Request;
 
 
@@ -37,6 +39,9 @@ class ProfileController extends Controller {
         $startupCount = 0;
         $likeCount = 0;
         $forumCount = 0;
+        $recomByCount = 0;
+        $fiches = 0;
+        $fichViews = 0;
 
         $recoms = $em->getRepository(Like::class)->findBy([
             'userId' => $user->getId()
@@ -55,6 +60,35 @@ class ProfileController extends Controller {
             $recomCount++;
         }
 
+        $prestaFiches = $em->getRepository('AppBundle:Resource')->findBy([
+            'submittedBy' => $user->getId()
+        ]);
+
+        foreach ($prestaFiches as $prestaFich){
+            $recomByCount += $prestaFich->getLikesCount();
+            $fichViews += $prestaFich->getViews();
+            $fiches ++;
+        }
+
+
+        $finder = new Finder();
+        $finder->in(__DIR__ . '/../articles/questions');
+        //$pathname = $finder->getRelativePathname();
+        foreach ($finder as $file){
+            $content = str_replace('"','',$file->getContents());
+            $lines = explode(PHP_EOL,$content);
+            $qr = [];
+            $ql = [];
+            $i = 0;
+            foreach ($lines as $line){
+                $e = explode(';',$line);
+                $qr[$i] = $e[0];
+                $ql[$i] = $e[1];
+                $i++;
+            }
+        }
+        $r = rand(0,$i);
+        $question = [$qr[$r],$ql[$r]];
 
         $startupViews = 0;
 
@@ -70,12 +104,15 @@ class ProfileController extends Controller {
                 'recomCount' => $recomCount,
                 'startupCount' => $startupCount,
                 'resourceCount' => $resourceCount,
-                'followCount' => $likeCount,
+                'followCount' => $recomCount,
                 'forumCount' => $forumCount,
                 'recomViews' => $totalRecomViews,
                 'startupViews' => $startupViews,
                 'recoms' => $recomObjects,
-                'projects' => $projects
+                'projects' => $projects,
+                'question' => $question,
+                'recomByCount' => $recomByCount,
+                'nbFiches' => $fiches
             ]);
         } else {
             return $this->render('profile/empty.thml.twig', [
