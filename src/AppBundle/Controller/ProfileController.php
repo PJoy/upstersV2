@@ -9,6 +9,7 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\AppBundle;
 use AppBundle\Entity\Like;
 use AppBundle\Entity\Media;
 use AppBundle\Entity\User;
@@ -38,6 +39,9 @@ class ProfileController extends Controller {
         $startupCount = 0;
         $likeCount = 0;
         $forumCount = 0;
+        $recomByCount = 0;
+        $fiches = 0;
+        $fichViews = 0;
 
         $recoms = $em->getRepository(Like::class)->findBy([
             'userId' => $user->getId()
@@ -55,6 +59,17 @@ class ProfileController extends Controller {
             array_push($recomObjects,$object);
             $recomCount++;
         }
+
+        $prestaFiches = $em->getRepository('AppBundle:Resource')->findBy([
+            'submittedBy' => $user->getId()
+        ]);
+
+        foreach ($prestaFiches as $prestaFich){
+            $recomByCount += $prestaFich->getLikesCount();
+            $fichViews += $prestaFich->getViews();
+            $fiches ++;
+        }
+
 
         $finder = new Finder();
         $finder->in(__DIR__ . '/../articles/questions');
@@ -75,9 +90,6 @@ class ProfileController extends Controller {
         $r = rand(0,$i);
         $question = [$qr[$r],$ql[$r]];
 
-
-
-
         $startupViews = 0;
 
         $projects = [];
@@ -92,13 +104,15 @@ class ProfileController extends Controller {
                 'recomCount' => $recomCount,
                 'startupCount' => $startupCount,
                 'resourceCount' => $resourceCount,
-                'followCount' => $likeCount,
+                'followCount' => $recomCount,
                 'forumCount' => $forumCount,
                 'recomViews' => $totalRecomViews,
                 'startupViews' => $startupViews,
                 'recoms' => $recomObjects,
                 'projects' => $projects,
-                'question' => $question
+                'question' => $question,
+                'recomByCount' => $recomByCount,
+                'nbFiches' => $fiches
             ]);
         } else {
             return $this->render('profile/empty.thml.twig', [

@@ -18,12 +18,17 @@
                             {% endif %}
                         </div>
                         <div class="col-md-6">
+                            {% if 'ROLE_ENTREPRENEUR' in user.roles  %}  {% endif %}
+                            {% if 'ROLE_RESOURCE' in user.roles  %}  {% endif %}
                             <h1>{{ user.username }}</h1>
-                            <p data-toggle="tooltip" data-placement="left" title="Un peu de patience !" class="disabled">{{ followCount }} follow(s) </p>
-                            <p>{{ recomCount }} recommandation(s)</p>
-                            <p>{{ startupCount }} startup(s)</p>
-                            <p>{{ resourceCount }} ressources(s) ajoutée(s) à la médiathèque</p>
-                            <p data-toggle="tooltip" data-placement="left" title="Presque prêt !" class="disabled">{{ followCount }} messages postés dans le forum</p>
+                            {% if 'ROLE_ENTREPRENEUR' in user.roles  %} <p>{{ followCount }} follow(s) </p> {% endif %}
+                            {% if 'ROLE_ENTREPRENEUR' in user.roles  %} <p>{{ recomCount }} recommandation(s) données</p> {% endif %}
+                            {% if 'ROLE_ENTREPRENEUR' in user.roles  %} <p>{{ resourceCount }} ressources(s) ajoutée(s) à la médiathèque</p> {% endif %}
+                            {% if 'ROLE_ENTREPRENEUR' in user.roles  %} <p>{{ startupCount }} startup(s)</p> {% endif %}
+                            {% if 'ROLE_RESOURCE' in user.roles  %} <p>{{ recomByCount }} L'ont recommandé</p> {% endif %}
+                            {% if 'ROLE_RESOURCE' in user.roles  %} <p>{{ nbFiches }} fiches prestataires ajoutées</p> {% endif %}
+
+                            <p data-toggle="tooltip" data-placement="left" title="Presque prêt !" class="disabled">0 messages postés dans le forum</p>
                         </div>
                         <div class="col-md-4">
                             <a href="{{ path('user_edit', {'name': user.name}) }}">Mettre à jour un profil <i class="fa fa-angle-right"></i></a><br>
@@ -43,6 +48,7 @@
                             <div class="col-md-12 profile-nav btn" onclick="$('.profile-section').removeClass('active');$('.profile-section-recoms').addClass('active')">
                                 <p>Recommandations <i class="fa fa-angle-right"></i></p>
                             </div>
+                            {% if 'ROLE_ENTREPRENEUR' in user.roles  %}
                             <div class="col-md-12"><hr></div>
                             <div class="col-md-12 profile-nav btn" onclick="$('.profile-section').removeClass('active');$('.profile-section-startups').addClass('active')">
                                 <p>Startups <i class="fa fa-angle-right"></i></p>
@@ -51,6 +57,7 @@
                             <div class="col-md-12 profile-nav btn disabled" data-toggle="tooltip" data-placement="right" title="Cette fonctionalité arrive très bientôt !">
                                 <p>Follows <i class="fa fa-angle-right"></i></p>
                             </div>
+                            {% endif %}
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -118,10 +125,20 @@
                     <div class="col-md-4">
                             <div class="row">
                                 <h2>Sur les 90 derniers jours</h2>
-                                <p>{{ recomViews }} vues de vos recommandations</p>
-                                <p>{{ startupViews }} vues de votre startup</p>
+                                {% if 'ROLE_ENTREPRENEUR' in user.roles  %}
+                                    <p>{{ recomViews }} vues des recommandations</p>
+                                    <p>{{ startupViews }} vues des startup</p>
+                                {% endif %}
+                                {% if 'ROLE_RESOURCE' in user.roles  %}
+                                    <p>{{ recomViews }} vues des fiches prestataire </p>
+                                    <p>{{ recomByCount }} recommandations </p>
+                                {% endif %}
+
+
                             </div>
-                        <h2 class="row">Une question aléatoire</h2>
+                        {% if 'ROLE_ENTREPRENEUR' in user.roles  %}
+
+                            <h2 class="row">Une question aléatoire</h2>
                             <div class="profile-questions row">
 
                                 <div class="col-md-4">
@@ -153,6 +170,7 @@
                                 <h2>Badges</h2>
                                 <p>Fonctionalité en cours de développement...</p>
                             </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>

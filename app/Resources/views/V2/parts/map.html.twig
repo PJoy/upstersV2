@@ -12,13 +12,16 @@
         var markers = [];
         var infoWindows = [];
 
+        console.log(pins);
+
         pins.forEach(function(a,e){
             markers[e] = new google.maps.Marker({
                 position: new google.maps.LatLng(a.lat, a.long),
-                map: map
+                map: map,
+                icon: '/images/map_pins/'+a.category+'.png'
             });
             infoWindows[e] = new google.maps.InfoWindow({
-                content: "<a href='/"+a.type+"s/"+a.name+"'>"+a.name+"</a>"
+                content: "<a href='/"+a.type+"s/"+a.name+"'>"+a.name +" - "+ a.category+"</a>"
             });
             markers[e].addListener('click', function(){
                 infoWindows[e].open(map, markers[e]);
