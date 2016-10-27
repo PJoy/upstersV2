@@ -7,6 +7,7 @@ use Symfony\Component\DomCrawler\Field\ChoiceFormField;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -39,7 +40,9 @@ class UserEditForm extends AbstractType
                 'multiple' => true,
                 'expanded' => true
             ))*/
-            ->add('birthDate')
+            ->add('birthDate', DateType::class, [
+                'widget' => 'text'
+            ])
             ->add('pitch')
             ->add('image', FileType::class, array(
                 'data_class' => null,

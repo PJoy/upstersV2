@@ -1,10 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container display-startup-container">
+    <div class="container display-startup-container wip">
         <div class="row">
             <div class="col-xs-12 text-center">
                 <h1>{{ startup.name }}</h1>
+                par :<h3> {{ startup.submittedBy }}</h3>
                 <h2>{{ startup.likesCount }} recommandations</h2>
                 <h2>Adresse</h2>
                 <p>{{ startup.address }}</p>

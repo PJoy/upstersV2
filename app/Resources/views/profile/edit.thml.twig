@@ -14,12 +14,24 @@
                 {% endif %}
                 {{ form_row(userEditForm.image) }}
             </div>
-            <div class="col-md-4">{{ form_row(userEditForm.name) }}</div>
-            <div class="col-md-4">{{ form_row(userEditForm.firstName) }}</div>
-            <div class="col-md-4">{{ form_row(userEditForm.lastName) }}</div>
-            <div class="col-md-6">{{ form_row(userEditForm.gender) }}</div>
-            <div class="col-md-6">{{ form_row(userEditForm.birthDate) }}</div>
-            <div class="col-md-6">{{ form_row(userEditForm.nationality) }}</div>
+            <div class="col-md-4">{{ form_row(userEditForm.name,{
+                    'label' : 'Pseudo'
+                }) }}</div>
+            <div class="col-md-4">{{ form_row(userEditForm.firstName,{
+                    'label' : 'Prénom'
+                }) }}</div>
+            <div class="col-md-4">{{ form_row(userEditForm.lastName,{
+                    'label' : 'Nom'
+                }) }}</div>
+            <div class="col-md-6">{{ form_row(userEditForm.gender,{
+                    'label' : 'Genre'
+                }) }}</div>
+            <div class="col-md-6">{{ form_row(userEditForm.birthDate,{
+                    'label' : 'Date de naissance'
+                }) }}</div>
+            <div class="col-md-6">{{ form_row(userEditForm.nationality,{
+                    'label' : 'Nationalité'
+                }) }}</div>
         </div>
     <div class="col-md-12">
         <h2 class="text-center">Mon profil d'entrepreneur</h2>

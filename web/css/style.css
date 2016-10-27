@@ -5,6 +5,15 @@ grey : e6e6e6
 **/
 
 /* TODO assign these */
+
+.profile-nav p {
+    font-size: 12px;
+}
+#user_edit_form_birthDate input{
+    margin: 0 10px;
+    width: 100px;
+}
+
 .container{
     /*margin: 200px;*/
 }
