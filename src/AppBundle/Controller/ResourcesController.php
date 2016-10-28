@@ -69,10 +69,13 @@ class ResourcesController extends Controller {
     public function resourceAddAction(Request $request)
     {
         $form = $this->createForm(ResourceFormType::class);
+        $user = $this->getUser();
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $resource = $form->getData();
+
+            $resource->setSubmittedBy($user);
 
             $em = $this->getDoctrine()->getEntityManager();
             $em->persist($resource);

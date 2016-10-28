@@ -71,31 +71,31 @@ class Resource
 
     //OPTIONAL FIELDS
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $phone;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $email;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $openingTime;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $twitter;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $facebook;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $linkedin;
     /**
-     * @ORM\Column(type="simple_array")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $tags;
 
@@ -438,7 +438,7 @@ class Resource
     /**
      * @param mixed $submittedBy
      */
-    public function setSubmittedBy($submittedBy)
+    public function setSubmittedBy(User $submittedBy)
     {
         $this->submittedBy = $submittedBy;
     }

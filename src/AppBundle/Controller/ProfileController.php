@@ -97,6 +97,9 @@ class ProfileController extends Controller {
         $question = [$qr[$r],$ql[$r]];
 
         $startupViews = 0;
+        foreach ($startups as $startup){
+            $startupViews += $startup->getViews();
+        }
 
         $projects = [];
 

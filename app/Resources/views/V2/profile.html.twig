@@ -21,7 +21,7 @@
                             {% if 'ROLE_ENTREPRENEUR' in user.roles  %}  {% endif %}
                             {% if 'ROLE_RESOURCE' in user.roles  %}  {% endif %}
                             <h1>{{ user.username }}</h1>
-                            {% if 'ROLE_ENTREPRENEUR' in user.roles  %} <p>{{ followCount }} follow(s) </p> {% endif %}
+                            <p>{{ followCount }} follow(s) </p>
                             {% if 'ROLE_ENTREPRENEUR' in user.roles  %} <p>{{ recomCount }} recommandation(s) données</p> {% endif %}
                             {% if 'ROLE_ENTREPRENEUR' in user.roles  %} <p>{{ resourceCount }} ressources(s) ajoutée(s) à la médiathèque</p> {% endif %}
                             {% if 'ROLE_ENTREPRENEUR' in user.roles  %} <p>{{ startupCount }} startup(s)</p> {% endif %}
@@ -50,8 +50,8 @@
                             </div>
                             {% if 'ROLE_ENTREPRENEUR' in user.roles  %}
                             <div class="col-md-12"><hr></div>
-                            <div class="col-md-12 profile-nav btn" onclick="$('.profile-section').removeClass('active');$('.profile-section-startups').addClass('active')">
-                                <p>Startups <i class="fa fa-angle-right"></i></p>
+                            <div class="col-md-12 profile-nav btn">
+                                <p><a href="{{ path('startups_home') }}" style="color: white">Startups <i class="fa fa-angle-right"></i></a></p>
                             </div>
                             <div class="col-md-12"><hr></div>
                             <div class="col-md-12 profile-nav btn disabled" data-toggle="tooltip" data-placement="right" title="Cette fonctionalité arrive très bientôt !">

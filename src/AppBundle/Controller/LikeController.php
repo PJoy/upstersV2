@@ -90,7 +90,7 @@ class LikeController extends Controller
             'wasRead' => false
         ]);
 
-        $user->setUnreadNotifications(count($unread));
+        $notifiedUser->setUnreadNotifications(count($unread));
         $em->flush();
 
 
