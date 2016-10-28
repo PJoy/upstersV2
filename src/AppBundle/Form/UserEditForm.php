@@ -41,7 +41,7 @@ class UserEditForm extends AbstractType
                 'expanded' => true
             ))*/
             ->add('birthDate', DateType::class, [
-                'widget' => 'text'
+                'years' => range(date('Y') -100, date('Y')-16),
             ])
             ->add('pitch')
             ->add('image', FileType::class, array(
