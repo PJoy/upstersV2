@@ -221,6 +221,13 @@
         $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip();
         });
+
+        $("input").on('keyup', function (e) {
+            if (e.keyCode == 13) {
+                $('#search-form-real').submit()
+            }
+        });
+
     </script>
 
 
