@@ -47,6 +47,12 @@ class ProfileController extends Controller {
             'userId' => $user->getId()
         ]);
 
+        $startups = $em->getRepository('AppBundle:Startup')->findBy([
+            'submittedBy' => $user->getId()
+        ]);
+
+        $startupCount = count($startups);
+
         $totalRecomViews = 0;
         $recomObjects = [];
 
