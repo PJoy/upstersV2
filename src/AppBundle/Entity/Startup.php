@@ -81,6 +81,11 @@ class Startup
     private $views;
 
     /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $tags;
+
+    /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -308,6 +313,22 @@ class Startup
     public function setSubmittedBy($submittedBy)
     {
         $this->submittedBy = $submittedBy;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * @param mixed $tags
+     */
+    public function setTags($tags)
+    {
+        $this->tags = $tags;
     }
 
 }

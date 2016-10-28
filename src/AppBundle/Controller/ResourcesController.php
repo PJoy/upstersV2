@@ -9,6 +9,7 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Entity\Like;
 use AppBundle\Form\ResourceFormType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -102,12 +103,28 @@ class ResourcesController extends Controller {
         $resource = $em->getRepository('AppBundle:Resource')
             ->findOneBy( ['name' => $name ]);
 
+        $likes = $em->getRepository(Like::class)
+            ->findBy([
+                'contentId' => $resource->getId()
+            ]);
+
+        $users = [];
+
+        foreach ($likes as $like){
+            $user = $em->getRepository('AppBundle:User')
+                ->findBy([
+                    'id' => $like->getUserId()
+                ]);
+            array_push($users,$user);
+        }
+
         $resource->setViews($resource->getViews()+1);
         $em->flush();
 
         //TODO name shouldn't be 'add'
         return $this->render('resource/display.html.twig', [
-            'resource' => $resource
+            'resource' => $resource,
+            'users' => $users
         ]);
     }
 

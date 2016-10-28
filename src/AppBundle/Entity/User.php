@@ -155,7 +155,7 @@ class User implements UserInterface//, \Serializable
             $roles[] = 'ROLE_USER';
         }
 
-        if (/*$this->id == */1){
+        if ($this->email == "admin@upsters.fr"){
             $roles[] .= 'ROLE_ADMIN';
         }
 

@@ -9,6 +9,7 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\AppBundle;
 use AppBundle\Form\MediaFormType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -81,12 +82,29 @@ class MediaController extends Controller {
         $media = $em->getRepository('AppBundle:Media')
             ->findOneBy( ['name' => $name ]);
 
+        $likes = $em->getRepository('AppBundle:Like')
+            ->findBy([
+                'contentId' => $media->getId()
+            ]);
+
+        $users = [];
+
+        foreach ($likes as $like){
+            $user = $em->getRepository('AppBundle:User')
+                ->findBy([
+                    'id' => $like->getUserId()
+                ]);
+            array_push($users,$user);
+        }
+
+
         $media->setViews($media->getViews()+1);
         $em->flush();
 
         //TODO name shouldn't be 'add'
         return $this->render('media/display.html.twig', [
-            'media' => $media
+            'media' => $media,
+            'users' => $users
         ]);
     }
 

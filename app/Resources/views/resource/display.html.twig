@@ -5,7 +5,10 @@
         <div class="row">
             <div class="col-xs-12 text-center">
                 <h1>{{ resource.name }}</h1>
-                <h2>{{ resource.likesCount }} recommandations</h2>
+                <h2>{{ resource.likesCount }} recommandations : </h2>
+                {% for user in users %}
+                    <a href="{{ path('user', {'name': user[0].name}) }}">{{ user[0].name }}</a>
+                {% endfor %}
                 <h2>Catégorie</h2>
                 <p>{{ resource.category }}</p>
                 <h2>Entreprise</h2>
@@ -33,6 +36,9 @@
 
                 <h2>Description</h2>
                 <p>{{ resource.description }}</p>
+
+                <h2>Mots-clé</h2>
+                <p> {{ resource.tags }}</p>
             </div>
         </div>
     </div>

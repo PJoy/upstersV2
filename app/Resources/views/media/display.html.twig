@@ -8,7 +8,13 @@
 
 
             <h1>{{ media.name }}</h1>
-            <h2>Apperçu</h2>
+
+            <h2>{{ media.likesCount }} recommandations : </h2>
+            {% for user in users %}
+                <a href="{{ path('user', {'name': user[0].name}) }}">{{ user[0].name }}</a>
+            {% endfor %}
+
+            <h2>Aperçu</h2>
             <div class="embed">
                 <script>
                     (function(w, d){
@@ -32,8 +38,11 @@
             <p>{{ media.dateSubmitted|date('d/m/Y') }}</p>
             <h2>Commentaires</h2>
             <p>{{ media.description }}</p>
-            <h2>Recommandations</h2>
-            <p>{{ media.likesCount }}</p>
+
+            <h2>Mots-clé</h2>
+            <p> {{ media.tags }}</p>
+
+
         </div>
     </div>
 </div>

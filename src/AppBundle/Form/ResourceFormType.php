@@ -12,11 +12,15 @@ class ResourceFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
+            ->add('name', TextType::class, [
+                'label' => 'Mon nom - Mon prénom'
+            ])
             ->add('category', TextType::class, [
                 'label' => 'Métier'
             ])
-            ->add('company')
+            ->add('company', TextType::class, [
+                'label' => 'Mon entreprise'
+            ])
             ->add('address')
             ->add('GPSLat')
             ->add('GPSLong')
